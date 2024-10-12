@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Assignment_2_WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <local:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibilityConverter"/>
     </Application.Resources>
 </Application>

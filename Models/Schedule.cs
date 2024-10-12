@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_2_WPF.Models
 {
-    class Reminder
+    public class Schedule
     {
     }
 }

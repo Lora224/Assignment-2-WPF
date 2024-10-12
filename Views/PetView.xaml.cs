@@ -1,27 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Assignment_2_WPF.ViewModels;
 
 namespace Assignment_2_WPF.Views
 {
-    /// <summary>
-    /// Interaction logic for PetView.xaml
-    /// </summary>
     public partial class PetView : Window
     {
+        private PetViewModel viewModel;
+
         public PetView()
         {
             InitializeComponent();
+            viewModel = new PetViewModel();
+            DataContext = viewModel;
+        }
+
+        private void AddNewPetButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.AddNewPet();
+        }
+
+        private void EditPetButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (viewModel.SelectedPet != null)
+            {
+                viewModel.EditPet();
+            }
+            else
+            {
+                MessageBox.Show("Please select a pet to edit.");
+            }
+        }
+
+        private void RemovePetButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (viewModel.SelectedPet != null)
+            {
+                viewModel.RemovePet();
+            }
+            else
+            {
+                MessageBox.Show("Please select a pet to remove.");
+            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (viewModel.HasUnsavedChanges)
+            {
+                viewModel.SaveChanges();
+                MessageBox.Show("Changes saved successfully.");
+            }
+            else
+            {
+                MessageBox.Show("No changes to save.");
+            }
         }
     }
 }
