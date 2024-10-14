@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,20 +14,112 @@ namespace Assignment_2_WPF.Models
         public string PetName { get; set; }
         public int UserId { get; set; }
         public string Breed { get; set; }
-        public DateOnly? dob { get; set; }
+        public DateTime dob { get; set; }
         public int Weight { get; set; }
         public List<Activity> activities;
         public List<Schedule> schedules;
+                              
 
-        //generate pet ID 
-        public void generatePetId()
+        //constructor of class Pet, with petId generated automatically
+        public Pet(int petId, int userId, string petName, string breed, DateTime dob, int weight)
         {
-            Console.WriteLine("Generate pet ID ");
+            Random random = new Random();
+            petId = random.Next(100000, 999999);
+            this.userId = userId;
+            this.petName = petName;
+            this.breed = breed;
+            this.dob = dob;
+            this.weight = weight;
+            activities = new List<Activity>();
+            schedules = new List<Schedule>();
         }
-        public void showAllPetDetails()
+
+        // using Entity framework to query all pet from table pet in MySQL, and then count the number of pets
+        public int countPet()
         {
-            Console.WriteLine("Show all pet ");
-     
+            using (var context = new AppDbContext())
+            {
+                var pets = context.Pets.ToList();
+                return pets.Count;
+            }
+        }
+
+        // if pets.Count ==0, show petMenuNoPet, else show petMenu
+        public void petMenuCheck()
+        {
+            if (countPet() == 0)
+            {
+                petMenuNoPet();
+            }
+            else
+            {
+                petMenu();
+            }
+        }
+
+        // Pet menu when account has no pet
+        public void petMenuNoPet()
+        {
+            Console.WriteLine("Your account donot have any pet, please create a new one.");
+            addNewPet();
+        }
+
+        // pet menu when account has pet
+        public void petMenu()
+        {
+            Console.WriteLine("Pet Menu");
+            Console.WriteLine("1. Show all pets");
+            Console.WriteLine("2. Show pet details");
+            Console.WriteLine("3. Add new pet");
+            Console.WriteLine("4. Edit pet details");
+            Console.WriteLine("5. Remove pet");
+            Console.WriteLine("6. Return");
+            Console.WriteLine("7. Exit");
+        }
+        // switch case for pet menu
+        public void petMenuSwitch(int choice)
+        {
+            switch (choice)
+            {
+                case 1:
+                    showAllPets();
+                    break;
+                case 2:
+                    showPetDetails();
+                    break;
+                case 3:
+                    addNewPet();
+                    break;
+                case 4:
+                    editPetDetails();
+                    break;
+                case 5:
+                    removePet();
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
+            }
+        }
+
+        public void showAllPets()
+        {
+            using (var context = new AppDbContext())
+            {
+                // Query all pets from the database
+                var pets = context.Pets.ToList();
+
+                // Display the results
+                foreach (var pet in pets)
+                {
+                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, Weight: {pet.Weight}");
+                }
+            }
         }
         public void showPetDetails()
         {
@@ -41,9 +133,9 @@ namespace Assignment_2_WPF.Models
         {
             Console.WriteLine("Update pet details ");
         }
-        public void deletePet()
+        public void removePet()
         {
-            Console.WriteLine("Delete pet ");
+            Console.WriteLine("Remove pet ");
         }
 
     }
