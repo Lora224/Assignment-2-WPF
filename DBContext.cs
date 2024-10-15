@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment_2_WPF.Data
+namespace Assignment_2_WPF
 {
     class DBContext
     {
