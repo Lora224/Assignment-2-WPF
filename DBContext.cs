@@ -34,6 +34,15 @@ namespace Assignment_2_WPF
         {
             // create a .db file in the project directory
             optionsBuilder.UseSqlite("Data Source=PetApp.db");
-        }        
-    }
+        }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().ToTable("user");
+            modelBuilder.Entity<Pet>().ToTable("pet");  
+            modelBuilder.Entity<Activity>().ToTable("activity");    
+            modelBuilder.Entity<Schedule>().ToTable("schedule");
+        }
+    }       
+
 }
