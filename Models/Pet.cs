@@ -123,8 +123,27 @@ namespace Assignment_2_WPF.Models
         }
         public void showPetDetails()
         {
-            Console.WriteLine("Show pet details ");
+            Console.WriteLine("Enter the pet ID: ");
+            int petId = Convert.ToInt32(Console.ReadLine());
+            using (var context = new AppDbContext())
+            {
+                // Query the pet from the database
+                var pet = context.Pets.Where(p => p.PetId == petId).FirstOrDefault();
+                // Display the results
+                if (pet != null)
+                {
+                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, Weight: {pet.Weight}");
+                }
+                else
+                {
+                    Console.WriteLine("Pet not found");
+                }
+            }
+            // press any key to return to the pet menu
+            Console.WriteLine("Press any key to return to the pet menu");
+            Console.ReadKey();
         }
+        
         public void addNewPet()
         {
             Console.WriteLine("Add pet ");
