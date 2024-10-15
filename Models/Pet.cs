@@ -117,7 +117,7 @@ namespace Assignment_2_WPF.Models
                 // Display the results
                 foreach (var pet in pets)
                 {
-                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, Weight: {pet.Weight}");
+                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, DOB: {pet.dob}, Weight: {pet.Weight}");
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace Assignment_2_WPF.Models
                 // Display the results
                 if (pet != null)
                 {
-                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, Weight: {pet.Weight}");
+                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, DOB: {pet.dob}, Weight: {pet.Weight}");
                 }
                 else
                 {
