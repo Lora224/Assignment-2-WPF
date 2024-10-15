@@ -13,7 +13,6 @@
     <Folder Include="Data\" />
     <Folder Include="Tests\" />
     <Folder Include="Resources\" />
-    <Folder Include="Ultilities\" />
   </ItemGroup>
 
   <ItemGroup>
