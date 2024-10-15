@@ -1,8 +1,4 @@
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\bin\Debug\net8.0-windows\Assignment 2 WPF.exe
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\bin\Debug\net8.0-windows\Assignment 2 WPF.deps.json
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\bin\Debug\net8.0-windows\Assignment 2 WPF.runtimeconfig.json
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\bin\Debug\net8.0-windows\Assignment 2 WPF.dll
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\bin\Debug\net8.0-windows\Assignment 2 WPF.pdb
+\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.csproj.AssemblyReference.cache
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Views\PetView.baml
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\MainWindow.g.cs
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Views\PetView.g.cs
@@ -10,16 +6,3 @@
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.cache
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.lref
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\App.baml
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\MainWindow.baml
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.g.resources
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.GeneratedMSBuildEditorConfig.editorconfig
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.AssemblyInfoInputs.cache
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.AssemblyInfo.cs
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.csproj.CoreCompileInputs.cache
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.sourcelink.json
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.dll
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\refint\Assignment 2 WPF.dll
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.pdb
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.genruntimeconfig.cache
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\ref\Assignment 2 WPF.dll

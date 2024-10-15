@@ -21,7 +21,7 @@ namespace Assignment_2_WPF.Models
                               
 
         //constructor of class Pet, with petId generated automatically
-        public Pet(int petId, int userId, string petName, string breed, DateTime dob, int weight)
+        public Pet(int userId, string petName, string breed, DateTime dob, int weight)
         {
             Random random = new Random();
             petId = random.Next(100000, 999999);
@@ -128,6 +128,20 @@ namespace Assignment_2_WPF.Models
         public void addNewPet()
         {
             Console.WriteLine("Add pet ");
+            string ?nameTemp;
+            //add pet with details filled in forms to construct a new pet object? and write in to database
+            Console.Write("name");
+            nameTemp = Console.ReadLine();
+            DateTime date = new DateTime(2000, 2, 24); //test data for date
+            Pet newPet = new Pet(userId, nameTemp,"Dog",date,50);
+      /*    using (var context = new AppDbContext())
+            {
+                context.Pets.Add(newPet);
+                context.SaveChanges();
+            }
+
+        */
+            
         }
         public void editPetDetails()
         {
