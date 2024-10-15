@@ -32,21 +32,8 @@ namespace Assignment_2_WPF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Connection string to MySQL database
-            optionsBuilder.UseMySql("Server=localhost;Database=kul.luv13@gmail.com;User=root;Password=Abc123def@;",
-                new MySqlServerVersion(new Version(8, 0, 39)));
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // maping user class to user table in MySQL
-            modelBuilder.Entity<User>().ToTable("user");
-            // Mapping Pet class to pet table in MySQL
-            modelBuilder.Entity<Pet>().ToTable("pet");
-            // Mapping Activity class to activity table in MySQL
-            modelBuilder.Entity<Activity>().ToTable("activity");
-            // Mapping Schedule class to schedule table in MySQL
-            modelBuilder.Entity<Schedule>().ToTable("schedule");
-        }
+            // create a .db file in the project directory
+            optionsBuilder.UseSqlite("Data Source=PetApp.db");
+        }        
     }
 }
