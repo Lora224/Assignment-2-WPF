@@ -153,14 +153,16 @@ namespace Assignment_2_WPF.Models
             nameTemp = Console.ReadLine();
             DateTime date = new DateTime(2000, 2, 24); //test data for date
             Pet newPet = new Pet(userId, nameTemp,"Dog",date,50);
-      /*    using (var context = new AppDbContext())
+          using (var context = new AppDbContext())
             {
                 context.Pets.Add(newPet);
                 context.SaveChanges();
             }
+            // press any key to return to the pet menu
+            Console.WriteLine("Press any key to return to the pet menu");
+            Console.ReadKey();
 
-        */
-            
+
         }
         public void editPetDetails()
         {

@@ -40,11 +40,7 @@ namespace Assignment_2_WPF.ViewModels
 
         public void AddNewPet()
         {
-            Pet newPet = new Pet();
-            // Set default values for new pet
-            Pets.Add(newPet);
-            SelectedPet = newPet;
-            HasUnsavedChanges = true;
+          
         }
 
         public void EditPet()
