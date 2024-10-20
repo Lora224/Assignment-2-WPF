@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assignment_2_WPF.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment_2_WPF.Models
 {
     public class Pet
     {
-        private int petId, userId, weight;
-        private string petName, breed;
+        public int petId, userId, weight;
+        public string petName, breed;
         public int PetId { get; set; }
         public string PetName { get; set; }
         public int UserId { get; set; }
@@ -34,7 +36,7 @@ namespace Assignment_2_WPF.Models
             schedules = new List<Schedule>();
         }
 
-        // using Entity framework to query all pet from table pet in MySQL, and then count the number of pets
+        // using Entity framework to query all pet from table pet in PetApp.db, and then count the number of pets
         public int countPet()
         {
             using (var context = new AppDbContext())
@@ -43,30 +45,49 @@ namespace Assignment_2_WPF.Models
                 return pets.Count;
             }
         }
+        
 
         // if pets.Count ==0, show petMenuNoPet, else show petMenu
-        public void petMenuCheck()
+        public void petCheck()
         {
-            if (countPet() == 0)
+            if (countPet() != 0)
             {
-                petMenuNoPet();
+                petMenu();
             }
             else
             {
-                petMenu();
+                petMenuNoPet();
             }
         }
 
         // Pet menu when account has no pet
         public void petMenuNoPet()
         {
+            // design in WPF
             Console.WriteLine("Your account donot have any pet, please create a new one.");
-            addNewPet();
+            Console.WriteLine("1. Add new pet");
+            Console.WriteLine("2. Back");
+            Console.WriteLine("Please enter your choice: "); // in wpf this should be a button to choose the option
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    addNewPet();
+                    break;
+                case "2":
+                    petCheck();
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice, please try again");
+                    petMenuNoPet();
+                    break;
+            }
         }
 
         // pet menu when account has pet
         public void petMenu()
         {
+            // design in WPF
             Console.WriteLine("Pet Menu");
             Console.WriteLine("1. Show all pets");
             Console.WriteLine("2. Show pet details");
@@ -75,34 +96,32 @@ namespace Assignment_2_WPF.Models
             Console.WriteLine("5. Remove pet");
             Console.WriteLine("6. Return");
             Console.WriteLine("7. Exit");
-        }
-        // switch case for pet menu
-        public void petMenuSwitch(int choice)
-        {
+            Console.WriteLine("Please enter your choice: "); // in wpf this should be a button to choose the option
+            string choice = Console.ReadLine();
             switch (choice)
             {
-                case 1:
+                case "1":
                     showAllPets();
                     break;
-                case 2:
+                case "2":
                     showPetDetails();
                     break;
-                case 3:
+                case "3":
                     addNewPet();
                     break;
-                case 4:
+                case "4":
                     editPetDetails();
                     break;
-                case 5:
+                case "5":
                     removePet();
                     break;
-                case 6:
+                case "6":
                     break;
-                case 7:
+                case "7":
                     Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("Invalid choice");
+                    Console.WriteLine("Invalid choice, please try again");
                     break;
             }
         }
@@ -117,13 +136,18 @@ namespace Assignment_2_WPF.Models
                 // Display the results
                 foreach (var pet in pets)
                 {
-                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, DOB: {pet.dob}, Weight: {pet.Weight}");
+                    //Console.WriteLine("Pet ID: " + pet.PetId);
+                    Console.WriteLine("Pet Name: " + pet.PetName);
+                    Console.WriteLine("Breed: " + pet.Breed);
+                    Console.WriteLine("DOB: " + pet.dob);
+                    Console.WriteLine("Weight: " + pet.Weight);
+                    Console.WriteLine();
                 }
             }
         }
         public void showPetDetails()
         {
-            Console.WriteLine("Enter the pet ID: ");
+            Console.WriteLine("Enter the pet ID: "); //in WPF this should be a button to choose the pet? or textbox to input petId
             int petId = Convert.ToInt32(Console.ReadLine());
             using (var context = new AppDbContext())
             {
@@ -132,7 +156,12 @@ namespace Assignment_2_WPF.Models
                 // Display the results
                 if (pet != null)
                 {
-                    Console.WriteLine($"Pet ID: {pet.PetId}, Name: {pet.PetName}, Breed: {pet.Breed}, DOB: {pet.dob}, Weight: {pet.Weight}");
+                    Console.WriteLine("Pet Name: " + pet.PetName);
+                    Console.WriteLine("Breed: " + pet.Breed);
+                    Console.WriteLine("DOB: " + pet.dob);
+                    Console.WriteLine("Weight: " + pet.Weight);
+                    // activity list
+                    // schedule list - toString() in schedule class
                 }
                 else
                 {
