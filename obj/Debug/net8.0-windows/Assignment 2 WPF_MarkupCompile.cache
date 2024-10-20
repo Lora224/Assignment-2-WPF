@@ -1,7 +1,7 @@
 ﻿Assignment 2 WPF
 
 
-winexe
+exe
 C#
 .cs
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\App.xaml
 2-344496282
 
-12-358626258
+1313971463
 2181080308309
 MainWindow.xaml;Views\PetView.xaml;
 
-True
+False
 

@@ -36,6 +36,7 @@ namespace Assignment_2_WPF
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("MainWindow Initialized");
         }
 
         private void PetButton_Click(object sender, RoutedEventArgs e)

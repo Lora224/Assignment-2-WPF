@@ -21,6 +21,7 @@ namespace Assignment_2_WPF.ViewModels
             {
                 selectedPet = value;
                 OnPropertyChanged(nameof(SelectedPet));
+                Console.WriteLine("Petview");
             }
         }
 
@@ -34,17 +35,33 @@ namespace Assignment_2_WPF.ViewModels
 
         public void LoadPets()
         {
+            Pet pet = new Pet(123, "Dog", "Labrador", DateTime.Now, 20);
+            pet.petCheck();
             // Load pets from the database or service
             // Example: Pets = new ObservableCollection<Pet>(yourDataContext.Pets.ToList());
         }
 
         public void AddNewPet()
         {
-            Pet newPet = new Pet();
             // Set default values for new pet
+            Pet newPet = new Pet(123, "Dog", "Labrador", DateTime.Now, 20);
             Pets.Add(newPet);
             SelectedPet = newPet;
             HasUnsavedChanges = true;
+            Console.WriteLine("Add pet ");
+            string? nameTemp;
+            //add pet with details filled in forms to construct a new pet object? and write in to database
+            Console.Write("name");
+            nameTemp = Console.ReadLine();
+            DateTime date = new DateTime(2000, 2, 24); //test data for date
+
+                using (var context = new AppDbContext())
+                  {
+                      context.Pets.Add(newPet);
+                      context.SaveChanges();
+                  }
+
+              
         }
 
         public void EditPet()
