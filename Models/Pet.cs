@@ -34,7 +34,7 @@ namespace Assignment_2_WPF.Models
             activities = new List<Activity>();
             schedules = new List<Schedule>();
 
-            // Initialize properties to avoid CS8618 error
+            // Initialize properties to avoid error
             PetName = petName;
             Breed = breed;
         }
