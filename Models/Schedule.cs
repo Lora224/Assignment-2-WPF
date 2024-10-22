@@ -25,7 +25,7 @@ namespace Assignment_2_WPF.Models
             this.petId = petId;
             this.petName = petName;
             Random random = new Random();
-            scheduleId = random.Next(100000, 999999);
+            this.scheduleId = random.Next(100000, 999999);
             this.scheduleType = scheduleType;
             this.date = date;
             this.time = time;
@@ -36,8 +36,8 @@ namespace Assignment_2_WPF.Models
         public void scheduleCheck()
         {
             Pet pet = new Pet(0, "", "", DateTime.Now, 0);
-            if (pet.countPet() != 0)
-            {
+            if (Pet.countPet() != 0)
+            { 
                 if (countSchedule() != 0)
                 {
                     scheduleMenu();
@@ -57,6 +57,7 @@ namespace Assignment_2_WPF.Models
         {
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 var schedules = context.Schedules.ToList();
                 return schedules.Count;
             }
@@ -128,6 +129,7 @@ namespace Assignment_2_WPF.Models
         {
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 var schedules = context.Schedules.ToList();
                 foreach (var schedule in schedules)
                 {
@@ -150,6 +152,7 @@ namespace Assignment_2_WPF.Models
             int scheduleId = Convert.ToInt32(Console.ReadLine()); // in WPF: click to choose schedule
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 var schedule = context.Schedules.Where(s => s.ScheduleId == scheduleId).FirstOrDefault();
                 if (schedule != null)
                 {
@@ -175,6 +178,7 @@ namespace Assignment_2_WPF.Models
             int petId = Convert.ToInt32(Console.ReadLine());
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 var pet = context.Pets.Where(p => p.PetId == petId).FirstOrDefault();
                 if (pet != null)
                 {
@@ -206,6 +210,7 @@ namespace Assignment_2_WPF.Models
             int scheduleId = Convert.ToInt32(Console.ReadLine());
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 var schedule = context.Schedules.Where(s => s.ScheduleId == scheduleId).FirstOrDefault();
                 if (schedule != null)
                 {
@@ -238,6 +243,7 @@ namespace Assignment_2_WPF.Models
             int scheduleId = Convert.ToInt32(Console.ReadLine());
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 var schedule = context.Schedules.Where(s => s.ScheduleId == scheduleId).FirstOrDefault();
                 if (schedule != null)
                 {
