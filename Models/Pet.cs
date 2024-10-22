@@ -44,6 +44,7 @@ namespace Assignment_2_WPF.Models
         {
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 var pets = context.Pets.ToList();
                 return pets.Count;
             }
@@ -133,6 +134,7 @@ namespace Assignment_2_WPF.Models
         {
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 // Query all pets from the database
                 var pets = context.Pets.ToList();
 
@@ -154,6 +156,7 @@ namespace Assignment_2_WPF.Models
             int petId = Convert.ToInt32(Console.ReadLine());
             using (var context = new AppDbContext())
             {
+                context.Database.EnsureCreated();
                 // Query the pet from the database
                 var pet = context.Pets.Where(p => p.PetId == petId).FirstOrDefault();
                 // Display the results
