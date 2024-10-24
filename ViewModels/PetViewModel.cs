@@ -1,93 +1,128 @@
 ﻿using Assignment_2_WPF.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace Assignment_2_WPF.ViewModels
 {
     public class PetViewModel : INotifyPropertyChanged
     {
-        private Pet selectedPet;
+        private string _petName;
+        private DateTime _dob;
+        private string _breed;
+        private int _weight;
+        private ObservableCollection<Pet> _pets;
 
-        public ObservableCollection<Pet> Pets { get; set; }
-        public Pet SelectedPet
+        public string PetName
         {
-            get { return selectedPet; }
+            get => _petName;
             set
             {
-                selectedPet = value;
-                OnPropertyChanged(nameof(SelectedPet));
-                Console.WriteLine("Petview");
+                _petName = value;
+                OnPropertyChanged(nameof(PetName));
             }
         }
 
-        public bool HasUnsavedChanges { get; set; }
+        public DateTime Dob
+        {
+            get => _dob;
+            set
+            {
+                _dob = value;
+                OnPropertyChanged(nameof(Dob));
+            }
+        }
+
+        public string Breed
+        {
+            get => _breed;
+            set
+            {
+                _breed = value;
+                OnPropertyChanged(nameof(Breed));
+            }
+        }
+
+        public int Weight
+        {
+            get => _weight;
+            set
+            {
+                _weight = value;
+                OnPropertyChanged(nameof(Weight));
+            }
+        }
+
+        public ObservableCollection<Pet> Pets
+        {
+            get => _pets;
+            set
+            {
+                _pets = value;
+                OnPropertyChanged(nameof(Pets));
+            }
+        }
 
         public PetViewModel()
         {
             Pets = new ObservableCollection<Pet>();
+            Dob = DateTime.Today;  // Set default date
             LoadPets();
         }
 
         public void LoadPets()
         {
-            Pet pet = new Pet(123, "Dog", "Labrador", DateTime.Now, 20);
-            pet.petCheck();
-            // Load pets from the database or service
-            // Example: Pets = new ObservableCollection<Pet>(yourDataContext.Pets.ToList());
+            using (var context = new AppDbContext())
+            {
+                var dbPets = context.Pets.ToList();
+                Pets = new ObservableCollection<Pet>(dbPets);
+            }
         }
 
-        public void AddNewPet()
+        public bool AddNewPet(string petName, DateTime dob, string breed, string weightStr)
         {
-            // Set default values for new pet
-            Pet newPet = new Pet(123, "Dog", "Labrador", DateTime.Now, 20);
-            Pets.Add(newPet);
-            SelectedPet = newPet;
-            HasUnsavedChanges = true;
-            Console.WriteLine("Add pet ");
-            string? nameTemp;
-            //add pet with details filled in forms to construct a new pet object? and write in to database
-            Console.Write("name");
-            nameTemp = Console.ReadLine();
-            DateTime date = new DateTime(2000, 2, 24); //test data for date
+            try
+            {
+                if (string.IsNullOrWhiteSpace(petName) || string.IsNullOrWhiteSpace(breed))
+                {
+                    System.Windows.MessageBox.Show("Please fill in all required fields.", "Validation Error");
+                    return false;
+                }
+
+                if (!int.TryParse(weightStr, out int weight))
+                {
+                    System.Windows.MessageBox.Show("Please enter a valid number for weight.", "Validation Error");
+                    return false;
+                }
 
                 using (var context = new AppDbContext())
-                  {
-                      context.Pets.Add(newPet);
-                      context.SaveChanges();
-                  }
+                {
+                    // Create new pet with user input
+                    var newPet = new Pet
+                    {
+                        PetName = petName,
+                        Breed = breed,
+                        Dob = dob,
+                        Weight = weight,
+                        UserId = 1  // get this from logged-in user
+                    };
 
-              
-        }
+                    context.Pets.Add(newPet);
+                    context.SaveChanges();
 
-        public void EditPet()
-        {
-            if (SelectedPet != null)
-            {
-                // Logic to edit the selected pet
-                SelectedPet.editPetDetails();
-                HasUnsavedChanges = true;
+                    // Add to observable collection
+                    Pets.Add(newPet);
+
+                    System.Windows.MessageBox.Show("Pet added successfully!", "Success");
+                    return true;
+                }
             }
-        }
-
-        public void RemovePet()
-        {
-            if (SelectedPet != null)
+            catch (Exception ex)
             {
-                Pets.Remove(SelectedPet);
-                SelectedPet = null;
-                HasUnsavedChanges = true;
+                System.Windows.MessageBox.Show($"Error adding pet: {ex.Message}", "Error");
+                return false;
             }
-        }
-
-        public void SaveChanges()
-        {
-            // Save changes to the database or service
-            HasUnsavedChanges = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

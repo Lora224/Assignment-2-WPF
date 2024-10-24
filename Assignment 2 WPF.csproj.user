@@ -7,7 +7,28 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\ActivityView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddActivityView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddNewPet.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DatabaseManagerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EditActivityView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\LoginView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\PetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ScheduleView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -15,7 +36,28 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\ActivityView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddActivityView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddNewPet.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DatabaseManagerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\EditActivityView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\PetView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ScheduleView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

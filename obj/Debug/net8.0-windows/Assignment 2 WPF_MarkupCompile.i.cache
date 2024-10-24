@@ -1,20 +1,20 @@
 ﻿Assignment 2 WPF
 1.0.0.0
 
-exe
+winexe
 C#
 .cs
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\
 Assignment_2_WPF
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-\\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\App.xaml
-2-344496282
+C:\Users\lora\source\repos\WPFAppRepo\App.xaml
+92102429894
 
-151433542449
-2181080308309
-MainWindow.xaml;Views\PetView.xaml;
+34-474020622
+227-911760353
+MainWindow.xaml;Views\ActivityView.xaml;Views\AddActivityView.xaml;Views\AddNewPet.xaml;Views\DatabaseManagerView.xaml;Views\EditActivityView.xaml;Views\LoginView.xaml;Views\PetView.xaml;Views\ScheduleView.xaml;
 
 False
 

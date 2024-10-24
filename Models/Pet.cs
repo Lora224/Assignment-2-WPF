@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,37 +11,49 @@ namespace Assignment_2_WPF.Models
 {
     public class Pet
     {
-        public int petId, userId, weight;
-        public string petName, breed;
-        public int PetId { get; set; }
+        [Key]
+        public int Id { get; set; }  // Primary key should not be nullable
+
         public string PetName { get; set; }
         public int UserId { get; set; }
         public string Breed { get; set; }
         public DateTime Dob { get; set; }
         public int Weight { get; set; }
-        public List<Activity> activities;
-        public List<Schedule> schedules;
 
-        //constructor of class Pet, with petId generated automatically
-        public Pet(int userId, string petName, string breed, DateTime dob, int weight)
+        // Navigation properties
+        public virtual List<Activity>? Activities { get; set; }
+        public virtual List<Schedule>? Schedules { get; set; }
+
+        // Default constructor
+        public Pet()
         {
-            Random random = new Random();
-            this.petId = random.Next(100000, 999999);
-            this.userId = userId;
-            this.petName = petName;
-            this.breed = breed;
-            this.Dob = dob;
-            this.weight = weight;
-            activities = new List<Activity>();
-            schedules = new List<Schedule>();
-
-            // Initialize properties to avoid error
-            PetName = petName;
-            Breed = breed;
+            Id = -1;
+            PetName ="null";
+            Breed = "null";
+            Weight = 0;
+            UserId = -1;
+            Dob = DateTime.Today;
+            Activities = new List<Activity>();
+            Schedules = new List<Schedule>();
         }
 
-        // using Entity framework to query all pet from table pet in PetApp.db, and then count the number of pets
-        public static int countPet()
+        // Constructor with parameters
+        public Pet(int userId, string petName, string breed, DateTime dob, int weight)
+        {
+            // Generate random ID between 10000 and 99999
+            Id = new Random().Next(10000, 99999);
+            UserId = userId;
+            PetName = petName;
+            Breed = breed;
+            Dob = dob;
+            Weight = weight;
+            Activities = new List<Activity>();
+            Schedules = new List<Schedule>();
+        }
+    
+
+    // using Entity framework to query all pet from table pet in PetApp.db, and then count the number of pets
+    public static int countPet()
         {
             using (var context = new AppDbContext())
             {
@@ -158,7 +171,7 @@ namespace Assignment_2_WPF.Models
             {
                 context.Database.EnsureCreated();
                 // Query the pet from the database
-                var pet = context.Pets.Where(p => p.PetId == petId).FirstOrDefault();
+                var pet = context.Pets.Where(p => p.Id == petId).FirstOrDefault();
                 // Display the results
                 if (pet != null)
                 {
@@ -187,14 +200,15 @@ namespace Assignment_2_WPF.Models
             Console.Write("name");
             nameTemp = Console.ReadLine();
             DateTime date = new DateTime(2000, 2, 24); //test data for date
-            Pet newPet = new Pet(userId, nameTemp, "Dog", date, 50);
-            /*    using (var context = new AppDbContext())
+
+            Pet newPet = new Pet(UserId, nameTemp, "Dog", date, 50);
+            using (var context = new AppDbContext())
                   {
                       context.Pets.Add(newPet);
                       context.SaveChanges();
                   }
 
-              */
+              
 
         }
         public void editPetDetails()

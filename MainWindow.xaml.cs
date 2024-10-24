@@ -1,6 +1,7 @@
-﻿using Assignment_2_WPF.Views;
+﻿using Assignment_2_WPF.Models;
+using Assignment_2_WPF.Views;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Security.Claims;
 using System.Text;
 using System.Windows;
@@ -31,12 +32,77 @@ namespace Assignment_2_WPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
+    using System.IO;
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine("MainWindow Initialized");
+           // Database.EnsureDeleted();
+            InitializeDatabase();
+
+        }
+
+        private void InitializeDatabase()
+        {
+            try
+            {
+                // Ensure any existing connections are closed
+                using (var context = new AppDbContext())
+                {
+                    // First, check if database exists and delete it
+                    if (File.Exists("PetApp.db"))
+                    {
+                        context.Database.CloseConnection();
+                        File.Delete("PetApp.db");
+                    }
+
+                    // Create new database
+                    context.Database.EnsureCreated();
+
+                    // Add a user first (required due to foreign key constraint)
+                    var user = new User("Test User", "test@test.com", "password");
+                    context.Users.Add(user);
+                    context.SaveChanges();
+
+                    // Add a pet
+                    var pet = new Pet
+                    {
+                        PetName = "Max",
+                        UserId = user.Id, // Important: Use the saved user's ID
+                        Breed = "Labrador",
+                        Dob = DateTime.Today,
+                        Weight = 30
+                    };
+                    context.Pets.Add(pet);
+                    context.SaveChanges();
+
+                    // Add an activity
+                    var activity = new Activity
+                    {
+                        Name = "Morning Walk",
+                        Date = DateTime.Today,
+                        PetId = pet.Id,
+                        Description = "30 minute walk"
+                    };
+                    context.Activities.Add(activity);
+                    context.SaveChanges();
+
+                    System.Diagnostics.Debug.WriteLine("Database initialized successfully");
+                    System.Diagnostics.Debug.WriteLine($"Added User ID: {user.Id}");
+                    System.Diagnostics.Debug.WriteLine($"Added Pet ID: {pet.Id}");
+                    System.Diagnostics.Debug.WriteLine($"Added Activity for Pet ID: {activity.PetId}");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error initializing database: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Inner error: {ex.InnerException.Message}");
+                }
+            }
         }
 
         private void PetButton_Click(object sender, RoutedEventArgs e)
@@ -45,6 +111,32 @@ namespace Assignment_2_WPF
             PetView petView = new PetView();
             // Show the PetView window, can do petView.ShowDialog(); also Opens as a modal dialog that will block MainWindow until it's closed
             petView.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ActivityView activityView = new ActivityView(); 
+            activityView.Show();
+        }
+
+
+
+        private void GoToLogin_Click(object sender, RoutedEventArgs e)
+        {
+            LoginView loginView = new LoginView();
+            loginView.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DatabaseManagerView databaseManagerView = new DatabaseManagerView();
+            databaseManagerView.Show();
+        }
+
+        private void ScheduleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ScheduleView scheduleView = new ScheduleView();
+            scheduleView.Show();
         }
     }
 }

@@ -179,7 +179,7 @@ namespace Assignment_2_WPF.Models
             using (var context = new AppDbContext())
             {
                 context.Database.EnsureCreated();
-                var pet = context.Pets.Where(p => p.PetId == petId).FirstOrDefault();
+                var pet = context.Pets.Where(p => p.Id == petId).FirstOrDefault();
                 if (pet != null)
                 {
                     Console.WriteLine("Enter the schedule type: "); // choose from dropdown list

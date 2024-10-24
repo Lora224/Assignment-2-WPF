@@ -1,6 +1,7 @@
-﻿<Window x:Class="Assignment_2_WPF.Views.PetView"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Assignment_2_WPF.Views.PetView"
         Title="Pet View" Height="400" Width="600">
     <Grid>
         <StackPanel Margin="20">
@@ -15,24 +16,14 @@
                 <Button Content="Save Changes" Width="100" Click="SaveButton_Click"/>
             </StackPanel>
 
-            <TextBlock Text="Pet Details" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+            <TextBlock Text="Pets" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+            <ListBox x:Name="PetsList" Height="74" av:ItemsSource="{av:Binding Pets}"/>  
 
-            <Grid Margin="0,0,0,10">
-                <TextBox Text="{Binding SelectedPet.PetName}" Margin="0" />
-                <TextBlock Text="Pet Name" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="{Binding SelectedPet.PetName, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
-            </Grid>
+            <Grid Margin="0,0,0,10"/>
 
-            <Grid Margin="0,0,0,10">
-                <TextBox Text="{Binding SelectedPet.Breed}" Margin="0" />
-                <TextBlock Text="Breed" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="{Binding SelectedPet.Breed, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
-            </Grid>
+            <Grid Margin="0,0,0,10"/>
 
-            <Grid Margin="0,0,0,10">
-                <TextBox Text="{Binding SelectedPet.Weight}" Margin="0" />
-                <TextBlock Text="Weight" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="{Binding SelectedPet.Weight, Converter={StaticResource EmptyStringToVisibilityConverter}}"/>
-            </Grid>
-
-            <DatePicker SelectedDate="{Binding SelectedPet.dob}" Margin="0,0,0,10"/>
+            <Grid Margin="0,0,0,10"/>
 
             <TextBlock Text="Activities:" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,20,0,5"/>
             <ListBox ItemsSource="{Binding SelectedPet.activities}" Margin="0,0,0,20"/>

@@ -17,44 +17,23 @@ namespace Assignment_2_WPF.Views
 
         private void AddNewPetButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.AddNewPet();
+           AddNewPet addNewPet = new AddNewPet();
+           addNewPet.Show();
         }
 
         private void EditPetButton_Click(object sender, RoutedEventArgs e)
         {
-            if (viewModel.SelectedPet != null)
-            {
-                viewModel.EditPet();
-            }
-            else
-            {
-                MessageBox.Show("Please select a pet to edit.");
-            }
+
         }
 
         private void RemovePetButton_Click(object sender, RoutedEventArgs e)
         {
-            if (viewModel.SelectedPet != null)
-            {
-                viewModel.RemovePet();
-            }
-            else
-            {
-                MessageBox.Show("Please select a pet to remove.");
-            }
+
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (viewModel.HasUnsavedChanges)
-            {
-                viewModel.SaveChanges();
-                MessageBox.Show("Changes saved successfully.");
-            }
-            else
-            {
-                MessageBox.Show("No changes to save.");
-            }
+
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ewr2UIAju5Q=",
+  "dgSpecHash": "LJV7PbZG2Qw=",
   "success": true,
-  "projectFilePath": "\\\\Mac\\Home\\Documents\\IT\\Sem2.NET\\Assignment 2 WPF\\Assignment 2 WPF.csproj",
+  "projectFilePath": "C:\\Users\\lora\\source\\repos\\WPFAppRepo\\Assignment 2 WPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lora\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\lora\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
