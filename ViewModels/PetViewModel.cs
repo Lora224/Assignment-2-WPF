@@ -118,7 +118,7 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        public void LoadPets()
+        public void LoadPets() //need to be initialized after adding/removing
         {
             try
             {
@@ -194,9 +194,40 @@ namespace Assignment_2_WPF.ViewModels
                 return false;
             }
         }
+        public void RemovePet()
+        {
+            try
+            {
+                if (SelectedPet == null)
+                {
+                    System.Windows.MessageBox.Show("Please select a pet to remove.", "Validation Error");
+                    return;
+                }
+
+                using (var context = new AppDbContext())
+                {
+                    // Remove the selected pet
+                    context.Pets.Remove(SelectedPet);
+                    context.SaveChanges();
+
+                    // Remove from observable collection
+                    Pets.Remove(SelectedPet);
+
+                    System.Windows.MessageBox.Show("Pet removed successfully!", "Success");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Error removing pet: {ex.Message}", "Error");
+                if (ex.InnerException != null)
+                {
+                    System.Windows.MessageBox.Show($"Inner Exception: {ex.InnerException.Message}", "Error");
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+       
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
