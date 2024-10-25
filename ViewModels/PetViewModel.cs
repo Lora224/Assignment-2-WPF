@@ -26,7 +26,7 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
         //get the userId of logged in user
-        //public int UserId { get; set; }
+        
         public string PetName
         {
             get => _petName;
