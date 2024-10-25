@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.Security.Claims;
 using System.Text;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,7 @@ using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+
 
 /*
     Views /: Contains XAML files for each class's UI representation.
@@ -33,66 +35,83 @@ namespace Assignment_2_WPF
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
-    using System.IO;
+
     public partial class MainWindow : Window
     {
+        private readonly string _dbPath;
+
         public MainWindow()
         {
             InitializeComponent();
-           // Database.EnsureDeleted();
+            _dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PetApp.db");
             InitializeDatabase();
-
         }
 
         private void InitializeDatabase()
         {
             try
             {
-                // Ensure any existing connections are closed
+                // Close any existing database connections
                 using (var context = new AppDbContext())
                 {
-                    // First, check if database exists and delete it
-                    if (File.Exists("PetApp.db"))
-                    {
-                        context.Database.CloseConnection();
-                        File.Delete("PetApp.db");
-                    }
+                    context.Database.CloseConnection();
+                }
 
-                    // Create new database
+                // Try to delete existing database file if it exists
+                if (File.Exists(_dbPath))
+                {
+                    try
+                    {
+                        File.Delete(_dbPath);
+                        System.Diagnostics.Debug.WriteLine("Existing database deleted");
+                    }
+                    catch (IOException)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Could not delete existing database - will try to use it");
+                    }
+                }
+
+                // Initialize database and add test data
+                using (var context = new AppDbContext())
+                {
                     context.Database.EnsureCreated();
 
-                    // Add a user first (required due to foreign key constraint)
-                    var user = new User("Test User", "test@test.com", "password");
-                    context.Users.Add(user);
-                    context.SaveChanges();
-
-                    // Add a pet
-                    var pet = new Pet
+                    // Only add test data if the database is empty
+                    if (!context.Users.Any())
                     {
-                        PetName = "Max",
-                        UserId = user.Id, // Important: Use the saved user's ID
-                        Breed = "Labrador",
-                        Dob = DateTime.Today,
-                        Weight = 30
-                    };
-                    context.Pets.Add(pet);
-                    context.SaveChanges();
+                        // Add test user
+                        var user = new User("Test User", "test@test.com", "password");
+                        context.Users.Add(user);
+                        context.SaveChanges();
+                        System.Diagnostics.Debug.WriteLine($"Added User ID: {user.Id}");
 
-                    // Add an activity
-                    var activity = new Activity
-                    {
-                        Name = "Morning Walk",
-                        Date = DateTime.Today,
-                        PetId = pet.Id,
-                        Description = "30 minute walk"
-                    };
-                    context.Activities.Add(activity);
-                    context.SaveChanges();
+                        // Add test pet
+                        var pet = new Pet
+                        {
+                            PetName = "Max",
+                            UserId = user.Id,
+                            Breed = "Labrador",
+                            Dob = DateTime.Today,
+                            Weight = 30
+                        };
+                        context.Pets.Add(pet);
+                        context.SaveChanges();
+                        System.Diagnostics.Debug.WriteLine($"Added Pet ID: {pet.Id}");
+
+                        // Add test activity
+                        var activity = new Activity
+                        {
+                            Name = "Morning Walk",
+                            Date = DateTime.Today,
+                            PetId = pet.Id,
+                            Description = "30 minute walk"
+                        };
+                        context.Activities.Add(activity);
+                        context.SaveChanges();
+                        System.Diagnostics.Debug.WriteLine($"Added Activity for Pet ID: {activity.PetId}");
+                    }
 
                     System.Diagnostics.Debug.WriteLine("Database initialized successfully");
-                    System.Diagnostics.Debug.WriteLine($"Added User ID: {user.Id}");
-                    System.Diagnostics.Debug.WriteLine($"Added Pet ID: {pet.Id}");
-                    System.Diagnostics.Debug.WriteLine($"Added Activity for Pet ID: {activity.PetId}");
                 }
             }
             catch (Exception ex)
@@ -102,9 +121,10 @@ namespace Assignment_2_WPF
                 {
                     System.Diagnostics.Debug.WriteLine($"Inner error: {ex.InnerException.Message}");
                 }
+                System.Windows.MessageBox.Show($"Database initialization error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+    
         private void PetButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigate to the Pet view

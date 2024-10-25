@@ -1,80 +1,103 @@
 ﻿using Assignment_2_WPF.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
-namespace Assignment_2_WPF.Ultilities
+namespace Assignment_2_WPF.Utilities
 {
-    class DatabaseManager
+    public class DatabaseManager
     {
-        public static bool DatabaseExists()
+        // Method to add a test pet with necessary dependencies
+        public static void AddTestPet(Pet pet)
         {
             using (var context = new AppDbContext())
             {
-                return context.Database.CanConnect();
+                try
+                {
+                    // Check if we have any users
+                    var user = context.Users.FirstOrDefault();
+                    if (user == null)
+                    {
+                        // Create a test user if none exists
+                        user = new User("Test User", "test@test.com", "password");
+                        context.Users.Add(user);
+                        context.SaveChanges();
+                        Debug.WriteLine($"Created new test user with ID: {user.Id}");
+                    }
+
+                    // Assign the user ID to the pet
+                    pet.UserId = user.Id;
+
+                    // Add the pet
+                    context.Pets.Add(pet);
+                    context.SaveChanges();
+                    Debug.WriteLine($"Added pet {pet.PetName} with ID: {pet.Id}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error adding pet: {ex.Message}");
+                    throw;
+                }
             }
         }
 
-        // Method to add a new pet
-        public static void AddPet(Pet pet)
-        {
-            using (var context = new AppDbContext())
-            {
-                context.Pets.Add(pet);
-                context.SaveChanges();
-            }
-        }
-
-        // Method to add a new activity
-        public static void AddActivity(Activity activity)
-        {
-            using (var context = new AppDbContext())
-            {
-                context.Activities.Add(activity);
-                context.SaveChanges();
-            }
-        }
-
-        // Method to clear all data (use carefully!)
-        public static void ClearAllData()
-        {
-            using (var context = new AppDbContext())
-            {
-                // Remove all activities first (due to foreign key constraints)
-                context.Activities.RemoveRange(context.Activities);
-
-                // Remove all pets
-                context.Pets.RemoveRange(context.Pets);
-
-                context.SaveChanges();
-            }
-        }
-
-        // Method to reset database to initial state
+        // Method to reset database with initial test data
         public static void ResetDatabase()
         {
             using (var context = new AppDbContext())
             {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
+                try
+                {
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+
+                    // Add initial test user
+                    var user = new User("Test User", "test@test.com", "password");
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                    Debug.WriteLine("Database reset complete with initial test user");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error resetting database: {ex.Message}");
+                    throw;
+                }
             }
         }
 
-        // Method to print current database statistics
+        // Enhanced database statistics
         public static void PrintDatabaseStats()
         {
             using (var context = new AppDbContext())
             {
+                var userCount = context.Users.Count();
                 var petCount = context.Pets.Count();
                 var activityCount = context.Activities.Count();
 
-                System.Diagnostics.Debug.WriteLine($"Database Statistics:");
-                System.Diagnostics.Debug.WriteLine($"Total Pets: {petCount}");
-                System.Diagnostics.Debug.WriteLine($"Total Activities: {activityCount}");
+                Debug.WriteLine("=== Database Statistics ===");
+                Debug.WriteLine($"Total Users: {userCount}");
+                Debug.WriteLine($"Total Pets: {petCount}");
+                Debug.WriteLine($"Total Activities: {activityCount}");
+
+                // Print more detailed information
+                foreach (var user in context.Users)
+                {
+                    Debug.WriteLine($"\nUser: {user.Name} (ID: {user.Id})");
+                    var userPets = context.Pets.Where(p => p.UserId == user.Id).ToList();
+                    foreach (var pet in userPets)
+                    {
+                        Debug.WriteLine($"  - Pet: {pet.PetName} (ID: {pet.Id})");
+                        var petActivities = context.Activities.Where(a => a.PetId == pet.Id).ToList();
+                        foreach (var activity in petActivities)
+                        {
+                            Debug.WriteLine($"    * Activity: {activity.Name} on {activity.Date:d}");
+                        }
+                    }
+                }
             }
         }
+
+       
     }
 }
-

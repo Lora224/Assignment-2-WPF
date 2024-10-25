@@ -1,34 +1,28 @@
 ﻿using Assignment_2_WPF.Models;
-using Assignment_2_WPF.Ultilities;
+using Assignment_2_WPF.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Assignment_2_WPF.Views
 {
-    /// <summary>
-    /// Interaction logic for DatabaseManagerView.xaml
-    /// </summary>
     public partial class DatabaseManagerView : Window
     {
         public DatabaseManagerView()
         {
             InitializeComponent();
         }
+
         private void ViewStats_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseManager.PrintDatabaseStats();
+            try
+            {
+                DatabaseManager.PrintDatabaseStats();
+                System.Windows.MessageBox.Show("Database statistics have been written to the debug output.", "Success");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Error viewing database stats: {ex.Message}", "Error");
+            }
         }
 
         private void AddTestPet_Click(object sender, RoutedEventArgs e)
@@ -36,24 +30,32 @@ namespace Assignment_2_WPF.Views
             try
             {
                 var pet = new Pet(12345, "Test Pet", "Test Breed", DateTime.Today, 25);
-                DatabaseManager.AddPet(pet);
-                System.Windows.MessageBox.Show("Test pet added successfully!");
+                DatabaseManager.AddTestPet(pet);  // Use the new method
+                System.Windows.MessageBox.Show("Test pet added successfully!", "Success");
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show($"Error adding pet: {ex.Message}");
+                System.Windows.MessageBox.Show($"Error adding pet: {ex.Message}", "Error");
             }
         }
 
         private void ResetDatabase_Click(object sender, RoutedEventArgs e)
         {
-            if (System.Windows.MessageBox.Show("This will delete all data! Are you sure?",
-                               "Warning",
-                               MessageBoxButton.YesNo,
-                               MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (System.Windows.MessageBox.Show(
+                "This will delete all data and create a new database with initial test data! Are you sure?",
+                "Warning",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                DatabaseManager.ResetDatabase();
-                System.Windows.MessageBox.Show("Database reset complete.");
+                try
+                {
+                    DatabaseManager.ResetDatabase();
+                    System.Windows.MessageBox.Show("Database reset complete with initial test data.", "Success");
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show($"Error resetting database: {ex.Message}", "Error");
+                }
             }
         }
     }

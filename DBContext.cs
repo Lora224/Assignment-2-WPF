@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Assignment_2_WPF.Models;
 using Microsoft.Extensions.Options;
+using System.IO;
 
 namespace Assignment_2_WPF
 {
@@ -14,7 +15,7 @@ namespace Assignment_2_WPF
         public AppDbContext()
         {
             // Only create the database if it doesn't exist
-            Database.EnsureDeleted();
+           // Database.EnsureDeleted();
             Database.EnsureCreated();
 
  
@@ -66,11 +67,23 @@ namespace Assignment_2_WPF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=PetApp.db");
-
+            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PetApp.db");
+            optionsBuilder.UseSqlite($"Data Source={dbPath};Pooling=False");
             optionsBuilder.EnableDetailedErrors();
             optionsBuilder.EnableSensitiveDataLogging();
 
+        }
+        public override void Dispose()
+        {
+            try
+            {
+                Database.CloseConnection();
+            }
+            catch { }
+            finally
+            {
+                base.Dispose();
+            }
         }
         public async Task CheckTableSchemas()
         {

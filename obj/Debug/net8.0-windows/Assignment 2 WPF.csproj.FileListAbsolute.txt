@@ -247,10 +247,12 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\PetView.bam
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ActivityView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivityView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\PetView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.cache
@@ -259,9 +261,11 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ActivityView.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivityView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.g.resources
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.AssemblyInfoInputs.cache
@@ -274,7 +278,3 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\refint\Assignment
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.pdb
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.genruntimeconfig.cache
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\ref\Assignment 2 WPF.dll
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.baml
