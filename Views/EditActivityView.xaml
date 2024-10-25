@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:Assignment_2_WPF.Views"
         mc:Ignorable="d"
         Title="EditActivityView" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="#FFD6CFCB">
+        <TextBlock HorizontalAlignment="Left" Margin="205,93,0,0" TextWrapping="Wrap" Text="Activity Name:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.717" Height="30" Width="191" FontSize="16" FontFamily="Corbel Light"/>
+        <TextBlock HorizontalAlignment="Left" Margin="202,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.83" Text="Date:" Height="30" Width="68" FontSize="16" FontFamily="Corbel Light"/>
+        <TextBlock HorizontalAlignment="Left" Margin="205,251,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="29" Width="157" FontSize="16" FontFamily="Corbel Light"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="396,161,0,0" VerticalAlignment="Top" Height="38" Width="165" DisplayDate="{Binding Date, ElementName=datePicker}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="205,334,0,0" TextWrapping="Wrap" Text="Pet:" VerticalAlignment="Top" RenderTransformOrigin="0.43,0.516" Height="31" Width="48" FontSize="16" FontFamily="Corbel Light"/>
+        <TextBox x:Name="textBox"  HorizontalAlignment="Left" Margin="396,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Name, ElementName=textBox}"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="400,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="26" Text="{Binding Description, ElementName=textBox1}"/>
+        <TextBlock x:Name="EditActivity" HorizontalAlignment="Left" Margin="292,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="194" FontWeight="Bold" FontSize="20" FontFamily="Ink Free" Foreground="#FF706677"><Run Text="Editing Activity"/><LineBreak/><Run/></TextBlock>
+        <ListBox x:Name="PetList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="400,317,239,51" ItemsSource="{Binding Pets, ElementName=PetList}"/>
+        <Button x:Name="EditConfirm" Content="Confirm" Margin="643,119,57,119" Opacity="0.8"/>
+
     </Grid>
 </Window>

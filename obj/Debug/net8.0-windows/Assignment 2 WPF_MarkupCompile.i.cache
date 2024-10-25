@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\lora\source\repos\WPFAppRepo\App.xaml
 92102429894
 
-34-474020622
+321731520198
 227-911760353
 MainWindow.xaml;Views\ActivityView.xaml;Views\AddActivityView.xaml;Views\AddNewPet.xaml;Views\DatabaseManagerView.xaml;Views\EditActivityView.xaml;Views\LoginView.xaml;Views\PetView.xaml;Views\ScheduleView.xaml;
 
-False
+True
 

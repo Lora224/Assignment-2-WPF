@@ -22,10 +22,10 @@ namespace Assignment_2_WPF.Views
     // EditActivityView.xaml.cs
     public partial class EditActivityView : Window
     {
-        public EditActivityView(Activity activity)
+        public EditActivityView(ActivityViewModel viewModel)
         {
             InitializeComponent();
-            DataContext = new EditActivityViewModel(activity);
+            DataContext = viewModel;
         }
     }
 }

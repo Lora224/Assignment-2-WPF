@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Assignment_2_WPF.Views"
         xmlns:vm="clr-namespace:Assignment_2_WPF.ViewModels"
         mc:Ignorable="d"
-        Title="Activity Panel" Height="600" Width="900">
+        Title="Activity Panel" Height="600" Width="900" Background="#FFD6CFCB">
 
     <Window.DataContext>
         <vm:ActivityViewModel/>
@@ -21,7 +21,7 @@
         <TextBlock Text="Activity Panel" 
                   FontSize="24" 
                   FontWeight="Bold" 
-                  Margin="0,0,0,20"/>
+                  Margin="0,0,0,20" Foreground="#FF565264"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -30,15 +30,18 @@
             </Grid.ColumnDefinitions>
 
             <!-- Calendar -->
-            <Calendar Grid.Column="0" 
+            <Calendar x:Name="Calendar" Grid.Column="0" 
                       SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
-                      Margin="0,0,20,0"/>
+                      Margin="0,0,20,0" Foreground="#FFD6CFCB" BorderBrush="{x:Null}" Background="#FFD6CFCB"/>
 
             <!-- Activities List -->
             <DataGrid Grid.Column="1" 
                       ItemsSource="{Binding Activities}"
                       AutoGenerateColumns="False"
-                      IsReadOnly="True" Margin="0,0,264,330" SelectionChanged="DataGrid_SelectionChanged_1">
+                      IsReadOnly="True" Margin="0,0,264,330" SelectionChanged="DataGrid_SelectionChanged_1" Background="#FFCCB7AE" Foreground="#FFA6808C">
+                <DataGrid.RowStyle>
+                    <Style/>
+                </DataGrid.RowStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Activity" 
                                       Binding="{Binding Name}" 
@@ -48,8 +51,9 @@
                                       Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,188,337,187" Grid.Column="1" SelectionChanged="ListBox_SelectionChanged"/>
-            <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="127,340,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+            <Button x:Name="EditActivity" Grid.Column="1" Content="Edit Activity" HorizontalAlignment="Left" Margin="439,34,0,0" VerticalAlignment="Top" Background="#FF706677" Foreground="#FFD6CFCB" Height="47" Width="106" Click="EditActivity_Click"/>
+            <Button x:Name="RemoveActivity" Grid.Column="1" Content="Remove Activity" HorizontalAlignment="Left" Margin="439,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.833,1.091" Height="45" Width="106" Click="RemoveActivity_Click"/>
+            <Button x:Name="AddNewActivity" Grid.Column="1" Content="Add New Activity" HorizontalAlignment="Left" Margin="121,167,0,0" VerticalAlignment="Top" Height="21" Width="150" Click="AddNewActivity_Click"/>
         </Grid>
     </Grid>
 </Window>

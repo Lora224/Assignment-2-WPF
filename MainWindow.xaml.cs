@@ -50,11 +50,14 @@ namespace Assignment_2_WPF
         private void InitializeDatabase()
         {
             try
+
             {
+
                 // Close any existing database connections
                 using (var context = new AppDbContext())
                 {
-                    context.Database.CloseConnection();
+                   // context.Database.CloseConnection();
+                    context.Database.EnsureDeleted();
                 }
 
                 // Try to delete existing database file if it exists
@@ -104,6 +107,7 @@ namespace Assignment_2_WPF
                             Name = "Morning Walk",
                             Date = DateTime.Today,
                             PetId = pet.Id,
+                            UserId = user.Id,
                             Description = "30 minute walk"
                         };
                         context.Activities.Add(activity);

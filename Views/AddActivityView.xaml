@@ -7,6 +7,47 @@
         mc:Ignorable="d"
         Title="AddActivityView" Height="450" Width="800">
     <Grid>
-        
+        <Grid Background="#FFD6CFCB">
+            <TextBlock HorizontalAlignment="Left" Margin="205,93,0,0" TextWrapping="Wrap" Text="Activity Name:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.717" Height="30" Width="191" FontSize="16" FontFamily="Corbel Light"/>
+            <TextBlock HorizontalAlignment="Left" Margin="202,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.83" Text="Date:" Height="30" Width="68" FontSize="16" FontFamily="Corbel Light"/>
+            <TextBlock HorizontalAlignment="Left" Margin="202,239,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="29" Width="157" FontSize="16" FontFamily="Corbel Light"/>
+
+            <DatePicker x:Name="DateSelect"
+            SelectedDate="{Binding SelectedDate}"
+            SelectedDateFormat="Short"
+            HorizontalAlignment="Left"
+            Margin="396,161,0,0"
+            VerticalAlignment="Top"
+            Height="38"
+            Width="165"/>
+            <TextBlock HorizontalAlignment="Left" Margin="205,316,0,0" TextWrapping="Wrap" Text="Pet:" VerticalAlignment="Top" RenderTransformOrigin="0.43,0.516" Height="31" Width="48" FontSize="16" FontFamily="Corbel Light"/>
+            <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="396,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="396,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="292,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="194" FontWeight="Bold" FontSize="20" FontFamily="Ink Free" Foreground="#FF706677"><Run Text="Adding New Activity"/><LineBreak/><Run/></TextBlock>
+            <Button x:Name="AddActivity" Content="Submit" HorizontalAlignment="Left" Margin="292,377,0,0" VerticalAlignment="Top" Height="47" RenderTransformOrigin="0.5,0.5" Width="201" Opacity="0.8" Background="#FFA6808C" Click="AddActivity_Click">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <ComboBox x:Name="PetsList" 
+          HorizontalAlignment="Left" 
+          Margin="396,310,0,0" 
+          VerticalAlignment="Top" 
+          Width="165" 
+          Height="22"
+          ItemsSource="{Binding Pets}"
+          SelectedItem="{Binding SelectedPet}"
+          DisplayMemberPath="PetName"/>
+
+
+            <TextBlock HorizontalAlignment="Left" Margin="209,128,0,0" TextWrapping="Wrap" Text="Type:" VerticalAlignment="Top"/>
+            <ComboBox Margin="396,128,266,277"/>
+
+        </Grid>
     </Grid>
 </Window>

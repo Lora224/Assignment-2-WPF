@@ -20,7 +20,7 @@ namespace Assignment_2_WPF
 
  
         }
-       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pet>(entity =>
@@ -35,12 +35,7 @@ namespace Assignment_2_WPF
                 entity.Property(e => e.Dob).IsRequired();
                 entity.Property(e => e.Weight).IsRequired();
 
-                // Configure relationship with Activities
-                entity.HasMany(p => p.Activities)
-                      .WithOne(a => a.Pet)
-                      .HasForeignKey(a => a.PetId)
-                      .IsRequired()  // Make the relationship nullable
-                      .OnDelete(DeleteBehavior.SetNull);  // Set FK to null when pet is deleted
+
                 entity.HasOne<User>()
                        .WithMany(u => u.Pets)
                        .HasForeignKey(p => p.UserId)
@@ -51,20 +46,21 @@ namespace Assignment_2_WPF
             {
                 entity.ToTable("activity");
                 entity.HasKey(e => e.Id);
+                // Remove any unique constraints
+                entity.HasIndex(e => e.PetId)
+                      .IsUnique(false);  // Explicitly make non-unique
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.Date).IsRequired();
+                entity.Property(e => e.Description).IsRequired();
+                entity.Property(e => e.PetId).IsRequired();
+                entity.Property(e => e.UserId).IsRequired();
+                // Configure relationship with Pet
 
-                // Make PetId nullable in activities table
-                entity.Property(e => e.PetId).IsRequired(false);
-            });
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.ToTable("user");
-                entity.HasKey(e=>e.Id);
-                entity.Property(e=>e.Name).IsRequired();
-                entity.Property(e=>e.Password).IsRequired();
 
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.Date).IsRequired();
             });
         }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PetApp.db");
@@ -85,6 +81,7 @@ namespace Assignment_2_WPF
                 base.Dispose();
             }
         }
+
         public async Task CheckTableSchemas()
         {
             var connection = Database.GetDbConnection();
