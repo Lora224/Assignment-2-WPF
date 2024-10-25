@@ -23,12 +23,12 @@ namespace Assignment_2_WPF.Views
 
         private void EditPetButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //new screen for editing or ?
         }
 
         private void RemovePetButton_Click(object sender, RoutedEventArgs e)
         {
-
+            viewModel.RemovePet();  //remove the selected pet
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
