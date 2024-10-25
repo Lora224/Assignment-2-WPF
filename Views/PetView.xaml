@@ -7,21 +7,24 @@
         <StackPanel Margin="20">
             <TextBlock Text="Manage Your Pets" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
-            <ListBox ItemsSource="{Binding Pets}" SelectedItem="{Binding SelectedPet}" Margin="0,0,0,20"/>
+            <ListBox x:Name="PetsList" ItemsSource="{Binding Pets}" SelectedItem="{Binding SelectedPet}" Margin="0,0,0,20" SelectionChanged="PetsList_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding PetName}" FontSize="18" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Breed}" FontSize="18" FontWeight="SemiBold" Margin="10,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
                 <Button Content="Add New Pet" Width="100" Click="AddNewPetButton_Click"/>
                 <Button Content="Edit Pet" Width="100" Click="EditPetButton_Click" Margin="10,0"/>
                 <Button Content="Remove Pet" Width="100" Click="RemovePetButton_Click"/>
-                <Button Content="Save Changes" Width="100" Click="SaveButton_Click"/>
             </StackPanel>
 
-            <TextBlock Text="Pets" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-            <ListBox x:Name="PetsList" Height="74" av:ItemsSource="{av:Binding Pets}"/>  
-
-            <Grid Margin="0,0,0,10"/>
-
-            <Grid Margin="0,0,0,10"/>
+         
 
             <Grid Margin="0,0,0,10"/>
 

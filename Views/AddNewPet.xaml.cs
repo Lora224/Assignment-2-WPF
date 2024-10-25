@@ -7,10 +7,10 @@ namespace Assignment_2_WPF.Views
     {
         private readonly PetViewModel _viewModel;
 
-        public AddNewPet()
+        public AddNewPet(PetViewModel viewModel)
         {
             InitializeComponent();
-            _viewModel = new PetViewModel();
+            _viewModel = viewModel;
             DataContext = _viewModel;
         }
 

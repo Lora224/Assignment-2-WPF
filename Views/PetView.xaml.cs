@@ -7,18 +7,20 @@ namespace Assignment_2_WPF.Views
     public partial class PetView : Window
     {
         private PetViewModel viewModel;
-
+       // private System.Windows.Controls.ListBox petslist;
         public PetView()
         {
             InitializeComponent();
             viewModel = new PetViewModel();
-            DataContext = viewModel;
+            this.DataContext = viewModel;
+           
         }
 
         private void AddNewPetButton_Click(object sender, RoutedEventArgs e)
         {
-           AddNewPet addNewPet = new AddNewPet();
-           addNewPet.Show();
+
+            var addPetWindow = new AddNewPet(this.DataContext as PetViewModel);
+            addPetWindow.ShowDialog();
         }
 
         private void EditPetButton_Click(object sender, RoutedEventArgs e)
@@ -32,6 +34,11 @@ namespace Assignment_2_WPF.Views
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

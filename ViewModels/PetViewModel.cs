@@ -73,7 +73,8 @@ namespace Assignment_2_WPF.ViewModels
             set
             {
                 _pets = value;
-                OnPropertyChanged(nameof(Pets));
+                //OnPropertyChanged(_pets);
+                
             }
         }
 
@@ -118,7 +119,7 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        public void LoadPets() //need to be initialized after adding/removing
+        public void LoadPets() 
         {
             try
             {
@@ -178,9 +179,16 @@ namespace Assignment_2_WPF.ViewModels
                     context.SaveChanges();
 
                     // Add to observable collection
-                    Pets.Add(newPet);
+                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        Pets.Add(newPet);
+                        SelectedPet = newPet;
+                    });
 
+                    // Create new ObservableCollection and notify change
+                    
                     System.Windows.MessageBox.Show("Pet added successfully!", "Success");
+                  
                     return true;
                 }
             }
@@ -212,7 +220,7 @@ namespace Assignment_2_WPF.ViewModels
 
                     // Remove from observable collection
                     Pets.Remove(SelectedPet);
-
+                   
                     System.Windows.MessageBox.Show("Pet removed successfully!", "Success");
                 }
             }
