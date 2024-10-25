@@ -13,13 +13,26 @@ namespace Assignment_2_WPF.ViewModels
         private string _breed;
         private int _weight;
         private ObservableCollection<Pet> _pets;
+        private readonly int _currentUserId;
+        private Pet selectedPet;
 
+        public Pet SelectedPet
+        {
+            get { return selectedPet; }
+            set
+            {
+                selectedPet = value;
+                OnPropertyChanged(nameof(SelectedPet));
+            }
+        }
+        //get the userId of logged in user
+        //public int UserId { get; set; }
         public string PetName
         {
             get => _petName;
             set
             {
-                _petName = value;
+                _petName = Convert.ToString(value);
                 OnPropertyChanged(nameof(PetName));
             }
         }
@@ -29,7 +42,7 @@ namespace Assignment_2_WPF.ViewModels
             get => _dob;
             set
             {
-                _dob = value;
+                _dob = Convert.ToDateTime(value);
                 OnPropertyChanged(nameof(Dob));
             }
         }
@@ -39,7 +52,7 @@ namespace Assignment_2_WPF.ViewModels
             get => _breed;
             set
             {
-                _breed = value;
+                _breed = Convert.ToString(value);
                 OnPropertyChanged(nameof(Breed));
             }
         }
@@ -49,7 +62,7 @@ namespace Assignment_2_WPF.ViewModels
             get => _weight;
             set
             {
-                _weight = value;
+                _weight = Convert.ToInt32(value);
                 OnPropertyChanged(nameof(Weight));
             }
         }
@@ -68,17 +81,70 @@ namespace Assignment_2_WPF.ViewModels
         {
             Pets = new ObservableCollection<Pet>();
             Dob = DateTime.Today;  // Set default date
+            _currentUserId = GetCurrentUserId();
             LoadPets();
+        }
+
+        // Method to get the current user's ID
+        private int GetCurrentUserId()
+        {
+            try
+            {
+                using (var context = new AppDbContext())
+                {
+                    // Get the first user (or you could modify this to get the logged-in user)
+                    var user = context.Users.FirstOrDefault();
+                    if (user != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Found user: {user.Name} with ID: {user.Id}");
+                        return user.Id;
+                    }
+                    else
+                    {
+                        // If no user exists, create one
+                        var newUser = new User("Default User", "default@test.com", "password");
+                        context.Users.Add(newUser);
+                        context.SaveChanges();
+                        System.Diagnostics.Debug.WriteLine($"Created new user with ID: {newUser.Id}");
+                        return newUser.Id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting user ID: {ex.Message}");
+                System.Windows.MessageBox.Show("Error getting user information. Please try again.");
+                return -1; // Return invalid ID to indicate error
+            }
         }
 
         public void LoadPets()
         {
-            using (var context = new AppDbContext())
+            try
             {
-                var dbPets = context.Pets.ToList();
-                Pets = new ObservableCollection<Pet>(dbPets);
+                using (var context = new AppDbContext())
+                {
+                    // Load only pets for the current user
+                    var userPets = context.Pets
+                        .Where(p => p.UserId == _currentUserId)
+                        .ToList();
+
+                    Pets.Clear();
+                    foreach (var pet in userPets)
+                    {
+                        Pets.Add(pet);
+                    }
+
+                    System.Diagnostics.Debug.WriteLine($"Loaded {Pets.Count} pets for user {_currentUserId}");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading pets: {ex.Message}");
+                System.Windows.MessageBox.Show("Error loading pets. Please try again.");
             }
         }
+
 
         public bool AddNewPet(string petName, DateTime dob, string breed, string weightStr)
         {
@@ -105,9 +171,9 @@ namespace Assignment_2_WPF.ViewModels
                         Breed = breed,
                         Dob = dob,
                         Weight = weight,
-                        UserId = 1  // get this from logged-in user
+                        UserId = _currentUserId  // get this from logged-in user
                     };
-
+                    System.Diagnostics.Debug.WriteLine($"Adding new pet: {newPet.Id},{newPet.PetName}, {newPet.Breed},{newPet.Dob},{newPet.Weight},{newPet.UserId}");
                     context.Pets.Add(newPet);
                     context.SaveChanges();
 
@@ -121,6 +187,10 @@ namespace Assignment_2_WPF.ViewModels
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show($"Error adding pet: {ex.Message}", "Error");
+                if (ex.InnerException != null)
+                {
+                    System.Windows.MessageBox.Show($"Inner Exception: {ex.InnerException.Message}", "Error");
+                }
                 return false;
             }
         }

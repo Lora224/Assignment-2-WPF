@@ -27,7 +27,8 @@ namespace Assignment_2_WPF.Models
         // Default constructor
         public Pet()
         {
-            Id = -1;
+            // Generate random ID between 10000 and 99999
+            Id = new Random().Next(10000, 99999);
             PetName ="null";
             Breed = "null";
             Weight = 0;

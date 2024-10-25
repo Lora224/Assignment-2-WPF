@@ -19,9 +19,9 @@ namespace Assignment_2_WPF.Views
             try
             {
                 // Get values from controls
-                string petName = PetName.Text;
-                string breed = Breed.Text;
-                string weight = Weight.Text;
+                string petName = Convert.ToString(PetName.Text);
+                string breed = Convert.ToString(Breed.Text);
+                string weight = Convert.ToString(Weight.Text);
                 var dob = Dob1.SelectedDate ?? DateTime.Today;
 
                 // Try to add the pet
