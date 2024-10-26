@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing;
 using Microsoft.EntityFrameworkCore;
 using static Assignment_2_WPF.Models.Activity;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 namespace Assignment_2_WPF.ViewModels
@@ -26,7 +27,7 @@ namespace Assignment_2_WPF.ViewModels
     public class ActivityViewModel : ViewModelBase
     {
         private readonly AppDbContext _context;
-        private DateTime _selectedDate;
+        private DateTime? _selectedDate;
         private Activity _selectedActivity;
         private ObservableCollection<Activity> _activities;
         private int _currentUserId;
@@ -39,6 +40,7 @@ namespace Assignment_2_WPF.ViewModels
         private int _distance;
         private ActivityLevel _selectedActivityLevel;
         private int _activityCount;
+        public DateTime ActivityDate;
         public Array ActivityTypes => Enum.GetValues(typeof(ActivityType));
         public Array ActivityLevels => Enum.GetValues(typeof(ActivityLevel));
 
@@ -47,7 +49,15 @@ namespace Assignment_2_WPF.ViewModels
         public ActivityViewModel()
         {
             _context = new AppDbContext();
-            SelectedDate = DateTime.Today;
+            SelectedDate = null;
+            if (SelectedDate == null)
+            {
+                ActivityDate = DateTime.Today;
+            }
+            else
+            {
+                ActivityDate = SelectedDate.Value;
+            }
             _currentUserId = GetCurrentUserId();
             SelectedActivityType = ActivityType.Other;
            ActivityCount = Activities.Count;
@@ -127,7 +137,7 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        public DateTime SelectedDate
+        public DateTime? SelectedDate
         {
             get => _selectedDate;
             set
@@ -162,7 +172,6 @@ namespace Assignment_2_WPF.ViewModels
             private set
             {
                 _activities = value;
-                ActivityCount = _activities.Count;
                 OnPropertyChanged(nameof(Activities));
             }
         }
@@ -261,7 +270,7 @@ namespace Assignment_2_WPF.ViewModels
                     {
                         Name = activityName,
                         Description = description,
-                        Date = SelectedDate,
+                        Date = date,
                         PetId = SelectedPet.Id,
                         PetName = SelectedPet.PetName,
                         UserId = _currentUserId,  // get this from logged-in user
@@ -325,6 +334,19 @@ namespace Assignment_2_WPF.ViewModels
                 System.Windows.MessageBox.Show($"You must choose an activity to remove: {ex.Message}", "Error");
             }
         }
+        public void ShowParticularActivity()
+         {
+            if (_selectedActivity == null)
+            {
+                System.Windows.MessageBox.Show("Please select an activity to show", "Error");
+                return;
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Activity: {_selectedActivity.Name}\nDate: {_selectedActivity.Date}\nPet: {_selectedActivity.PetName}\nDescription: {_selectedActivity.Description}\nType: {_selectedActivity.Type}\nDuration: {_selectedActivity.Duration}\nDistance: {_selectedActivity.Distance}\nLevel: {_selectedActivity.Level}", "Activity Details");
+            }
+
+        }
  //       public void LoadActivities(Pet pet)
  //       {
            
@@ -382,30 +404,64 @@ namespace Assignment_2_WPF.ViewModels
                 MessageBox.Show("Error loading pets. Please try again.");
             }
         }
-
+        public void ShowAllActivities()
+        {
+            using (var context = new AppDbContext())
+            {
+                var _activities = context.Activities.ToList();
+ 
+                if (_activities.Count == 0)
+                {
+                    //if no activity show "No Activity"
+                    MessageBox.Show("No Activity, please add one.");
+                    Activities = new ObservableCollection<Activity>();
+                }
+                else
+                {
+                    var activities = context.Activities
+                        .Where(a =>a.UserId == _currentUserId)
+                        .ToList();
+                    Activities = new ObservableCollection<Activity>(activities);
+                }
+            }
+        }
         public void LoadActivities()  
         {
 
             using (var context = new AppDbContext())
             {
                 context.Database.EnsureCreated();
-                var _activities = context.Activities.ToList();
-                if (_activities.Count == 0)
-                {
-                    //if no activity show "No Activity"
-                    MessageBox.Show("No Activity, please add one.");
-                    Activities = new ObservableCollection<Activity>();
-                   
+                    if (SelectedDate is not null)
+                        {
 
-                }
-                else
-                {
-                    var activities = _context.Activities
-        .Where(a => a.Date == SelectedDate.Date )   
-        .ToList();
-                    Activities = new ObservableCollection<Activity>(activities);
-                    ActivityCount = Activities.Count;
-                }
+                        var activities = context.Activities
+                            .Where(a => a.UserId == _currentUserId && a.Date == SelectedDate)
+                            .ToList();
+                        Activities = new ObservableCollection<Activity>(activities);
+                         }
+                    else
+                    {
+
+                    var activities = context.Activities
+                        .Where(a => a.UserId == _currentUserId)
+                        .ToList();
+                    if (activities.Count == 0 && _currentUserId!=0)
+                        {
+                            //if no activity show "No Activity"
+                            MessageBox.Show("No Activity, please add one.");
+                            Activities = new ObservableCollection<Activity>();
+                            
+
+                        }
+                        else
+                        {
+                            Activities = new ObservableCollection<Activity>(activities);
+                        }  
+                    }
+                 ActivityCount = context.Activities.Where(Activities => Activities.UserId == _currentUserId).Count();
+
+
+               
             }
 
         }

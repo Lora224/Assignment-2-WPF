@@ -59,7 +59,7 @@
             <!-- Common Fields -->
             <TextBlock HorizontalAlignment="Left" Margin="201,192,0,0" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" Height="30" Width="68" FontSize="16" FontFamily="Corbel Light"/>
             <DatePicker x:Name="DateSelect"
-                       SelectedDate="{Binding SelectedDate}"
+                       SelectedDate="{Binding ActivityDate}"
                        SelectedDateFormat="Short"
                        HorizontalAlignment="Left"
                        Margin="400,207,0,0"

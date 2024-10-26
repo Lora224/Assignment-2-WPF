@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using Assignment_2_WPF.Models;
 using Assignment_2_WPF.ViewModels;
 
@@ -14,7 +16,6 @@ namespace Assignment_2_WPF.Views
 
         public ActivityView()  //User view model? or pass user object to activity view model?
         {
-            selectedDate = DateTime.Today;
             InitializeComponent();
             _viewModel = DataContext as ActivityViewModel;
            // _viewModel.LoadActivities();
@@ -49,7 +50,26 @@ namespace Assignment_2_WPF.Views
             view.ShowDialog();
         }
 
+        private DateTime? _lastSelectedDate;
 
+        private void Calendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            var calendar = sender as Calendar;
+            var viewModel = DataContext as ActivityViewModel;
+
+            if (calendar != null && viewModel != null)
+            {
+                // If clicking currently selected date
+                if (_lastSelectedDate.HasValue && calendar.SelectedDate == _lastSelectedDate)
+                {
+                    calendar.SelectedDate = null;
+                    viewModel.SelectedDate = null;
+                }
+
+                // Store the newly selected date
+                _lastSelectedDate = calendar.SelectedDate;
+            }
+        }
 
         private void EditActivity_Click(object sender, RoutedEventArgs e)
         {
@@ -68,9 +88,9 @@ namespace Assignment_2_WPF.Views
             _viewModel.RemoveActivity();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.ShowParticularActivity();
         }
     }
 }

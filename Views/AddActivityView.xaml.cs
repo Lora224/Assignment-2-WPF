@@ -70,7 +70,7 @@ namespace Assignment_2_WPF.Views
                 }
 
 
-                if (_viewModel.AddActivity(Name.Text, Description.Text, _viewModel.SelectedDate))
+                if (_viewModel.AddActivity(Name.Text, Description.Text, _viewModel.ActivityDate))
                 {
                     this.Close();
                 }
