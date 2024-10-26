@@ -11,6 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\7411726.jpg" />
+    <None Remove="Views\7411734.ai" />
     <None Remove="Views\9f5cbb1e3887898b6e89c2f37177042c.jpg" />
     <None Remove="Views\background.jpg" />
     <None Remove="Views\cute-corgi-tricolor-puppy-cartoon_42750-630.jpg" />
@@ -18,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Resources\" />
     <Folder Include="Tests\" />
     <Folder Include="Resources\" />
   </ItemGroup>
@@ -32,6 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Views\7411726.jpg" />
+    <Resource Include="Views\7411734.ai" />
     <Resource Include="Views\9f5cbb1e3887898b6e89c2f37177042c.jpg" />
     <Resource Include="Views\background.jpg" />
     <Resource Include="Views\cute-corgi-tricolor-puppy-cartoon_42750-630.jpg" />
