@@ -49,7 +49,7 @@ namespace Assignment_2_WPF.Views
                 }
                 // if not existed, create a new account
                 User newUser = new User(name, email, password);
-                context.Users.Add(user);
+                context.Users.Add(newUser);
                 context.SaveChanges();
                 // notice the user
                 System.Windows.Forms.MessageBox.Show("Account created successfully");
