@@ -227,6 +227,7 @@ namespace Assignment_2_WPF.ViewModels
             CheckDatabaseConstraints();
 
         }
+        /*
         public void AddSchedule(int petId, string petName, int scheduleId, string scheduleType, DateTime date, string description)
         {
             Schedule schedule = new Schedule(petId, petName, scheduleId, scheduleType, date, description);
@@ -235,7 +236,7 @@ namespace Assignment_2_WPF.ViewModels
             Schedules.Add(schedule);
         }
 
-
+        */
 
     }
 }

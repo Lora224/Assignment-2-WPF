@@ -44,9 +44,9 @@
             <DataGrid Grid.Column="1" 
                       ItemsSource="{Binding Schedules}"
                       AutoGenerateColumns="False"
-                      IsReadOnly="True" Margin="76,3,130,327" SelectionChanged="DataGrid_SelectionChanged_1" Background="#FF8ABD78" FontWeight="Bold">
+                      IsReadOnly="True" Margin="76,3,130,340" SelectionChanged="DataGrid_SelectionChanged_1" Background="#FF8ABD78" FontWeight="Bold">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Activity" 
+                    <DataGridTextColumn Header="Schedule" 
                                       Binding="{Binding Name}" 
                                       Width="*"/>
                     <DataGridTextColumn Header="Date" 
@@ -56,8 +56,8 @@
             </DataGrid>
             <Button x:Name="RemoveSchedule" Content="Remove Selected Schedule" VerticalAlignment="Top" RenderTransformOrigin="0.833,1.091" Height="31" Click="RemoveSchedule_Click" Margin="0,230,0,0" FontWeight="Bold" Background="#FF8ABD78"/>
             <Button x:Name="AddNewSchedule" Content="Add New Schedule" HorizontalAlignment="Center" Margin="0,181,0,0"  VerticalAlignment="Top" Height="30" Width="183" Click="AddNewSchedule_Click" Background="#FFFAB768" FontWeight="Bold"/>
-            <ProgressBar x:Name="ScheduleProgress" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="198,292,0,0" VerticalAlignment="Top" Width="250" Foreground="#FF5E6C8E" Maximum="20" Value="{Binding ScheduleCount}" Background="#FF8ABD78"/>
             <Button x:Name="ScheduleDetails" Content="Schedule Details" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Height="31" Width="184" Click="ScheduleDetails" FontWeight="Bold" Background="#FFFAB768"/>
+            
 
         </Grid>
     </Grid>

@@ -168,13 +168,13 @@ namespace Assignment_2_WPF.Views {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "8.0.7.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "8.0.8.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Assignment 2 WPF;component/views/addactivityview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Assignment 2 WPF;V1.0.0.0;component/views/addactivityview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AddActivityView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -184,7 +184,7 @@ namespace Assignment_2_WPF.Views {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "8.0.7.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "8.0.8.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
