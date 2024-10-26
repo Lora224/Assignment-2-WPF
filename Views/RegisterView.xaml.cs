@@ -38,9 +38,9 @@ namespace Assignment_2_WPF.Views
                 // ensure database is created
                 context.Database.EnsureCreated();
                 var users = context.Users.ToList();
-                foreach (var user in users)
+                foreach (var existingUser in users)
                 {
-                    if (user.Email == email)
+                    if (existingUser.Email == email)
                     {
                         // if existed, notice the user
                         System.Windows.Forms.MessageBox.Show("Email is already existed");
@@ -48,7 +48,7 @@ namespace Assignment_2_WPF.Views
                     }
                 }
                 // if not existed, create a new account
-                User user = new User(name, email, password);
+                User newUser = new User(name, email, password);
                 context.Users.Add(user);
                 context.SaveChanges();
                 // notice the user
