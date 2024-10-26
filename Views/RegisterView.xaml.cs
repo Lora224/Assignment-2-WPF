@@ -55,5 +55,12 @@ namespace Assignment_2_WPF.Views
                 System.Windows.Forms.MessageBox.Show("Account created successfully");
             }
         }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+        // go back to login view
+        LoginView loginView = new LoginView();
+        loginView.Show();
+        this.Close();
+        }
     }
 }
