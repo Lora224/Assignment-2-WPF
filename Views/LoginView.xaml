@@ -27,7 +27,7 @@
         <TextBlock  HorizontalAlignment="Left" Margin="281,255,0,0" TextWrapping="Wrap" 
                    Text="Password: " VerticalAlignment="Top" FontWeight="Bold"/>
         <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="348,256,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button x:Name="Login1" Content="Log In" HorizontalAlignment="Left" Margin="385,312,0,0" VerticalAlignment="Top" Click="Login1_Click" Background="#FFFAB768" FontWeight="Bold"/>
+        <Button x:Name="Login1" Content="Log In" HorizontalAlignment="Left" Margin="382,312,0,0" VerticalAlignment="Top" Click="Login1_Click" Background="#FFFAB768" FontWeight="Bold" Width="47"/>
         <Button x:Name="register" Content="Register" HorizontalAlignment="Left" Margin="382,356,0,0" VerticalAlignment="Top" Click="register_Click" Background="#FFF6F1F1"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" FontSize="24" FontWeight="Bold" Background="White"><Run Language="en-au" Text=" "/><Run Text="CHA CHA PET APPLICATION"/></TextBlock>
 
