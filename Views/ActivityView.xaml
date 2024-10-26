@@ -62,7 +62,7 @@
             </DataGrid>
             <Button x:Name="RemoveActivity" Content="Remove Selected  Activity" VerticalAlignment="Top" RenderTransformOrigin="0.833,1.091" Height="31" Click="RemoveActivity_Click" Margin="18,229,18,0"/>
             <Button x:Name="AddNewActivity" Content="Add New Activity" HorizontalAlignment="Center" Margin="0,181,0,0"  VerticalAlignment="Top" Height="30" Width="183" Click="AddNewActivity_Click"/>
-            <ProgressBar x:Name="ActivityProgress" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="198,292,0,0" VerticalAlignment="Top" Width="250" Foreground="#FF5E6C8E" Maximum="20" Value="{Binding ActivityCount}"/>
+            <ProgressBar x:Name="ActivityProgress" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="198,292,0,0" VerticalAlignment="Top" Width="250" Foreground="#FFF5A689" Maximum="20" Value="{Binding ActivityCount}"/>
             <Button x:Name="ActivityDetails" Content="Activity Detail" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Height="31" Width="184" Click="Button_Click"/>
         </Grid>
         <!-- Weather Suggestion -->

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Assignment_2_WPF.Models;
 using Assignment_2_WPF.ViewModels;
 
@@ -8,6 +9,9 @@ namespace Assignment_2_WPF.Views
     public partial class ScheduleView : Window
     {
         private ScheduleViewModel _viewModel;
+        private Schedule selectedSchedule;
+        private Pet selectedPet;
+        private DateTime selectedDate;
 
         public ScheduleView()
         {
@@ -47,6 +51,24 @@ namespace Assignment_2_WPF.Views
                 System.Windows.MessageBox.Show($"Selected: {selectedItem}");
             }
         }
+        private void Calendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            var calendar = sender as Calendar;
+            var viewModel = DataContext as ActivityViewModel;
+
+            if (calendar != null && viewModel != null)
+            {
+                // If clicking currently selected date
+                if (_lastSelectedDate.HasValue && calendar.SelectedDate == _lastSelectedDate)
+                {
+                    calendar.SelectedDate = null;
+                    viewModel.SelectedDate = null;
+                }
+
+                // Store the newly selected date
+                _lastSelectedDate = calendar.SelectedDate;
+            }
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -66,6 +88,22 @@ namespace Assignment_2_WPF.Views
         {
             view.Owner = this;
             view.ShowDialog();
+        }
+
+        private void AddNewSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            var addScheduleWindow = new AddScheduleView(this.DataContext as ScheduleViewModel);
+            addScheduleWindow.ShowDialog();
+        }
+
+        private void RemoveSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.RemoveSchedule();
+        }
+
+        private void ShowParticularSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ShowParticularSchedule();
         }
     }
 }
