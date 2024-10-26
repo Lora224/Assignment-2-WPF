@@ -10,7 +10,10 @@ using System.Drawing;
 using Microsoft.EntityFrameworkCore;
 using static Assignment_2_WPF.Models.Activity;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-
+using System.Net.Http;
+using Assignment_2_WPF.Ultilities;
+using System.Text.Json;
+using Timer = System.Threading.Timer;
 
 namespace Assignment_2_WPF.ViewModels
 {
@@ -43,7 +46,11 @@ namespace Assignment_2_WPF.ViewModels
         public DateTime ActivityDate;
         public Array ActivityTypes => Enum.GetValues(typeof(ActivityType));
         public Array ActivityLevels => Enum.GetValues(typeof(ActivityLevel));
-
+        private string _temperature;
+        private string _weatherCondition;
+        private string _walkingSuggestion;
+        private bool _isGoodForWalking;
+        private Timer _weatherUpdateTimer;
 
 
         public ActivityViewModel()
@@ -78,6 +85,9 @@ namespace Assignment_2_WPF.ViewModels
 
             LoadPets();
             LoadActivities();
+            UpdateWeather();
+            _weatherUpdateTimer = new Timer(async (state) => await UpdateWeather(),
+            null, TimeSpan.Zero, TimeSpan.FromMinutes(30));
             CheckDatabaseConstraints();
         }
         public ActivityType SelectedActivityType
@@ -194,7 +204,117 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        private void CheckDatabaseConstraints()
+
+        public string Temperature
+        {
+            get => _temperature;
+            set
+            {
+                _temperature = value;
+                OnPropertyChanged(nameof(Temperature));
+            }
+        }
+
+        public string WeatherCondition
+        {
+            get => _weatherCondition;
+            set
+            {
+                _weatherCondition = value;
+                OnPropertyChanged(nameof(WeatherCondition));
+            }
+        }
+
+        public string WalkingSuggestion
+        {
+            get => _walkingSuggestion;
+            set
+            {
+                _walkingSuggestion = value;
+                OnPropertyChanged(nameof(WalkingSuggestion));
+            }
+        }
+
+        public bool IsGoodForWalking
+        {
+            get => _isGoodForWalking;
+            set
+            {
+                _isGoodForWalking = value;
+                OnPropertyChanged(nameof(IsGoodForWalking));
+            }
+        }
+
+//weather update
+        private async Task UpdateWeather()
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    System.Diagnostics.Debug.WriteLine("Updating weather...");
+                    //get weather of Sydney or any user city
+                    var response = await client.GetAsync("http://api.weatherapi.com/v1/current.json?key=e15814d4c83147d5b5f120120242610&q=Sydney&aqi=no");
+                   System.Diagnostics.Debug.WriteLine($"Response: {response.StatusCode}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        var weather = JsonSerializer.Deserialize<WeatherResponse>(jsonString);
+
+                        if (weather?.Current != null)  // Add null check
+                        {
+                           System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                Temperature = $"{weather.Current.Temperature:F1}";
+                                WeatherCondition = weather.Current.Condition?.Text ?? "Unknown";
+
+                                IsGoodForWalking = weather.Current.Temperature < 30 &&
+                                                 weather.Current.Temperature > 10 &&
+                                                 !weather.Current.Condition.Text.Contains("rain", StringComparison.OrdinalIgnoreCase);
+
+                                WalkingSuggestion = IsGoodForWalking
+                                    ? "Perfect conditions for a walk!"
+                                    : GetWeatherWarning(weather.Current.Temperature,
+                                                      weather.Current.Condition?.Text);
+                            });
+
+                            System.Diagnostics.Debug.WriteLine($"Weather updated: {Temperature}°C, {WeatherCondition}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error updating weather: {ex.Message}");
+                // Update UI to show error state
+                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Temperature = "N/A";
+                    WeatherCondition = "Unable to fetch weather";
+                    WalkingSuggestion = "Weather information unavailable";
+                    IsGoodForWalking = false;
+                });
+            }
+        }
+
+        private string GetWeatherWarning(double temperature, string condition)
+        {
+            if (temperature > 30)
+                return "Too hot for walking. Consider indoor activities.";
+            if (temperature < 10)
+                return "Too cold for walking. Consider indoor activities.";
+            if (condition == "Rain")
+                return "Rainy conditions. Indoor activities recommended.";
+
+            return "Weather conditions not ideal for walking.";
+        }
+
+        public void Dispose()
+        {
+            _weatherUpdateTimer?.Dispose();
+        }
+    // weather end
+    private void CheckDatabaseConstraints()
         {
             using (var connection = _context.Database.GetDbConnection())
             {
@@ -347,30 +467,7 @@ namespace Assignment_2_WPF.ViewModels
             }
 
         }
- //       public void LoadActivities(Pet pet)
- //       {
-           
- //           using (var context = new AppDbContext())
- //           {
- //               context.Database.EnsureCreated();
- //              var _activities = context.Activities.ToList();
-//                if (_activities.Count == 0)
-//                {
-//                    //if no activity show "No Activity"
-//                    Activities = new ObservableCollection<Activity>();
 
-//                }
-//                else
-//                {
- //                   var activities = _context.Activities
- //       .Where(a => a.Date == SelectedDate.Date&& a.PetId==SelectedPet.Id)   //filter pet
- //       .ToList();
- //                   Activities = new ObservableCollection<Activity>(activities);
- //               }
- //           }
-
-          
-//        }
         public void LoadPets()
         {
             try

@@ -26,8 +26,13 @@ namespace Assignment_2_WPF.Views
                 _viewModel = new ActivityViewModel();
                 DataContext = _viewModel;
             }
-        }
 
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            _viewModel?.Dispose();
+        }
         private void DataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e) //selected activity
         {
             // Get the selected activity

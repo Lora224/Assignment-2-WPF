@@ -131,6 +131,36 @@
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.pdb
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.genruntimeconfig.cache
 \\Mac\Home\Documents\IT\Sem2.NET\Assignment 2 WPF\obj\Debug\net8.0-windows\ref\Assignment 2 WPF.dll
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.csproj.AssemblyReference.cache
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\PetView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ActivityView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivityView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\PetView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\RegisterView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.cache
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.lref
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivityView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\RegisterView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.dll
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\refint\Assignment 2 WPF.dll
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.pdb
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Assignment 2 WPF.exe
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Assignment 2 WPF.deps.json
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Assignment 2 WPF.runtimeconfig.json
@@ -242,30 +272,7 @@ C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\runtimes\win-arm\
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.csproj.AssemblyReference.cache
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\PetView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ActivityView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivityView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\PetView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.cache
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.lref
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ActivityView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivityView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.g.resources
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.AssemblyInfoInputs.cache
@@ -273,12 +280,5 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.csproj.CoreCompileInputs.cache
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.sourcelink.json
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignme.73B60E22.Up2Date
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.dll
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\refint\Assignment 2 WPF.dll
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.pdb
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.genruntimeconfig.cache
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\ref\Assignment 2 WPF.dll
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\RegisterView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\RegisterView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.baml

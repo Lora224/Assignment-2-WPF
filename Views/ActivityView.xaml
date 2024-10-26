@@ -11,7 +11,9 @@
     <Window.DataContext>
         <vm:ActivityViewModel/>
     </Window.DataContext>
-
+    <Window.Resources>
+        <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
+    </Window.Resources>
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -56,5 +58,28 @@
             <ProgressBar x:Name="ActivityProgress" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="198,292,0,0" VerticalAlignment="Top" Width="250" Foreground="#FF5E6C8E" Maximum="20" Value="{Binding ActivityCount}"/>
             <Button x:Name="ActivityDetails" Content="Activity Detail" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Height="31" Width="184" Click="Button_Click"/>
         </Grid>
+        <!-- Weather Suggestion -->
+        <Border 
+        Background="#FFD2E6EA" 
+        CornerRadius="5" 
+        Padding="10"
+        Margin="0,325,650,0"
+        Width="200"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Top" Grid.Row="1">
+            <StackPanel>
+                <TextBlock Text="Weather Update" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding Temperature, StringFormat='Temperature: {0}°C'}"
+                   Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding WeatherCondition}"
+                   Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding WalkingSuggestion}"
+                   TextWrapping="Wrap"
+                   Foreground="{Binding IsGoodForWalking, Converter={StaticResource BoolToColorConverter}}"/>
+            </StackPanel>
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="304,300,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Activity Goal: 20" VerticalAlignment="Top" Height="25" Width="126"/>
     </Grid>
 </Window>
