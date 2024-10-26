@@ -53,8 +53,6 @@ namespace Assignment_2_WPF
             try
 
             {
-
-
                 // Initialize database and add test data
                 using (var context = new AppDbContext())
                 {
