@@ -229,10 +229,7 @@ namespace Assignment_2_WPF.ViewModels
         }
         public void AddSchedule(int petId, string petName, int scheduleId, string scheduleType, DateTime date, string description)
         {
-            Schedule schedule = new Schedule(petId, petName, scheduleId, scheduleType, date, description);
-            _context.Schedules.Add(schedule);
-            _context.SaveChanges();
-            Schedules.Add(schedule);
+
         }
 
 
