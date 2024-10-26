@@ -25,6 +25,23 @@ namespace Assignment_2_WPF.Models
             Pets = new List<Pet>();
         }
 
+        // method to crosscheck the password and email in database
+        public static bool CheckValidate(string email, string password)
+        {
+            using (var context = new AppDbContext())
+            {
+                var users = context.Users.ToList();
+                foreach (var user in users)
+                {
+                    if (user.Email == email && user.Password == password)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         // method to sign up an account with email and password input from user, first check if the email is already in the database, if not, create an account, if yes, notice the user
 
         public void SignUp(string name, string email, string password)
@@ -52,24 +69,12 @@ namespace Assignment_2_WPF.Models
             }
         }
 
-        // method to crosscheck the password and email in database
-        public static bool CheckValidate(string email, string password)
-        {
-            using (var context = new AppDbContext())
-            {
-                var users = context.Users.ToList();
-                foreach (var user in users)
-                {
-                    if (user.Email == email && user.Password == password)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+        
 
-        // method to log in the account with email and password input from user, first check if the email is already in the database, if not, notice the user, if yes, check the password, if correct, log in, if not, notice the user
+        // method to log in the account with email and password input from user,
+        // first check if the email is already in the database,
+        // if not, notice the user, if yes, check the password,
+        // if correct, log in, if not, notice the user
         public static void LogIn(string email, string password)
         {
             Console.WriteLine("Input Email:");

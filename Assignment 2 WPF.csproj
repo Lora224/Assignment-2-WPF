@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\9f5cbb1e3887898b6e89c2f37177042c.jpg" />
+    <None Remove="Views\background.jpg" />
+    <None Remove="Views\cute-corgi-tricolor-puppy-cartoon_42750-630.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Tests\" />
     <Folder Include="Resources\" />
@@ -23,6 +29,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\9f5cbb1e3887898b6e89c2f37177042c.jpg" />
+    <Resource Include="Views\background.jpg" />
+    <Resource Include="Views\cute-corgi-tricolor-puppy-cartoon_42750-630.jpg" />
   </ItemGroup>
 
 </Project>

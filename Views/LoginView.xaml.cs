@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
+
 namespace Assignment_2_WPF.Views
 {
     /// <summary>
@@ -25,13 +27,32 @@ namespace Assignment_2_WPF.Views
         }
 
         private void Login1_Click(object sender, RoutedEventArgs e)
-        {
-            //check login credention
+        {            
+            // get input from textbox
+            string email = EmailInput.Text;
+            string password = PasswordBox.Password;
+            //check email and password is valid or not in database
+            if (Models.User.CheckValidate(email, password))
+            {
+                //if valid, go to main window
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                //if not valid, notice the user
+                System.Windows.Forms.MessageBox.Show("Email or Password is incorrect");
+            }
+
         }
 
         private void register_Click(object sender, RoutedEventArgs e)
         {
-            //go to register window
+            //go to registerview
+            RegisterView registerView = new RegisterView();
+            registerView.Show();
+            this.Close();
         }
     }
 }
