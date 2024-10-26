@@ -25,20 +25,20 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" MinWidth="219"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <!-- Calendar -->
             <Calendar x:Name="Calendar" Grid.Column="0" 
                       SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
-                      Margin="0,0,20,0" Foreground="#FFD6CFCB" BorderBrush="{x:Null}" Background="#FFD6CFCB"/>
+                      Margin="25,0,631,0" Foreground="#FFD6CFCB" BorderBrush="{x:Null}" Background="#FFD6CFCB" Grid.ColumnSpan="2"/>
 
             <!-- Activities List -->
             <DataGrid Grid.Column="1" 
                       ItemsSource="{Binding Activities}"
                       AutoGenerateColumns="False"
-                      IsReadOnly="True" Margin="0,0,264,330" SelectionChanged="DataGrid_SelectionChanged_1" Background="#FFCCB7AE" Foreground="#FFA6808C">
+                      IsReadOnly="True" Margin="15,0,10,273" SelectionChanged="DataGrid_SelectionChanged_1" Background="#FFCCB7AE" Foreground="#FFA6808C">
                 <DataGrid.RowStyle>
                     <Style/>
                 </DataGrid.RowStyle>
@@ -51,9 +51,9 @@
                                       Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="EditActivity" Grid.Column="1" Content="Edit Activity" HorizontalAlignment="Left" Margin="439,34,0,0" VerticalAlignment="Top" Background="#FF706677" Foreground="#FFD6CFCB" Height="47" Width="106" Click="EditActivity_Click"/>
-            <Button x:Name="RemoveActivity" Grid.Column="1" Content="Remove Activity" HorizontalAlignment="Left" Margin="439,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.833,1.091" Height="45" Width="106" Click="RemoveActivity_Click"/>
-            <Button x:Name="AddNewActivity" Grid.Column="1" Content="Add New Activity" HorizontalAlignment="Left" Margin="121,167,0,0" VerticalAlignment="Top" Height="21" Width="150" Click="AddNewActivity_Click"/>
+            <Button x:Name="RemoveActivity" Content="Remove Selected  Activity" VerticalAlignment="Center" RenderTransformOrigin="0.833,1.091" Height="31" Click="RemoveActivity_Click" Margin="35,0,1,0"/>
+            <Button x:Name="AddNewActivity" Content="Add New Activity" HorizontalAlignment="Left" Margin="35,180,0,0"  VerticalAlignment="Top" Height="30" Width="183" Click="AddNewActivity_Click"/>
+            <ProgressBar x:Name="ActivityProgress" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="111,292,0,0" VerticalAlignment="Top" Width="250" Foreground="#FF5E6C8E" Maximum="20" Value="{Binding ActivityCount}"/>
         </Grid>
     </Grid>
 </Window>

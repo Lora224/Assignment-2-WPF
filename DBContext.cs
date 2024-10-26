@@ -20,7 +20,6 @@ namespace Assignment_2_WPF
 
  
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pet>(entity =>
@@ -46,19 +45,24 @@ namespace Assignment_2_WPF
             {
                 entity.ToTable("activity");
                 entity.HasKey(e => e.Id);
-                // Remove any unique constraints
-                entity.HasIndex(e => e.PetId)
-                      .IsUnique(false);  // Explicitly make non-unique
+
+               entity.HasIndex(e => e.PetId)
+                      .HasDatabaseName("IX_activity_PetId")
+                      .IsUnique(false);  //set as non-unique
+
+                // Configure required properties
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.Date).IsRequired();
-                entity.Property(e => e.Description).IsRequired();
                 entity.Property(e => e.PetId).IsRequired();
+                entity.Property(e => e.PetName).IsRequired();
                 entity.Property(e => e.UserId).IsRequired();
-                // Configure relationship with Pet
-
-
-                entity.Property(e => e.Name).IsRequired();
-                entity.Property(e => e.Date).IsRequired();
+                entity.Property(e => e.Description).IsRequired();
+                entity.Property(e => e.Type).IsRequired()
+                      .HasConversion<string>();
+                entity.Property(e => e.Level).IsRequired(false)
+                      .HasConversion<string>();
+                entity.Property(e => e.Distance).IsRequired(false);
+                entity.Property(e => e.Duration).IsRequired(false);
             });
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
