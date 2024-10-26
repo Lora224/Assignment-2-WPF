@@ -1,0 +1,28 @@
+﻿<Window x:Class="Assignment_2_WPF.Views.RegisterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment_2_WPF.Views"
+        mc:Ignorable="d"
+        Title="Register screen" Height="600" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Views/background.jpg"/>
+        </Grid.Background>
+        <TextBlock HorizontalAlignment="Left" Margin="246,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" FontSize="24" FontWeight="Bold" Background="White"><Run Language="en-au" Text=" "/><Run Text="CHA CHA PET APPLICATION"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="341,164,0,0" TextWrapping="Wrap" 
+           Text="Register for ChaChaApp" VerticalAlignment="Top" Height="30" Width="153" FontWeight="Bold"/>
+        <TextBlock x:Name="UserName" HorizontalAlignment="Left" Margin="306,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="13" Width="120" Text="User Name:" FontWeight="Bold"/>
+        <TextBox x:Name="NameInput" HorizontalAlignment="Left" Margin="380,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="Email" HorizontalAlignment="Left" Margin="305,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="13" Width="120" Text="Email:" FontWeight="Bold"/>
+        <TextBox x:Name="EmailInput" HorizontalAlignment="Left" Margin="380,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <TextBlock  HorizontalAlignment="Left" Margin="305,293,0,0" TextWrapping="Wrap" 
+           Text="Password: " VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.503,0.627"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="380,292,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Height="20" Margin="309,339,0,0" VerticalAlignment="Top" Width="60" Background="#FFFAB766" Click="Button_Click" FontWeight="Bold"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="440,339,0,0" VerticalAlignment="Top" Width="54" Background="White"/>
+
+    </Grid>
+</Window>
