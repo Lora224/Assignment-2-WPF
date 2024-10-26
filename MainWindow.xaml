@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Name="PetButton" Content="Go to Pet Screen" Click="PetButton_Click" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="289,71,0,0"/>
-        <ContentControl Name="MainContent" Margin="178,507,-178,-507" />
+        <ContentControl Name="MainContent" Margin="10,10,-10,-10" />
         <Button x:Name="ActivityButton" Content="Go to Activity Screen" HorizontalAlignment="Left" Margin="178,150,0,0" VerticalAlignment="Top" Height="50" Width="147" Click="Button_Click"/>
         <Button x:Name="GoToLogin" Content="Go to Login Screen" HorizontalAlignment="Left" Margin="292,232,0,0" VerticalAlignment="Top" Height="51" Width="147" Click="GoToLogin_Click"/>
         <Button x:Name="DatabaseManagement" Content="DatabaseManagement" HorizontalAlignment="Left" Margin="292,319,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.177,-0.816" Height="43" Width="147" Click="Button_Click_1"/>

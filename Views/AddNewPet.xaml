@@ -6,39 +6,40 @@
         xmlns:local="clr-namespace:Assignment_2_WPF.Views"
         xmlns:vm="clr-namespace:Assignment_2_WPF.ViewModels"
         mc:Ignorable="d"
-        Title="AddNewPet" Height="450" Width="800">
+        Title="AddNewPet" Height="450" Width="706">
 
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="282,104,0,0" TextWrapping="Wrap" Text="Pet Name: " VerticalAlignment="Top" Height="17" Width="71"/>
+    <Grid x:Name="MainGrid" Margin="0,0,0,6">
+        <Grid x:Name="Background" Background="#FFC6EBFB" Margin="0,0,0,-9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="241,103,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="17" Width="71"/>
         <TextBox x:Name="PetName" 
                 Text="{Binding PetName, UpdateSourceTrigger=PropertyChanged}"
-                HorizontalAlignment="Left" Margin="392,103,0,0" TextWrapping="Wrap" 
+                HorizontalAlignment="Left" Margin="356,103,0,0" TextWrapping="Wrap" 
                 VerticalAlignment="Top" Width="149" Height="19"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="282,161,0,0" TextWrapping="Wrap" Text="DOB" VerticalAlignment="Top" Height="17" Width="30"/>
-        <TextBlock HorizontalAlignment="Left" Margin="282,220,0,0" TextWrapping="Wrap" Text="Weight:" VerticalAlignment="Top" Height="17" Width="50"/>
-        <TextBlock HorizontalAlignment="Left" Margin="282,272,0,0" TextWrapping="Wrap" Text="Breed:" VerticalAlignment="Top" Height="17" Width="41"/>
+        <TextBlock HorizontalAlignment="Left" Margin="241,165,0,0" TextWrapping="Wrap" Text="DOB" VerticalAlignment="Top" Height="17" Width="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="241,222,0,0" TextWrapping="Wrap" Text="Weight(kg)" VerticalAlignment="Top" Height="17" Width="76"/>
+        <TextBlock HorizontalAlignment="Left" Margin="241,273,0,0" TextWrapping="Wrap" Text="Breed:" VerticalAlignment="Top" Height="17" Width="42"/>
 
         <TextBox x:Name="Weight" 
                 Text="{Binding Weight, UpdateSourceTrigger=PropertyChanged}"
-                HorizontalAlignment="Left" Margin="392,219,0,0" TextWrapping="Wrap" 
+                HorizontalAlignment="Left" Margin="356,220,0,0" TextWrapping="Wrap" 
                 VerticalAlignment="Top" Width="149" Height="19"/>
 
         <TextBox x:Name="Breed" 
                 Text="{Binding Breed, UpdateSourceTrigger=PropertyChanged}"
-                HorizontalAlignment="Left" Margin="392,272,0,0" TextWrapping="Wrap" 
+                HorizontalAlignment="Left" Margin="356,273,0,0" TextWrapping="Wrap" 
                 VerticalAlignment="Top" Width="149" Height="19"/>
 
         <DatePicker x:Name="Dob1" 
                     SelectedDate="{Binding Dob}"
-                    HorizontalAlignment="Left" Margin="392,157,0,0" 
-                    VerticalAlignment="Top" Height="25" Width="126"/>
+                    HorizontalAlignment="Left" Margin="356,157,0,0" 
+                    VerticalAlignment="Top" Height="25" Width="149"/>
 
         <Button x:Name="AddNewPet1" Content="Submit" 
-                Margin="356,328,356,69" Click="AddNewPet1_Click"/>
+                Margin="295,332,295,65" Click="AddNewPet1_Click" Background="#FF5181A0" Foreground="White" BorderBrush="White"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="322,42,0,0" TextWrapping="Wrap" 
-                   Text="Add your pet" VerticalAlignment="Top" Height="27" Width="122" 
-                   FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,42,0,0" TextWrapping="Wrap" 
+                   Text="Adding your pet" VerticalAlignment="Top" Height="26" Width="162" 
+                   FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Variable Display" Foreground="#FF223037"/>
     </Grid>
 </Window>

@@ -2,36 +2,37 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Assignment_2_WPF.Views.PetView"
-        Title="Pet View" Height="400" Width="600">
+        Title="Pet Panel" Height="400" Width="600">
     <Grid>
-        <StackPanel Margin="20">
-            <TextBlock Text="Manage Your Pets" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <Grid x:Name="Background" Opacity="0.8">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Views/7411726.jpg"/>
+            </Grid.Background>
+            <Button x:Name="Details" Content="Details" HorizontalAlignment="Left" Margin="85,113,0,0" VerticalAlignment="Top" Background="#FFF6911F" Foreground="White" Height="44" Width="47" Click="Button_Click" BorderBrush="#FFF6911F"/>
+        </Grid>
+        <TextBlock TextWrapping="Wrap" Text="ChaCha" Margin="10,10,487,345" FontFamily="Ink Free" FontSize="14" Foreground="#FF066DB1"/>
+        <TextBlock Text="Your Pets" FontSize="24" HorizontalAlignment="Left" Margin="244,25,0,308" Width="336" FontFamily="Segoe UI Variable Display" FontWeight="Bold" Foreground="#FF323332"/>
+        <ListBox x:Name="PetsList" ItemsSource="{Binding Pets}" SelectedItem="{Binding SelectedPet}" SelectionChanged="PetsList_SelectionChanged" Height="100" Margin="140,76,120,208" Background="#FFC6EBFB" BorderBrush="White">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding PetName}" FontSize="18" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding Breed}" FontSize="18" FontWeight="SemiBold" Margin="10,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-            <ListBox x:Name="PetsList" ItemsSource="{Binding Pets}" SelectedItem="{Binding SelectedPet}" Margin="0,0,0,20" SelectionChanged="PetsList_SelectionChanged">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding PetName}" FontSize="18" FontWeight="SemiBold"/>
-                            <TextBlock Text="{Binding Breed}" FontSize="18" FontWeight="SemiBold" Margin="10,0"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-                <Button Content="Add New Pet" Width="100" Click="AddNewPetButton_Click"/>
-                <Button Content="Edit Pet" Width="100" Click="EditPetButton_Click" Margin="10,0"/>
-                <Button Content="Remove Pet" Width="100" Click="RemovePetButton_Click"/>
-            </StackPanel>
+        <Button Content="Add New Pet" Click="AddNewPetButton_Click" Margin="265,263,245,92" Background="#FF066DB1" Foreground="White" BorderBrush="#FF323332"/>
+        <Button Content="Remove Pet..." Click="RemovePetButton_Click" Margin="260,182,240,167" Background="#FF323332" Foreground="White" BorderBrush="#FF323332"/>
 
-         
 
-            <Grid Margin="0,0,0,10"/>
 
-            <TextBlock Text="Activities:" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,20,0,5"/>
-            <ListBox ItemsSource="{Binding SelectedPet.activities}" Margin="0,0,0,20"/>
-            <TextBlock Text="Reminders:" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,20,0,5"/>
-            <ListBox ItemsSource="{Binding SelectedPet.schedules}"/>
-        </StackPanel>
+
+
+
+        <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,20,0,5"/>
+
     </Grid>
 </Window>
