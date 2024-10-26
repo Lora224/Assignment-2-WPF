@@ -7,20 +7,27 @@
         mc:Ignorable="d"
         Title="AddActivityView" Height="600" Width="800">
     <Grid>
-        <Grid x:Name="MainGrid" Background="#FFD6CFCB">
+        <Grid x:Name="MainGrid">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Views/background-cat-2.jpg" Stretch="Uniform"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="97*"/>
+            </Grid.ColumnDefinitions>
             <!-- Basic Fields -->
-            <TextBlock HorizontalAlignment="Left" Margin="201,93,0,0" TextWrapping="Wrap" Text="Activity Name:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.717" Height="30" Width="191" FontSize="16" FontFamily="Corbel Light"/>
-            <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="396,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="201,93,0,0" TextWrapping="Wrap" Text="Activity Name:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.717" Height="30" Width="191" FontSize="16" FontFamily="Corbel Light" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="81,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
 
             <TextBlock HorizontalAlignment="Left" Margin="202,141,0,0" TextWrapping="Wrap" Text="Type:" VerticalAlignment="Top" FontFamily="Corbel Light" Height="25" Width="48" FontSize="16"/>
             <ComboBox x:Name="ActivityTypeCombo" 
                      HorizontalAlignment="Left" 
-                     Margin="396,144,0,0" 
+                     Margin="81,144,0,0" 
                      VerticalAlignment="Top" 
                      Width="165"
                      ItemsSource="{Binding ActivityTypes}"
                      SelectedItem="{Binding SelectedActivityType}"
-                     SelectionChanged="ActivityType_SelectionChanged">
+                     SelectionChanged="ActivityType_SelectionChanged" Grid.Column="1">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}"/>
@@ -30,7 +37,7 @@
 
 
             <!-- Dynamic Playing -->
-            <StackPanel x:Name="PlayingFields" Margin="131,392,176,42" Visibility="Collapsed">
+            <StackPanel x:Name="PlayingFields" Margin="131,392,176,42" Visibility="Collapsed" Grid.ColumnSpan="2">
                 <TextBlock 
                    TextWrapping="Wrap" Text="Duration (minutes):" 
                    Height="30" Width="156" 
@@ -62,23 +69,23 @@
                        SelectedDate="{Binding ActivityDate}"
                        SelectedDateFormat="Short"
                        HorizontalAlignment="Left"
-                       Margin="400,207,0,0"
+                       Margin="85,207,0,0"
                        VerticalAlignment="Top"
                        Height="38"
-                       Width="165"/>
+                       Width="165" Grid.Column="1"/>
 
-            <TextBlock HorizontalAlignment="Left" Margin="201,263,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="29" Width="157" FontSize="16" FontFamily="Corbel Light"/>
-            <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="396,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="201,263,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="29" Width="157" FontSize="16" FontFamily="Corbel Light" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="81,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
 
             <TextBlock HorizontalAlignment="Left" Margin="202,323,0,0" TextWrapping="Wrap" Text="Pet:" VerticalAlignment="Top" RenderTransformOrigin="0.43,0.516" Height="31" Width="48" FontSize="16" FontFamily="Corbel Light"/>
             <ComboBox x:Name="PetsList" 
-                     Margin="396,323,0,0" 
+                     Margin="81,323,0,0" 
                      VerticalAlignment="Top" 
                      Width="165" 
                      Height="22"
                      ItemsSource="{Binding Pets}"
                      SelectedItem="{Binding SelectedPet}"
-                     HorizontalAlignment="Left">
+                     HorizontalAlignment="Left" Grid.Column="1">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding PetName}"/>
@@ -86,17 +93,16 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <TextBlock HorizontalAlignment="Left" Margin="292,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="194" FontWeight="Bold" FontSize="20" FontFamily="Ink Free" Foreground="#FF706677"><Run Text="Adding New Activity"/><LineBreak/><Run/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="292,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="194" FontWeight="Bold" FontSize="20" FontFamily="Ink Free" Foreground="#FF706677" Grid.ColumnSpan="2"><Run Text="Adding New Activity"/><LineBreak/><Run/></TextBlock>
             <Button x:Name="AddActivity" 
                     Content="Submit" 
                     HorizontalAlignment="Left" 
-                    Margin="514,27,0,0" 
+                    Margin="199,27,0,0" 
                     VerticalAlignment="Top" 
                     Height="32" 
                     Width="90" 
                     Opacity="0.8" 
-                    Background="#FFA6808C" 
-                    Click="AddActivity_Click">
+                    Click="AddActivity_Click" Background="#FFA6808C" Grid.Column="1">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1"/>
@@ -107,7 +113,7 @@
                 </Button.RenderTransform>
             </Button>
             <!-- Dynamic Walking -->
-            <StackPanel x:Name="WalkingFields" Margin="168,392,210,42" Visibility="Collapsed">
+            <StackPanel x:Name="WalkingFields" Margin="168,392,210,42" Visibility="Collapsed" Grid.ColumnSpan="2">
                 <TextBlock x:Name="Duration1" 
                    TextWrapping="Wrap" Text="Duration (minutes):" 
                    FontSize="16" FontFamily="Corbel Light" Height="30" Width="156" RenderTransformOrigin="0.513,0.368"/>

@@ -22,7 +22,7 @@
            Text="Password: " VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.503,0.627"/>
         <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="357,292,0,0" VerticalAlignment="Top" Width="160"/>
         <Button Content="Submit" HorizontalAlignment="Left" Height="20" Margin="309,339,0,0" VerticalAlignment="Top" Width="60" Background="#FFFAB766" Click="Button_Click" FontWeight="Bold"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="440,339,0,0" VerticalAlignment="Top" Width="54" Background="White"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="440,339,0,0" VerticalAlignment="Top" Width="54" Background="White" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

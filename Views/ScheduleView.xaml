@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Assignment_2_WPF.Views"
         xmlns:vm="clr-namespace:Assignment_2_WPF.ViewModels"
         mc:Ignorable="d"
-        Title="Activity Panel" Height="600" Width="900">
+        Title="Schedule Panel" Height="600" Width="900">
     <Window.Background>
         <ImageBrush ImageSource="/Views/background.jpg"/>
     </Window.Background>
@@ -54,9 +54,10 @@
                                       Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="RemoveSchedule" Content="Remove Selected Schedule" VerticalAlignment="Top" RenderTransformOrigin="0.833,1.091" Height="31" Click="RemoveSchedule_Click" Margin="0,230,0,0" FontWeight="Bold" Background="#FF8ABD78"/>
-            <Button x:Name="AddNewSchedule" Content="Add New Schedule" HorizontalAlignment="Center" Margin="0,181,0,0"  VerticalAlignment="Top" Height="30" Width="183" Click="AddNewSchedule_Click" Background="#FFFAB768" FontWeight="Bold"/>
-            <Button x:Name="ScheduleDetails" Content="Schedule Details" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Height="31" Width="184" Click="ScheduleDetails" FontWeight="Bold" Background="#FFFAB768"/>          
+            <Button x:Name="RemoveSchedule" Content="Remove Selected Schedule" VerticalAlignment="Top" RenderTransformOrigin="0.833,1.091" Height="31" Click="RemoveSchedule_Click" Margin="363,226,130,0" FontWeight="Bold" Background="#FFFFFFFE" Grid.Column="1"/>
+            <Button x:Name="AddNewSchedule" Content="Add New Schedule" HorizontalAlignment="Left" Margin="-4,227,0,0"  VerticalAlignment="Top" Height="30" Width="183" Click="AddNewSchedule_Click" Background="#FF8ABD78" FontWeight="Bold"/>
+            <Button x:Name="ScheduleDetails" Content="Schedule Details" HorizontalAlignment="Left" Margin="76,226,0,0" VerticalAlignment="Top" Height="31" Width="184" Click="ScheduleDetails_Click" FontWeight="Bold" Background="#FFFAB768" Grid.Column="1"/>
+            <ScrollBar Grid.Column="1" HorizontalAlignment="Left" Height="140" Margin="520,27,0,0" VerticalAlignment="Top" Width="20"/>
         </Grid>
     </Grid>
 </Window>

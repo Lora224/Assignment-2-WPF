@@ -105,7 +105,10 @@ namespace Assignment_2_WPF.Views
         }
                
 
-        private void ScheduleDetails(object sender, RoutedEventArgs e)
+        //private void ScheduleDetails(object sender, RoutedEventArgs e)
+        
+
+        private void ScheduleDetails_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.ShowParticularSchedudle();
         }
