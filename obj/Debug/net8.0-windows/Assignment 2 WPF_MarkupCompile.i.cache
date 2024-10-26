@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\lora\source\repos\WPFAppRepo\App.xaml
-11-1930869709
+131939906300
 
-38-326618756
+38-836744809
 227-911760353
-MainWindow.xaml;Views\ActivityView.xaml;Views\AddActivityView.xaml;Views\AddNewPet.xaml;Views\DatabaseManagerView.xaml;Views\detailActivityWindow.xaml;Views\EditActivityView.xaml;Views\LoginView.xaml;Views\PetView.xaml;Views\RegisterView.xaml;Views\ScheduleView.xaml;
+MainWindow.xaml;Views\ActivityView.xaml;Views\AddActivityView.xaml;Views\AddNewPet.xaml;Views\addNewSchedule.xaml;Views\DatabaseManagerView.xaml;Views\detailActivityWindow.xaml;Views\EditActivityView.xaml;Views\editSchedule.xaml;Views\LoginView.xaml;Views\PetView.xaml;Views\RegisterView.xaml;Views\ScheduleView.xaml;
 
-False
+True
 
