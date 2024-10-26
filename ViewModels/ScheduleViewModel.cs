@@ -279,7 +279,7 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        // add new schdeule for the existed pet
+        // add new schedule for the existed pet
         public void AddSchedule(string description, DateTime date)
         {
             using (var context = new AppDbContext())
@@ -303,7 +303,6 @@ namespace Assignment_2_WPF.ViewModels
             }
 
         }              
-    
 
 
         public void RemoveSchedule()

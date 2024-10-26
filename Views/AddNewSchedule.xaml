@@ -24,7 +24,7 @@
         <TextBox x:Name="Description" 
         Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
         HorizontalAlignment="Left" Margin="376,335,0,0" TextWrapping="Wrap" 
-        VerticalAlignment="Top" Width="149" Height="19" TextChanged="Description_TextChanged"/>
+        VerticalAlignment="Top" Width="149" Height="19"/>
 
         <DatePicker x:Name="DateTime" 
             SelectedDate="{Binding DateTime}"
@@ -48,9 +48,7 @@
         <ComboBox x:Name="ScheduleType" 
                   HorizontalAlignment="Left" Margin="376,209,0,0" 
                   VerticalAlignment="Top" Width="149" Height="22"
-                  ItemsSource="{Binding ScheduleTypes}"
-                  DisplayMemberPath="Name"
-                  SelectedValuePath="Id"
+                  ItemsSource="{Binding ScheduleTypes}"                  
                   SelectedValue="{Binding SelectedScheduleType}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

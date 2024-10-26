@@ -282,3 +282,26 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignme.73B60E22.Up2Date
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.genruntimeconfig.cache
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\ref\Assignment 2 WPF.dll
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Assignment 2 WPF.csproj.AssemblyReference.cache
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\PetView.baml
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\ActivityView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\AddActivityView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\AddNewPet.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\AddNewSchedule.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\DatabaseManagerView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\detailActivityWindow.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\EditActivityView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\editSchedule.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\LoginView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\PetView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\RegisterView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\ScheduleView.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Views\showScheduleDetail.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\App.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.cache
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.lref
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Assignment 2 WPF.dll
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\refint\Assignment 2 WPF.dll
+D:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\obj\Debug\net8.0-windows\Assignment 2 WPF.pdb

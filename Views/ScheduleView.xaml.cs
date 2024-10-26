@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Assignment_2_WPF.Models;
 using Assignment_2_WPF.ViewModels;
 
+
 namespace Assignment_2_WPF.Views
 {
     public partial class ScheduleView : Window
@@ -12,6 +13,7 @@ namespace Assignment_2_WPF.Views
         private Schedule selectedSchedule;
         private Pet selectedPet;
         private DateTime selectedDate;
+        private DateTime? _lastSelectedDate;
 
         public ScheduleView()
         {
@@ -101,10 +103,15 @@ namespace Assignment_2_WPF.Views
         {
             _viewModel.RemoveSchedule();
         }
+               
 
-        private void ShowParticularSchedule_Click(object sender, RoutedEventArgs e)
+        private void ScheduleDetails(object sender, RoutedEventArgs e)
         {
-            _viewModel.ShowParticularSchedule();
+            _viewModel.ShowParticularSchedudle();
         }
+    }
+
+    internal class _lastSelectedDate
+    {
     }
 }

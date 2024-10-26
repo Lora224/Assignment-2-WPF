@@ -1,13 +1,16 @@
 ﻿
-FC:\Users\lora\source\repos\WPFAppRepo\App.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\MainWindow.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\ActivityView.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\AddActivityView.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\AddNewPet.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\DatabaseManagerView.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\detailActivityWindow.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\EditActivityView.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\LoginView.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\RegisterView.xaml;;
-FC:\Users\lora\source\repos\WPFAppRepo\Views\ScheduleView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\App.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\MainWindow.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\ActivityView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\AddActivityView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\AddNewPet.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\AddNewSchedule.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\DatabaseManagerView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\detailActivityWindow.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\EditActivityView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\editSchedule.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\LoginView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\RegisterView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\ScheduleView.xaml;;
+FD:\UTS\2024-sem2- .NET\Assignment-2\WPF-2710\Views\showScheduleDetail.xaml;;
 

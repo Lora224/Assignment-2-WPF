@@ -40,7 +40,10 @@ namespace Assignment_2_WPF.Views
             // Debug output to verify schedules are loaded
             System.Diagnostics.Debug.WriteLine($"Schedules count in constructor: {_viewModel.Schedules?.Count ?? 0}");
         }
-        
+
+        public AddNewSchedule()
+        {
+        }
 
         private void SaveButton(object sender, RoutedEventArgs e)
         {
