@@ -1,4 +1,4 @@
-﻿<Window x:Class="Assignment_2_WPF.Views.ScheduleView"
+<Window x:Class="Assignment_2_WPF.Views.ScheduleView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +7,9 @@
         xmlns:vm="clr-namespace:Assignment_2_WPF.ViewModels"
         mc:Ignorable="d"
         Title="Activity Panel" Height="600" Width="900">
+    <Window.Background>
+        <ImageBrush ImageSource="/Views/background.jpg"/>
+    </Window.Background>
 
     <Window.DataContext>
         <vm:ScheduleViewModel/>
@@ -23,22 +26,25 @@
                   FontWeight="Bold" 
                   Margin="0,0,0,20"/>
 
-        <Grid Grid.Row="1">
+        <Grid Margin="20,37,-10,0" Grid.RowSpan="2">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- Calendar -->
-            <Calendar Grid.Column="0" 
+            <Calendar x:Name="Calendar"
                       SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
-                      Margin="0,0,20,0"/>
-
+                      PreviewMouseUp="Calendar_PreviewMouseUp"
+                      IsTodayHighlighted="True" Background="White"/>
             <!-- Schedules List -->
             <DataGrid Grid.Column="1" 
                       ItemsSource="{Binding Schedules}"
                       AutoGenerateColumns="False"
-                      IsReadOnly="True" Margin="0,0,264,330" SelectionChanged="DataGrid_SelectionChanged_1">
+                      IsReadOnly="True" Margin="76,3,130,327" SelectionChanged="DataGrid_SelectionChanged_1" Background="#FF8ABD78" FontWeight="Bold">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Activity" 
                                       Binding="{Binding Name}" 
@@ -48,8 +54,11 @@
                                       Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,188,337,187" Grid.Column="1" SelectionChanged="ListBox_SelectionChanged"/>
-            <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="127,340,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+            <Button x:Name="RemoveSchedule" Content="Remove Selected Schedule" VerticalAlignment="Top" RenderTransformOrigin="0.833,1.091" Height="31" Click="RemoveSchedule_Click" Margin="0,230,0,0" FontWeight="Bold" Background="#FF8ABD78"/>
+            <Button x:Name="AddNewSchedule" Content="Add New Schedule" HorizontalAlignment="Center" Margin="0,181,0,0"  VerticalAlignment="Top" Height="30" Width="183" Click="AddNewSchedule_Click" Background="#FFFAB768" FontWeight="Bold"/>
+            <ProgressBar x:Name="ScheduleProgress" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="198,292,0,0" VerticalAlignment="Top" Width="250" Foreground="#FF5E6C8E" Maximum="20" Value="{Binding ScheduleCount}" Background="#FF8ABD78"/>
+            <Button x:Name="ScheduleDetails" Content="Schedule Details" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Height="31" Width="184" Click="ScheduleDetails" FontWeight="Bold" Background="#FFFAB768"/>
+
         </Grid>
     </Grid>
 </Window>
