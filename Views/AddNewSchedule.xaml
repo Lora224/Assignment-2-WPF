@@ -1,12 +1,59 @@
-﻿<Window x:Class="Assignment_2_WPF.Views.addNewSchedule"
+<Window x:Class="Assignment_2_WPF.Views.AddNewSchedule"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_WPF.Views"
         mc:Ignorable="d"
-        Title="addNewSchedule" Height="450" Width="800">
+        Title="AddNewSchedule" Height="600" Width="800">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Views/background.jpg"/>
+        </Grid.Background>
+        <!-- Add new schedule textbox -->
+        <TextBlock Text="Add New Schedule" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="289,64,289,476"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,148,0,0" TextWrapping="Wrap" Text="Choose pet: " VerticalAlignment="Top" Height="17" Width="71" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,211,0,0" TextWrapping="Wrap" Text="Schedule type:" VerticalAlignment="Top" Height="22" Width="88" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,277,0,0" TextWrapping="Wrap" Text="Date/ Time" VerticalAlignment="Top" Height="18" Width="71" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,336,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="19" Width="71" FontWeight="Bold"/>
+
+
+        <TextBox x:Name="Description" 
+        Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+        HorizontalAlignment="Left" Margin="376,335,0,0" TextWrapping="Wrap" 
+        VerticalAlignment="Top" Width="149" Height="19"/>
+
+        <DatePicker x:Name="DateTime" 
+            SelectedDate="{Binding DateTime}"
+            HorizontalAlignment="Left" Margin="376,273,0,0" 
+            VerticalAlignment="Top" Height="25" Width="149"/>
+
+        <!-- Combo box with items -->
+        <ComboBox x:Name="ShowPetList" 
+                  HorizontalAlignment="Left" Margin="376,146,0,0" 
+                  VerticalAlignment="Top" Width="149" Height="22"
+                  ItemsSource="{Binding Pets}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding SelectedPetId}"/>
+
+        <!-- Combo box with items for schedule type -->
+        <ComboBox x:Name="ScheduleType" 
+                  HorizontalAlignment="Left" Margin="376,209,0,0" 
+                  VerticalAlignment="Top" Width="149" Height="22"
+                  ItemsSource="{Binding ScheduleTypes}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding SelectedScheduleTypeId}"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="289,399,0,0" VerticalAlignment="Top" Width="50" Background="#FFF9B866" FontWeight="Bold" Click="SaveButton"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="465,399,0,0" VerticalAlignment="Top" Width="50" Background="White"/>
+
+
+
+
+
     </Grid>
 </Window>
