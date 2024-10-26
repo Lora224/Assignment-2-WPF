@@ -120,7 +120,7 @@ namespace Assignment_2_WPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ActivityView activityView = new ActivityView(); 
-            activityView.Show();
+            activityView.ShowDialog();
         }
 
 

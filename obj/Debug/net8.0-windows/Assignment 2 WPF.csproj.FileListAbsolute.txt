@@ -280,3 +280,5 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF.
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\ref\Assignment 2 WPF.dll
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\RegisterView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\RegisterView.baml
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.baml
