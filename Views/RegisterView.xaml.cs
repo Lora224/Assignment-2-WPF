@@ -26,7 +26,7 @@ namespace Assignment_2_WPF.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Submit_Button(object sender, RoutedEventArgs e)
         {
             // get input from textbox
             string email = EmailInput.Text;
@@ -54,6 +54,14 @@ namespace Assignment_2_WPF.Views
                 // notice the user
                 System.Windows.Forms.MessageBox.Show("Account created successfully");
             }
+        }
+
+        private void Cancel_Button(object sender, RoutedEventArgs e)
+        {
+            // go back to login view
+            LoginView loginView = new LoginView();
+            loginView.Show();
+            this.Close();
         }
     }
 }

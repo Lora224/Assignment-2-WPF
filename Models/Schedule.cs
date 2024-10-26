@@ -10,25 +10,23 @@ namespace Assignment_2_WPF.Models
     {
         public int petId, scheduleId;
         public string petName, scheduleType, description;
-        public DateTime date, time;
+        public DateTime date;
         public int PetId { get; set; }
         public string PetName { get; set; }
         public int ScheduleId { get; set; }
         public string ScheduleType { get; set; }
         public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
         public string Description { get; set; }
 
         // constructor of class Schedule, with petId and petName from class Pet, scheduleID auto generated
-        public Schedule(int petId, string petName, int scheduleId, string scheduleType, DateTime date, DateTime time, string description)
+        public Schedule(int petId, string petName, int scheduleId, string scheduleType, DateTime date, string description)
         {
             this.petId = petId;
             this.petName = petName;
             Random random = new Random();
             this.scheduleId = random.Next(100000, 999999);
             this.scheduleType = scheduleType;
-            this.date = date;
-            this.time = time;
+            this.date = date;          
             this.description = description;
         }
 
@@ -138,7 +136,6 @@ namespace Assignment_2_WPF.Models
                     Console.WriteLine("Pet Name: " + schedule.PetName);
                     Console.WriteLine("Schedule Type: " + schedule.ScheduleType);
                     Console.WriteLine("Date: " + schedule.Date);
-                    Console.WriteLine("Time: " + schedule.Time);
                     Console.WriteLine("Description: " + schedule.Description);
                     Console.WriteLine();
                 }
@@ -161,7 +158,6 @@ namespace Assignment_2_WPF.Models
                     Console.WriteLine("Pet Name: " + schedule.PetName);
                     Console.WriteLine("Schedule Type: " + schedule.ScheduleType);
                     Console.WriteLine("Date: " + schedule.Date);
-                    Console.WriteLine("Time: " + schedule.Time);
                     Console.WriteLine("Description: " + schedule.Description);
                 }
                 else
@@ -186,11 +182,9 @@ namespace Assignment_2_WPF.Models
                     string scheduleType = Console.ReadLine();
                     Console.WriteLine("Enter the date: "); // choose date from calendar
                     DateTime date = Convert.ToDateTime(Console.ReadLine());
-                    Console.WriteLine("Enter the time: "); // choose time from calendar
-                    DateTime time = Convert.ToDateTime(Console.ReadLine());
                     Console.WriteLine("Enter the description: ");
                     string description = Console.ReadLine();
-                    Schedule schedule = new Schedule(petId, pet.PetName, 0, scheduleType, date, time, description);
+                    Schedule schedule = new Schedule(petId, pet.PetName, 0, scheduleType, date, description);
                     context.Schedules.Add(schedule);
                     context.SaveChanges();
                     Console.WriteLine("Schedule added successfully");
@@ -218,13 +212,10 @@ namespace Assignment_2_WPF.Models
                     string scheduleType = Console.ReadLine();
                     Console.WriteLine("Enter the date: ");
                     DateTime date = Convert.ToDateTime(Console.ReadLine());
-                    Console.WriteLine("Enter the time: ");
-                    DateTime time = Convert.ToDateTime(Console.ReadLine());
                     Console.WriteLine("Enter the description: ");
                     string description = Console.ReadLine();
                     schedule.ScheduleType = scheduleType;
                     schedule.Date = date;
-                    schedule.Time = time;
                     schedule.Description = description;
                     context.SaveChanges();
                     Console.WriteLine("Schedule updated successfully");

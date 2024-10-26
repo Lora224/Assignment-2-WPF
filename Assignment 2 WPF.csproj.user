@@ -16,6 +16,9 @@
     <Compile Update="Views\AddNewPet.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AddNewSchedule.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\DatabaseManagerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddNewPet.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddNewSchedule.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DatabaseManagerView.xaml">
