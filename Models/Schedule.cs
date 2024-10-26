@@ -1,38 +1,64 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace Assignment_2_WPF.Models
 {
+    using Microsoft.VisualBasic.ApplicationServices;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Windows;
     public class Schedule
     {
-        public int petId, scheduleId;
+        public int petId, scheduleId, userID;
         public string petName, scheduleType, description;
-        public DateTime date, time;
-        public int PetId { get; set; }
-        public string PetName { get; set; }
-        public int ScheduleId { get; set; }
-        public string ScheduleType { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
-        public string Description { get; set; }
+        public DateTime date;
 
-        // constructor of class Schedule, with petId and petName from class Pet, scheduleID auto generated
-        public Schedule(int petId, string petName, int scheduleId, string scheduleType, DateTime date, DateTime time, string description)
+        [Key]
+        public int ScheduleId { get; set; }
+
+        public int PetId { get; set; }
+        [ForeignKey("PetId")]
+
+        public int? UserId { get; set; }
+        [ForeignKey("UserId")]
+
+        public string PetName { get; set; }
+        
+        public ScheduleType Type { get; set; }
+        public DateTime Date { get; set; }
+        
+        public string? Description { get; set; }
+
+        public enum ScheduleType
         {
-            this.petId = petId;
-            this.petName = petName;
-            Random random = new Random();
-            this.scheduleId = random.Next(100000, 999999);
-            this.scheduleType = scheduleType;
-            this.date = date;
-            this.time = time;
-            this.description = description;
+            VetCheckIn,
+            Vaccination,
+            Grooming,
+            Other
         }
 
+        public Schedule() 
+        {
+            ScheduleId = new Random().Next(10000, 99999);            
+            Date = DateTime.Today;
+            PetId = -1;
+            UserId = -1;
+            Description = "null";
+        }
 
+        
+        
+
+        
+
+        /*
         public void scheduleCheck()
         {
             Pet pet = new Pet(0, "", "", DateTime.Now, 0);
@@ -256,8 +282,10 @@ namespace Assignment_2_WPF.Models
                     Console.WriteLine("Schedule not found");
                 }
             }
-
         }
+        */
+
+        
     }
 }
 

@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Assignment_2_WPF.Models;
 using Assignment_2_WPF.ViewModels;
 using Assignment_2_WPF.Views;
+using static Assignment_2_WPF.Models.Schedule;
 
 namespace Assignment_2_WPF.Views
 {
@@ -22,42 +23,40 @@ namespace Assignment_2_WPF.Views
     /// </summary>
     public partial class AddNewSchedule : Window
     {
-        public AddNewSchedule()
+        private readonly ScheduleViewModel _viewModel;
+        public AddNewSchedule(ScheduleViewModel viewModel)
         {
             InitializeComponent();
+            if (viewModel == null)
+            {
+                _viewModel = new ScheduleViewModel();
+            }
+            else
+            {
+                _viewModel = viewModel;
+            }
+            // Make sure to set the DataContext
+            DataContext = _viewModel;
+            // Debug output to verify schedules are loaded
+            System.Diagnostics.Debug.WriteLine($"Schedules count in constructor: {_viewModel.Schedules?.Count ?? 0}");
         }
+        
 
-        //method to list all the pet that userID have and show the pet name in the combobox
-        private void ShowPetList(object sender, RoutedEventArgs e)
-        {
-            List<Pet> pets = Pet.GetPetsByUserID(User.CurrentUser.UserID);
-            PetComboBox.ItemsSource = pets;
-            PetComboBox.DisplayMemberPath = "Name";
-            PetComboBox.SelectedValuePath = "PetID";
-        }
-
-        //method to show options in the combobox for schedule type
-        private void ShowScheduleType(object sender, RoutedEventArgs e)
-        {
-            List<string> scheduleTypes = new List<string> { "Vaccination", "Grooming", "Vet Visit" };
-            SelectedScheduleTypeId.ItemsSource = scheduleTypes;
-        }
         private void SaveButton(object sender, RoutedEventArgs e)
         {
-            
-            // petID is the value of the selected item in the combobox
-            int petID = (int)PetComboBox.SelectedValue;
-            string petName = PetComboBox.Text;
-            //scheduleID auto generated
-            int scheduleID = 0;
-            // schedule type is the value of the selected item in the combobox
-            string scheduleType = ScheduleTypeComboBox.Text;
-            DateTime date = DateTime.SelectedDate.Value;
+            // Retrieve description and date from the UI elements
             string description = Description.Text;
-            
-            // notice the user
-            System.Windows.Forms.MessageBox.Show("Schedule created successfully");
-            // close the window
+            DateTime date = DateTime.SelectedDate.Value;
+
+            // Call method addSchedule from ScheduleViewModel with required parameters
+            _viewModel.AddSchedule(description, date);
+            // Close the window
+            this.Close();
+        }
+
+        private void CancelButton(object sender, RoutedEventArgs e)
+        {
+            // Close the window
             this.Close();
         }
     }

@@ -90,10 +90,11 @@ namespace Assignment_2_WPF.Views
             view.ShowDialog();
         }
 
+        // link to AddNewSchedule.xaml
         private void AddNewSchedule_Click(object sender, RoutedEventArgs e)
         {
-            var addScheduleWindow = new AddScheduleView(this.DataContext as ScheduleViewModel);
-            addScheduleWindow.ShowDialog();
+            var addNewScheduleWindow = new AddNewSchedule();
+            addNewScheduleWindow.ShowDialog();
         }
 
         private void RemoveSchedule_Click(object sender, RoutedEventArgs e)

@@ -24,32 +24,42 @@
         <TextBox x:Name="Description" 
         Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
         HorizontalAlignment="Left" Margin="376,335,0,0" TextWrapping="Wrap" 
-        VerticalAlignment="Top" Width="149" Height="19"/>
+        VerticalAlignment="Top" Width="149" Height="19" TextChanged="Description_TextChanged"/>
 
         <DatePicker x:Name="DateTime" 
             SelectedDate="{Binding DateTime}"
             HorizontalAlignment="Left" Margin="376,273,0,0" 
             VerticalAlignment="Top" Height="25" Width="149"/>
 
-        <!-- Combo box with items -->
+        <!-- Combo box with Pet list -->
         <ComboBox x:Name="ShowPetList" 
                   HorizontalAlignment="Left" Margin="376,146,0,0" 
                   VerticalAlignment="Top" Width="149" Height="22"
                   ItemsSource="{Binding Pets}"
-                  DisplayMemberPath="Name"
-                  SelectedValuePath="Id"
-                  SelectedValue="{Binding SelectedPetId}"/>
+                  SelectedItem="{Binding SelectedPet}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding PetName}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
-        <!-- Combo box with items for schedule type -->
+        <!-- Combo box with schedule type -->
         <ComboBox x:Name="ScheduleType" 
                   HorizontalAlignment="Left" Margin="376,209,0,0" 
                   VerticalAlignment="Top" Width="149" Height="22"
                   ItemsSource="{Binding ScheduleTypes}"
                   DisplayMemberPath="Name"
                   SelectedValuePath="Id"
-                  SelectedValue="{Binding SelectedScheduleTypeId}"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="289,399,0,0" VerticalAlignment="Top" Width="50" Background="#FFF9B866" FontWeight="Bold" Click="SaveButton"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="465,399,0,0" VerticalAlignment="Top" Width="50" Background="White"/>
+                  SelectedValue="{Binding SelectedScheduleType}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="Save" HorizontalAlignment="Center" Margin="0,399,0,0" VerticalAlignment="Top" Width="50" Background="#FFF9B866" FontWeight="Bold" Click="SaveButton"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="475,399,0,0" VerticalAlignment="Top" Width="50" Background="White"/>
 
 
 

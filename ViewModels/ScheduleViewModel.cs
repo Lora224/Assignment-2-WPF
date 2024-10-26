@@ -1,20 +1,25 @@
-using Assignment_2_WPF.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Debug = System.Diagnostics.Debug;
+using System.Net.WebSockets;
+using System.Windows.Input;
+using Assignment_2_WPF.Models;
+using System.Drawing.Drawing2D;
+using System.Drawing;
+using Microsoft.EntityFrameworkCore;
+using static Assignment_2_WPF.Models.Schedule;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Assignment_2_WPF.Ultilities;
+using static Assignment_2_WPF.Models.Schedule;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Windows;
+using MessageBox = System.Windows.Forms.MessageBox;
+
 
 namespace Assignment_2_WPF.ViewModels
 {
-
-    
-    public class ScheduleViewModel:ViewModelBase
+    public class ScheduleViewModel : ViewModelBase
     {
         private readonly AppDbContext _context;
         private DateTime _selectedDate;
@@ -25,6 +30,54 @@ namespace Assignment_2_WPF.ViewModels
         private ObservableCollection<Pet> _pets;
         private string _name;
         private string _description;
+        public DateTime ScheduleDate;
+        private ScheduleType _selectedScheduleType;
+
+        public Array ScheduleTypes => Enum.GetValues(typeof(ScheduleType));
+
+        public ScheduleViewModel()
+        {
+            _context = new AppDbContext();
+            Schedules = new ObservableCollection<Schedule>(_context.Schedules.ToList());
+            _currentUserId = GetCurrentUserId();
+            if (SelectedDate == null)
+            {
+                ScheduleDate = DateTime.Today;
+            }
+            else
+            {
+                ScheduleDate = SelectedDate;
+            }
+            foreach (var schedule in _context.Schedules)
+            {
+                Debug.WriteLine(schedule);
+            }
+            foreach (var pet in _context.Pets)
+            {
+                Debug.WriteLine(pet);
+            }
+            // Ensure database schema is up-to-date
+            using (var context = new AppDbContext())
+            {
+                context.CheckTableSchemas();
+            }
+
+            LoadPets();
+            LoadSchedules();
+            CheckDatabaseConstraints();
+
+        }
+
+        public ScheduleType SelectedScheduleType
+        {
+            get => _selectedScheduleType;
+            set
+            {
+                _selectedScheduleType = value;
+                OnPropertyChanged(nameof(SelectedScheduleType));
+            }
+        }
+
         public Schedule SelectedSchedule
         {
             get => _selectedSchedule;
@@ -52,6 +105,7 @@ namespace Assignment_2_WPF.ViewModels
                 OnPropertyChanged(nameof(Schedules));
             }
         }
+
         public string Name
         {
             get => _name;
@@ -88,6 +142,7 @@ namespace Assignment_2_WPF.ViewModels
                 OnPropertyChanged(nameof(SelectedPet));
             }
         }
+
         private void CheckDatabaseConstraints()
         {
             using (var connection = _context.Database.GetDbConnection())
@@ -203,40 +258,81 @@ namespace Assignment_2_WPF.ViewModels
 
         }
 
-        public ScheduleViewModel()
+        public void ShowAllSchedules()
         {
-            _context = new AppDbContext();
-            Schedules = new ObservableCollection<Schedule>(_context.Schedules.ToList());
-            _currentUserId = GetCurrentUserId();
-            foreach (var activity in _context.Schedules)
-            {
-                Debug.WriteLine(activity);
-            }
-            foreach (var pet in _context.Pets)
-            {
-                Debug.WriteLine(pet);
-            }
-            // Ensure database schema is up-to-date
             using (var context = new AppDbContext())
             {
-                context.CheckTableSchemas();
+                var _schedules = context.Schedules.ToList();
+
+                if (_schedules.Count == 0)
+                {
+                    MessageBox.Show("No Schedule, please add one.");
+                    Schedules = new ObservableCollection<Schedule>();
+                }
+                else
+                {
+                    var schedules = context.Schedules
+                        .Where(a => a.UserId == _currentUserId)
+                        .ToList();
+                    Schedules = new ObservableCollection<Schedule>(schedules);
+                }
+            }
+        }
+
+        // add new schdeule for the existed pet
+        public void AddSchedule(string description, DateTime date)
+        {
+            using (var context = new AppDbContext())
+            {
+                // Verify existing schedules for the pet
+                var existingSchedules = context.Schedules
+                    .Where(a => a.PetId == SelectedPet.Id)
+                    .ToList();
+                var newSchedule = new Schedule
+                {
+                    Description = description,
+                    Date = date,
+                    PetId = SelectedPet.Id,
+                    PetName = SelectedPet.PetName,
+                    UserId = _currentUserId,  // get this from logged-in user
+                    Type = SelectedScheduleType,
+                };
+                context.Schedules.Add(newSchedule);
+                context.SaveChanges();
+                LoadSchedules();
             }
 
-            LoadPets();
-            LoadSchedules();
-            CheckDatabaseConstraints();
+        }              
+    
 
-        }
-        /*
-        public void AddSchedule(int petId, string petName, int scheduleId, string scheduleType, DateTime date, string description)
+
+        public void RemoveSchedule()
         {
-            Schedule schedule = new Schedule(petId, petName, scheduleId, scheduleType, date, description);
-            _context.Schedules.Add(schedule);
-            _context.SaveChanges();
-            Schedules.Add(schedule);
+            try
+            {
+                _context.Schedules.Remove(_selectedSchedule);
+                _context.SaveChanges();
+                LoadSchedules();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"You must choose a schedule to remove: {ex.Message}", "Error");
+            }
         }
 
-        */
+        public void ShowParticularSchedudle()
+        {
+            if (_selectedSchedule == null)
+            {
+                System.Windows.MessageBox.Show("Please select a schedule to show", "Error");
+                return;
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Schedule: {_selectedSchedule.Type}\nDate: {_selectedSchedule.Date}\nPet: {_selectedSchedule.PetName}\nDescription: {_selectedSchedule.Description}","Schedule Details");
+            }
+
+        }
 
     }
 }
