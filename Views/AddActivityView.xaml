@@ -5,26 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_WPF.Views"
         mc:Ignorable="d"
-        Title="AddActivityView" Height="450" Width="800">
+        Title="AddActivityView" Height="600" Width="800">
     <Grid>
-        <Grid Background="#FFD6CFCB">
-            <TextBlock HorizontalAlignment="Left" Margin="205,93,0,0" TextWrapping="Wrap" Text="Activity Name:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.717" Height="30" Width="191" FontSize="16" FontFamily="Corbel Light"/>
-            <TextBlock HorizontalAlignment="Left" Margin="202,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.83" Text="Date:" Height="30" Width="68" FontSize="16" FontFamily="Corbel Light"/>
-            <TextBlock HorizontalAlignment="Left" Margin="202,239,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="29" Width="157" FontSize="16" FontFamily="Corbel Light"/>
-
-            <DatePicker x:Name="DateSelect"
-            SelectedDate="{Binding SelectedDate}"
-            SelectedDateFormat="Short"
-            HorizontalAlignment="Left"
-            Margin="396,161,0,0"
-            VerticalAlignment="Top"
-            Height="38"
-            Width="165"/>
-            <TextBlock HorizontalAlignment="Left" Margin="205,316,0,0" TextWrapping="Wrap" Text="Pet:" VerticalAlignment="Top" RenderTransformOrigin="0.43,0.516" Height="31" Width="48" FontSize="16" FontFamily="Corbel Light"/>
+        <Grid x:Name="MainGrid" Background="#FFD6CFCB">
+            <!-- Basic Fields -->
+            <TextBlock HorizontalAlignment="Left" Margin="201,93,0,0" TextWrapping="Wrap" Text="Activity Name:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.717" Height="30" Width="191" FontSize="16" FontFamily="Corbel Light"/>
             <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="396,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="396,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="202,141,0,0" TextWrapping="Wrap" Text="Type:" VerticalAlignment="Top" FontFamily="Corbel Light" Height="25" Width="48" FontSize="16"/>
+            <ComboBox x:Name="ActivityTypeCombo" 
+                     HorizontalAlignment="Left" 
+                     Margin="396,144,0,0" 
+                     VerticalAlignment="Top" 
+                     Width="165"
+                     ItemsSource="{Binding ActivityTypes}"
+                     SelectedItem="{Binding SelectedActivityType}"
+                     SelectionChanged="ActivityType_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <!-- Dynamic Playing -->
+            <StackPanel x:Name="PlayingFields" Margin="131,392,176,42" Visibility="Collapsed">
+                <TextBlock 
+                   TextWrapping="Wrap" Text="Duration (minutes):" 
+                   Height="30" Width="156" 
+                   FontSize="16" FontFamily="Corbel Light"/>
+                <TextBox x:Name="Duration" 
+                 TextWrapping="Wrap" 
+                 Width="165" Height="24" 
+                 Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock 
+                   TextWrapping="Wrap" Text="Activity Level:" 
+                   Height="30" Width="157" 
+                   FontSize="16" FontFamily="Corbel Light"/>
+                <ComboBox x:Name="ActivityLevelCombo"
+                  Width="165"
+                  ItemsSource="{Binding ActivityLevels}"
+                  SelectedItem="{Binding SelectedActivityLevel}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+
+            <!-- Common Fields -->
+            <TextBlock HorizontalAlignment="Left" Margin="201,192,0,0" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" Height="30" Width="68" FontSize="16" FontFamily="Corbel Light"/>
+            <DatePicker x:Name="DateSelect"
+                       SelectedDate="{Binding SelectedDate}"
+                       SelectedDateFormat="Short"
+                       HorizontalAlignment="Left"
+                       Margin="400,207,0,0"
+                       VerticalAlignment="Top"
+                       Height="38"
+                       Width="165"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="201,263,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="29" Width="157" FontSize="16" FontFamily="Corbel Light"/>
+            <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="396,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="202,323,0,0" TextWrapping="Wrap" Text="Pet:" VerticalAlignment="Top" RenderTransformOrigin="0.43,0.516" Height="31" Width="48" FontSize="16" FontFamily="Corbel Light"/>
+            <ComboBox x:Name="PetsList" 
+                     Margin="396,323,0,0" 
+                     VerticalAlignment="Top" 
+                     Width="165" 
+                     Height="22"
+                     ItemsSource="{Binding Pets}"
+                     SelectedItem="{Binding SelectedPet}"
+                     HorizontalAlignment="Left">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding PetName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
             <TextBlock HorizontalAlignment="Left" Margin="292,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="194" FontWeight="Bold" FontSize="20" FontFamily="Ink Free" Foreground="#FF706677"><Run Text="Adding New Activity"/><LineBreak/><Run/></TextBlock>
-            <Button x:Name="AddActivity" Content="Submit" HorizontalAlignment="Left" Margin="292,377,0,0" VerticalAlignment="Top" Height="47" RenderTransformOrigin="0.5,0.5" Width="201" Opacity="0.8" Background="#FFA6808C" Click="AddActivity_Click">
+            <Button x:Name="AddActivity" 
+                    Content="Submit" 
+                    HorizontalAlignment="Left" 
+                    Margin="514,27,0,0" 
+                    VerticalAlignment="Top" 
+                    Height="32" 
+                    Width="90" 
+                    Opacity="0.8" 
+                    Background="#FFA6808C" 
+                    Click="AddActivity_Click">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1"/>
@@ -34,19 +106,22 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <ComboBox x:Name="PetsList" 
-          HorizontalAlignment="Left" 
-          Margin="396,310,0,0" 
-          VerticalAlignment="Top" 
-          Width="165" 
-          Height="22"
-          ItemsSource="{Binding Pets}"
-          SelectedItem="{Binding SelectedPet}"
-          DisplayMemberPath="PetName"/>
-
-
-            <TextBlock HorizontalAlignment="Left" Margin="209,128,0,0" TextWrapping="Wrap" Text="Type:" VerticalAlignment="Top"/>
-            <ComboBox Margin="396,128,266,277"/>
+            <!-- Dynamic Walking -->
+            <StackPanel x:Name="WalkingFields" Margin="168,392,210,42" Visibility="Collapsed">
+                <TextBlock x:Name="Duration1" 
+                   TextWrapping="Wrap" Text="Duration (minutes):" 
+                   FontSize="16" FontFamily="Corbel Light" Height="30" Width="156" RenderTransformOrigin="0.513,0.368"/>
+                <TextBox x:Name="Distance" 
+                 TextWrapping="Wrap" 
+                 Width="166" Height="24" 
+                 Text="{Binding Distance, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock x:Name="Distance1" 
+                   TextWrapping="Wrap" Text="Distance (meters):" 
+                   FontSize="16" FontFamily="Corbel Light" Height="30" Width="158"/>
+                <TextBox x:Name="WalkDuration" 
+                 TextWrapping="Wrap" 
+                 Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Height="24" Width="166"/>
+            </StackPanel>
 
         </Grid>
     </Grid>

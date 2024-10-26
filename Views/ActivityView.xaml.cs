@@ -17,7 +17,7 @@ namespace Assignment_2_WPF.Views
             selectedDate = DateTime.Today;
             InitializeComponent();
             _viewModel = DataContext as ActivityViewModel;
-            _viewModel.LoadActivities();
+           // _viewModel.LoadActivities();
             
             // If DataContext isn't set in XAML, set it here
             if (_viewModel == null)
@@ -36,6 +36,7 @@ namespace Assignment_2_WPF.Views
             if (selectedActivity != null)
             { 
                 _viewModel.SelectedActivity = selectedActivity;
+                
             }
         }
 

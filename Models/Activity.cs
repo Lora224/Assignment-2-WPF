@@ -10,7 +10,7 @@ namespace Assignment_2_WPF.Models
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    using System.Windows;
 
     public class Activity
     {
@@ -26,21 +26,37 @@ namespace Assignment_2_WPF.Models
 
         [ForeignKey("PetId")]
 
-        public virtual Pet? Pet { get; set; }
-
-        public int UserId { get; set; }
+        public int? Duration { get; set; }
+        public int? Distance { get; set; }
+        public ActivityLevel? Level { get; set; }
+        public string PetName { get; set; }
+        public int? UserId { get; set; }
         [ForeignKey("UserId")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
+        public ActivityType Type { get; set; }
 
-        public Activity(int id, string name, DateTime date, int petId, Pet? pet, string description,int userId)
+ 
+        public enum ActivityLevel { 
+            Low,
+            Medium,
+            High
+        }
+        public enum ActivityType { 
+            Feeding,
+            Playing,
+            Walking,
+            Other
+        }
+
+        public Activity(int id, string name, DateTime date, int petId, string description,ActivityType type, int userId)
         {
             Id = new Random().Next(10000, 99999);
             Name = name;
             Date = date;
             PetId = petId;
             UserId = userId;
-            Pet = pet;
             Description = description;
+            Type = type;
            
         }
         public Activity() {
@@ -49,7 +65,6 @@ namespace Assignment_2_WPF.Models
             Date = DateTime.Today;
             PetId = -1;
             UserId = -1;
-            Pet = null;
             Description = "null";       
         }  
         

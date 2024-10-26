@@ -45,6 +45,7 @@ namespace Assignment_2_WPF
             InitializeComponent();
             _dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PetApp.db");
             InitializeDatabase();
+
         }
 
         private void InitializeDatabase()
@@ -53,26 +54,6 @@ namespace Assignment_2_WPF
 
             {
 
-                // Close any existing database connections
-                using (var context = new AppDbContext())
-                {
-                   // context.Database.CloseConnection();
-                    context.Database.EnsureDeleted();
-                }
-
-                // Try to delete existing database file if it exists
-                if (File.Exists(_dbPath))
-                {
-                    try
-                    {
-                        File.Delete(_dbPath);
-                        System.Diagnostics.Debug.WriteLine("Existing database deleted");
-                    }
-                    catch (IOException)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Could not delete existing database - will try to use it");
-                    }
-                }
 
                 // Initialize database and add test data
                 using (var context = new AppDbContext())
@@ -107,6 +88,7 @@ namespace Assignment_2_WPF
                             Name = "Morning Walk",
                             Date = DateTime.Today,
                             PetId = pet.Id,
+                            PetName = pet.PetName,
                             UserId = user.Id,
                             Description = "30 minute walk"
                         };

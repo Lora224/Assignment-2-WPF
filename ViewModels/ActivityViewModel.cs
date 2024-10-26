@@ -8,6 +8,7 @@ using Assignment_2_WPF.Models;
 using System.Drawing.Drawing2D;
 using System.Drawing;
 using Microsoft.EntityFrameworkCore;
+using static Assignment_2_WPF.Models.Activity;
 
 
 namespace Assignment_2_WPF.ViewModels
@@ -33,12 +34,24 @@ namespace Assignment_2_WPF.ViewModels
         private ObservableCollection<Pet> _pets;
         private string _name;
         private string _description;
+        private ActivityType _selectedActivityType;
+        private int _duration;
+        private int _distance;
+        private ActivityLevel _selectedActivityLevel;
+        private int _activityCount;
+        public Array ActivityTypes => Enum.GetValues(typeof(ActivityType));
+        public Array ActivityLevels => Enum.GetValues(typeof(ActivityLevel));
+
+
 
         public ActivityViewModel()
         {
             _context = new AppDbContext();
             SelectedDate = DateTime.Today;
             _currentUserId = GetCurrentUserId();
+            SelectedActivityType = ActivityType.Other;
+           ActivityCount = Activities.Count;
+
             foreach (var activity in _context.Activities)
             {
                 Debug.WriteLine(activity);
@@ -57,7 +70,44 @@ namespace Assignment_2_WPF.ViewModels
             LoadActivities();
             CheckDatabaseConstraints();
         }
+        public ActivityType SelectedActivityType
+        {
+            get => _selectedActivityType;
+            set
+            {
+                _selectedActivityType = value;
+                OnPropertyChanged(nameof(SelectedActivityType));
+            }
+        }
+        public int Duration
+        {
+            get => _duration;
+            set
+            {
+                _duration = value;
+                OnPropertyChanged(nameof(Duration));
+            }
+        }
 
+        public int Distance
+        {
+            get => _distance;
+            set
+            {
+                _distance = value;
+                OnPropertyChanged(nameof(Distance));
+            }
+        }
+
+        public ActivityLevel SelectedActivityLevel
+        {
+            get => _selectedActivityLevel;
+            set
+            {
+                _selectedActivityLevel = value;
+                OnPropertyChanged(nameof(SelectedActivityLevel));
+            }
+        }
         public string Name
         {
             get => _name;
@@ -104,7 +154,6 @@ namespace Assignment_2_WPF.ViewModels
             {
                 _selectedPet = value;
                 OnPropertyChanged(nameof(SelectedPet));
-                LoadActivities(_selectedPet);
             }
         }
         public ObservableCollection<Activity> Activities
@@ -113,7 +162,17 @@ namespace Assignment_2_WPF.ViewModels
             private set
             {
                 _activities = value;
+                ActivityCount = _activities.Count;
                 OnPropertyChanged(nameof(Activities));
+            }
+        }
+        public int ActivityCount
+        {
+            get => _activityCount;
+            set
+            {
+                _activityCount = value;
+                OnPropertyChanged(nameof(ActivityCount));
             }
         }
         public ObservableCollection<Pet> Pets
@@ -125,6 +184,7 @@ namespace Assignment_2_WPF.ViewModels
                 OnPropertyChanged(nameof(Pets));
             }
         }
+
         private void CheckDatabaseConstraints()
         {
             using (var connection = _context.Database.GetDbConnection())
@@ -149,6 +209,7 @@ namespace Assignment_2_WPF.ViewModels
                 }
             }
         }
+
         private int GetCurrentUserId()
         {
             try
@@ -189,20 +250,42 @@ namespace Assignment_2_WPF.ViewModels
 
                 using (var context = new AppDbContext())
                 {
-                   
-                    // Create new pet with user input
+                    // Verify existing activities
+                    var existingActivities = context.Activities
+                        .Where(a => a.PetId == SelectedPet.Id)
+                        .ToList();
+
+                    System.Diagnostics.Debug.WriteLine($"Found {existingActivities.Count} existing activities for pet {SelectedPet.Id}");
+
                     var newActivity = new Activity
                     {
                         Name = activityName,
                         Description = description,
                         Date = SelectedDate,
                         PetId = SelectedPet.Id,
-                        Pet = _selectedPet,
-                        UserId = _currentUserId  // get this from logged-in user
-                    };
-                    System.Diagnostics.Debug.WriteLine($"Adding new activity: {newActivity.Id},{newActivity.Name}, {newActivity.Date},{newActivity.PetId},{newActivity.UserId}");
+                        PetName = SelectedPet.PetName,
+                        UserId = _currentUserId,  // get this from logged-in user
+                        Type = SelectedActivityType,
+                        Duration = Duration,
+                        Distance = Distance,
+                        Level = SelectedActivityLevel
+                    }; 
                     context.Activities.Add(newActivity);
+
+                    // Verify before saving
+                    var entry = context.Entry(newActivity);
+                    System.Diagnostics.Debug.WriteLine($"Entity State: {entry.State}");
+                    System.Diagnostics.Debug.WriteLine($"PetId: {newActivity.PetId}");
+                    System.Diagnostics.Debug.WriteLine($"ActivityID: {newActivity.Id}");
+                    System.Diagnostics.Debug.WriteLine($"PetId Property: {entry.Property("PetId").CurrentValue}");
+
                     context.SaveChanges();
+  
+                    // Verify after saving
+                    var savedActivity = context.Activities
+                        .FirstOrDefault(a => a.Id == newActivity.Id);
+                    System.Diagnostics.Debug.WriteLine($"Saved activity ID: {savedActivity?.Id}");
+                  
 
                     // Add to observable collection
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
@@ -242,30 +325,30 @@ namespace Assignment_2_WPF.ViewModels
                 System.Windows.MessageBox.Show($"You must choose an activity to remove: {ex.Message}", "Error");
             }
         }
-        public void LoadActivities(Pet pet)
-        {
+ //       public void LoadActivities(Pet pet)
+ //       {
            
-            using (var context = new AppDbContext())
-            {
-                context.Database.EnsureCreated();
-                var _activities = context.Activities.ToList();
-                if (_activities.Count == 0)
-                {
-                    //if no activity show "No Activity"
-                    Activities = new ObservableCollection<Activity>();
+ //           using (var context = new AppDbContext())
+ //           {
+ //               context.Database.EnsureCreated();
+ //              var _activities = context.Activities.ToList();
+//                if (_activities.Count == 0)
+//                {
+//                    //if no activity show "No Activity"
+//                    Activities = new ObservableCollection<Activity>();
 
-                }
-                else
-                {
-                    var activities = _context.Activities
-        .Where(a => a.Date == SelectedDate.Date&& a.Pet==SelectedPet)   //filter pet
-        .ToList();
-                    Activities = new ObservableCollection<Activity>(activities);
-                }
-            }
+//                }
+//                else
+//                {
+ //                   var activities = _context.Activities
+ //       .Where(a => a.Date == SelectedDate.Date&& a.PetId==SelectedPet.Id)   //filter pet
+ //       .ToList();
+ //                   Activities = new ObservableCollection<Activity>(activities);
+ //               }
+ //           }
 
           
-        }
+//        }
         public void LoadPets()
         {
             try
@@ -286,6 +369,7 @@ namespace Assignment_2_WPF.ViewModels
                     foreach (var pet in userPets)
                     {
                         Pets.Add(pet);
+                        SelectedPet = Pets[0];
                         System.Diagnostics.Debug.WriteLine($"Added pet: {pet.PetName} (ID: {pet.Id})"); //debug
                     }
 
@@ -299,7 +383,7 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        public void LoadActivities()  //overload
+        public void LoadActivities()  
         {
 
             using (var context = new AppDbContext())
@@ -311,6 +395,7 @@ namespace Assignment_2_WPF.ViewModels
                     //if no activity show "No Activity"
                     MessageBox.Show("No Activity, please add one.");
                     Activities = new ObservableCollection<Activity>();
+                   
 
                 }
                 else
@@ -319,7 +404,7 @@ namespace Assignment_2_WPF.ViewModels
         .Where(a => a.Date == SelectedDate.Date )   
         .ToList();
                     Activities = new ObservableCollection<Activity>(activities);
-
+                    ActivityCount = Activities.Count;
                 }
             }
 
