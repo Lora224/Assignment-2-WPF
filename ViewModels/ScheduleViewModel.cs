@@ -31,17 +31,18 @@ namespace Assignment_2_WPF.ViewModels
         private ObservableCollection<Pet> _pets;
         private string _name;
         private string _description;
-        public DateTime ScheduleDate;
+        private DateTime _scheduleDate;
         private ScheduleType _selectedScheduleType;
 
         public Array ScheduleTypes => Enum.GetValues(typeof(ScheduleType));
 
-        public ScheduleViewModel()
+        public ScheduleViewModel(int UserId)
         {
             _context = new AppDbContext();
             Schedules = new ObservableCollection<Schedule>(_context.Schedules.ToList());
-            _currentUserId = GetCurrentUserId();
+            _currentUserId = UserId;
             SelectedScheduleType = ScheduleType.Other;
+            SelectedDate = DateTime.Today;
             if (SelectedDate == null)
             {
                 ScheduleDate = DateTime.Today;
@@ -80,6 +81,15 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
+        public DateTime ScheduleDate
+        {
+            get => _scheduleDate;
+            set
+            {
+                _scheduleDate = value;
+                OnPropertyChanged(nameof(ScheduleDate));
+            }
+        }
         public Schedule SelectedSchedule
         {
             get => _selectedSchedule;
@@ -96,6 +106,7 @@ namespace Assignment_2_WPF.ViewModels
             {
                 _selectedDate = value;
                 OnPropertyChanged(nameof(SelectedDate));
+                LoadSchedules();
             }
         }
         public ObservableCollection<Schedule> Schedules
@@ -170,37 +181,7 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        private int GetCurrentUserId()
-        {
-            try
-            {
-                using (var context = new AppDbContext())
-                {
-                    // Get the first user (or you could modify this to get the logged-in user)
-                    var user = context.Users.FirstOrDefault();
-                    if (user != null)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Found user: {user.Name} with ID: {user.Id}");
-                        return user.Id;
-                    }
-                    else
-                    {
-                        // If no user exists, create one
-                        var newUser = new User("Default User", "default@test.com", "password");
-                        context.Users.Add(newUser);
-                        context.SaveChanges();
-                        System.Diagnostics.Debug.WriteLine($"Created new user with ID: {newUser.Id}");
-                        return newUser.Id;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error getting user ID: {ex.Message}");
-                System.Windows.MessageBox.Show("Error getting user information. Please try again.");
-                return -1; // Return invalid ID to indicate error
-            }
-        }
+
 
         public void LoadPets()
         {
@@ -240,7 +221,10 @@ namespace Assignment_2_WPF.ViewModels
             using (var context = new AppDbContext())
             {
                 context.Database.EnsureCreated();
-                var _schedules = context.Schedules.ToList();
+                    var _schedules = context.Schedules
+                        .Where(a => a.UserId==_currentUserId)
+                        .ToList();
+
                 if (_schedules.Count == 0)
                 {
                     //if no schedule"
@@ -250,11 +234,10 @@ namespace Assignment_2_WPF.ViewModels
                 }
                 else
                 {
-                    var schedules = _context.Schedules
-                        .Where(a => a.Date == SelectedDate.Date)
-                        .ToList();
-                    Schedules = new ObservableCollection<Schedule>(schedules);
-
+                    var _schedules1 = context.Schedules
+                         .Where(a => a.Date == SelectedDate.Date && a.UserId == _currentUserId)
+                         .ToList();
+                    Schedules = new ObservableCollection<Schedule>(_schedules1);
                 }
             }
 
@@ -301,18 +284,24 @@ namespace Assignment_2_WPF.ViewModels
                 };
                 context.Schedules.Add(newSchedule);
                 context.SaveChanges();
-                LoadSchedules();
                 // verify after saving
                 var newSchedules = context.Schedules
                     .Where(a => a.PetId == SelectedPet.Id)
                     .ToList();
                 System.Diagnostics.Debug.WriteLine($"Added new schedule for pet {SelectedPet.PetName} (ID: {SelectedPet.Id})");
-                foreach (var schedule in newSchedules) { System.Diagnostics.Debug.WriteLine(schedule); }
+                System.Diagnostics.Debug.WriteLine($"PetId: {newSchedule.PetId}");
+                System.Diagnostics.Debug.WriteLine($"UserID: {newSchedule.UserId}");
+
+                // Verify after saving
+                var savedSchedule = context.Schedules
+                    .FirstOrDefault(a => a.ScheduleId == newSchedule.ScheduleId);
+                System.Diagnostics.Debug.WriteLine($"Saved Schedule ID: {savedSchedule?.ScheduleId}");
+
 
                 // add to the list of schedules
-                Schedules.Add(newSchedule);
+                //Schedules.Add(newSchedule);
                 // Create new ObservableCollection
-                Schedules = new ObservableCollection<Schedule>(Schedules);
+                //Schedules = new ObservableCollection<Schedule>(Schedules);
                 // notify user
                 MessageBox.Show("New schedule added successfully.");
             }
@@ -321,15 +310,35 @@ namespace Assignment_2_WPF.ViewModels
 
         public void RemoveSchedule()
         {
+
             try
             {
-                _context.Schedules.Remove(_selectedSchedule);
-                _context.SaveChanges();
-                LoadSchedules();
+                if (_selectedSchedule == null)
+                {
+                    System.Windows.MessageBox.Show("Please select a schedule to remove", "Error");
+                    return;
+                }
+                using (var context = new AppDbContext()) // Use a new context instance
+                {
+                    // Find the schedule in the database using its ID
+                    var scheduleToRemove = context.Schedules.Find(_selectedSchedule.ScheduleId);
+
+                    if (scheduleToRemove != null)
+                    {
+                        context.Schedules.Remove(scheduleToRemove);
+                        context.SaveChanges();
+                        LoadSchedules(); // Refresh the list
+                        System.Windows.MessageBox.Show("Schedule removed successfully", "Success");
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Schedule not found", "Error");
+                    }
+                }
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show($"You must choose a schedule to remove: {ex.Message}", "Error");
+                System.Windows.MessageBox.Show($"Error removing: {ex.Message}", "Error");
             }
         }
 

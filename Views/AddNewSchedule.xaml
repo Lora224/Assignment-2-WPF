@@ -27,7 +27,7 @@
         VerticalAlignment="Top" Width="149" Height="19"/>
 
         <DatePicker x:Name="DateTime" 
-            SelectedDate="{Binding DateTime}"
+            SelectedDate="{Binding ScheduleDate}"
             HorizontalAlignment="Left" Margin="376,273,0,0" 
             VerticalAlignment="Top" Height="25" Width="149"/>
 

@@ -11,10 +11,6 @@
         <ImageBrush ImageSource="/Views/cat-dog.png" Stretch="Fill"/>
     </Window.Background>
 
-    <Window.DataContext>
-        <vm:ScheduleViewModel/>
-    </Window.DataContext>
-
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

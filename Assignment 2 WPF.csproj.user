@@ -40,9 +40,6 @@
     <Compile Update="Views\ScheduleView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\showScheduleDetail.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -79,9 +76,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ScheduleView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\showScheduleDetail.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

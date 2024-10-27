@@ -27,14 +27,8 @@ namespace Assignment_2_WPF.Views
         public AddNewSchedule(ScheduleViewModel viewModel)
         {
             InitializeComponent();
-            if (viewModel == null)
-            {
-                _viewModel = new ScheduleViewModel();
-            }
-            else
-            {
-                _viewModel = viewModel;
-            }
+            _viewModel = viewModel;
+
             // Make sure to set the DataContext
             DataContext = _viewModel;
             // Debug output to verify schedules are loaded
@@ -47,14 +41,38 @@ namespace Assignment_2_WPF.Views
 
         private void SaveButton(object sender, RoutedEventArgs e)
         {
-            // Retrieve description and date from the UI elements
-            string description = Description.Text;
+
+            try {
+                // Validate inputs
+                if (string.IsNullOrWhiteSpace(Description.Text))
+                {
+                    System.Windows.MessageBox.Show("Please enter an activity name");
+                    return;
+                }
+
+                if (_viewModel.SelectedPet == null)
+                {
+                    System.Windows.MessageBox.Show("Please select a pet");
+                    return;
+                }
+                if (DateTime.SelectedDate.Value == null)
+                {
+                    System.Windows.MessageBox.Show("Please select a date");
+                    return;
+                }
+                // Retrieve description and date from the UI elements
+                string description = Description.Text;
             DateTime date = DateTime.SelectedDate.Value;
 
             // Call method addSchedule from ScheduleViewModel with required parameters
             _viewModel.AddSchedule(description, date);
             // Close the window
             this.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Error adding schedule: {ex.Message}", "Error");
+            }
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)

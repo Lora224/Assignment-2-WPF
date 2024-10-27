@@ -118,12 +118,14 @@ namespace Assignment_2_WPF
             PetView petView = new PetView(UserId);
             // Show the PetView window, can do petView.ShowDialog(); also Opens as a modal dialog that will block MainWindow until it's closed
             petView.Show();
+            this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ActivityView activityView = new ActivityView(UserId); 
-            activityView.ShowDialog();
+            activityView.Show();
+            this.Close();
         }
 
 
@@ -137,8 +139,9 @@ namespace Assignment_2_WPF
 
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            ScheduleView scheduleView = new ScheduleView(); //to be done
+            ScheduleView scheduleView = new ScheduleView(UserId); //to be done
             scheduleView.Show();
+            this.Close();
         }
     }
 }

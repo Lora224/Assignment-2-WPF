@@ -68,17 +68,17 @@
                         Content="Pet Management" 
                         Click="PetButton_Click"/>
 
+                <Button x:Name="ActivityButton" 
+                        Content="Activities" 
+                        Click="Button_Click"/>
+                
                 <Button x:Name="ScheduleButton" 
                         Content="Schedule" 
                         Click="ScheduleButton_Click"/>
 
-                <Button x:Name="ActivityButton" 
-                        Content="Activities" 
-                        Click="Button_Click"/>
-
                 <Button x:Name="LogOut" 
                         Content="Log Out" 
-                        Click="LogOutButton_Click"/>
+                        Click="LogOutButton_Click" Background="#FFFF8F76"/>
             </StackPanel>
         </Border>
         <Border BorderThickness="1" HorizontalAlignment="Center" Height="394" VerticalAlignment="Center" Width="760"/>

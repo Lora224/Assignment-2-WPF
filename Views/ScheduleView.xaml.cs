@@ -14,18 +14,19 @@ namespace Assignment_2_WPF.Views
         private Pet selectedPet;
         private DateTime selectedDate;
         private DateTime? _lastSelectedDate;
-
-        public ScheduleView()
+        private int UserId { get; set; }
+        public ScheduleView(int UserId)
         {
             InitializeComponent();
             _viewModel = DataContext as ScheduleViewModel;
-
+            this.UserId = UserId;
             // If DataContext isn't set in XAML, set it here
             if (_viewModel == null)
             {
-                _viewModel = new ScheduleViewModel();
+                _viewModel = new ScheduleViewModel(UserId);
                 DataContext = _viewModel;
             }
+
         }
 
         private void DataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
@@ -116,7 +117,7 @@ namespace Assignment_2_WPF.Views
         private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
             // return to MainWindow.xaml
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(UserId);
             mainWindow.Show();
             this.Close();
         }

@@ -350,7 +350,11 @@ namespace Assignment_2_WPF.ViewModels
         }
         public bool AddActivity(string activityName, string description, DateTime date) //pass user id
         {
-
+            if(SelectedPet == null)
+            {
+                System.Windows.MessageBox.Show("Please select a pet");
+                return false;
+            }
             try
             {
 
@@ -445,7 +449,7 @@ namespace Assignment_2_WPF.ViewModels
 
         }
 
-        public void LoadPets()
+        public bool LoadPets()
         {
             try
             {
@@ -468,14 +472,22 @@ namespace Assignment_2_WPF.ViewModels
                         SelectedPet = Pets[0];
                         System.Diagnostics.Debug.WriteLine($"Added pet: {pet.PetName} (ID: {pet.Id})"); //debug
                     }
-
+                    if (Pets.Count == 0)
+                    {
+                        //if no pet, doesn't allow going to addnewactivity screen
+                        System.Windows.MessageBox.Show("You have no pets. Please add a pet first.");
+                        return false;
+                        
+                    }
                     System.Diagnostics.Debug.WriteLine($"Loaded {Pets.Count} pets for user {_currentUserId}");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error loading pets: {ex.Message}");
                 MessageBox.Show("Error loading pets. Please try again.");
+                return false;
             }
         }
         public void ShowAllActivities()

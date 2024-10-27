@@ -74,6 +74,7 @@
                        Height="38"
                        Width="165" Grid.Column="1"/>
 
+
             <TextBlock HorizontalAlignment="Left" Margin="201,263,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Height="29" Width="157" FontSize="16" FontFamily="Corbel Light" Grid.ColumnSpan="2"/>
             <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="81,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="24" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
 

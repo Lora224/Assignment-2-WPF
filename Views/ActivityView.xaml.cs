@@ -13,11 +13,12 @@ namespace Assignment_2_WPF.Views
         private Activity selectedActivity;
         private Pet selectedPet;
         private DateTime selectedDate;
+        private int UserId { get; set; }
 
         public ActivityView(int UserId)  //pass UserId to ActivityViewModel
         {
             InitializeComponent();
-
+            this.UserId = UserId;
             _viewModel = new ActivityViewModel(UserId);
             DataContext = _viewModel;
 
@@ -86,6 +87,14 @@ namespace Assignment_2_WPF.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.ShowParticularActivity();
+        }
+
+        private void Return_Click(object sender, RoutedEventArgs e)
+        {
+            //return to the MainWindow
+            MainWindow mainWindow = new MainWindow(UserId);
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

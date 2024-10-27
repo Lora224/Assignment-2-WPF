@@ -95,7 +95,7 @@
                     <Border Background="#FFFDF2EE" 
                             CornerRadius="10" 
                             Padding="15"
-                            Margin="0,20,0,0" Height="111">
+                            Margin="0,20,0,0" Height="101" Width="165">
                         <StackPanel>
                             <TextBlock Text="Weather Update" 
                                      FontWeight="Bold" 
@@ -114,6 +114,7 @@
                 <!-- Right Panel -->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
+
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -150,6 +151,7 @@
                     </StackPanel>
                 </Grid>
             </Grid>
+            <Button x:Name="Return" Content="Back" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="37" Click="Return_Click"/>
         </Grid>
     </Border>
 </Window>

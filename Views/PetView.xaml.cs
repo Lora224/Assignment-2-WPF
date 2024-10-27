@@ -7,11 +7,13 @@ namespace Assignment_2_WPF.Views
     public partial class PetView : Window
     {
         private PetViewModel viewModel;
+        private int UserId { get; set; }
        // private System.Windows.Controls.ListBox petslist;
         public PetView(int UserId)
         {
             InitializeComponent();
             viewModel = new PetViewModel(UserId);
+            this.UserId = UserId;
             this.DataContext = viewModel;
             if (viewModel.Pets.Count == 0)
             {
@@ -62,7 +64,7 @@ namespace Assignment_2_WPF.Views
         private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
             //return to the mainwindow
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(UserId);
             mainWindow.Show();
             this.Close();
         }
