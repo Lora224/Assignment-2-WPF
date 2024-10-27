@@ -131,6 +131,7 @@ namespace Assignment_2_WPF.ViewModels
                         .ToList();
 
                     Pets.Clear();
+                    //if no pet, go to addnewpet screen
                     foreach (var pet in userPets)
                     {
                         Pets.Add(pet);
@@ -146,7 +147,21 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
+        public void ShowDetails()
+        {
+            if (SelectedPet == null)
+            {
+                System.Windows.MessageBox.Show("Please select a pet to view details.", "Validation Error");
+                return;
+            }
 
+            System.Windows.MessageBox.Show($"Pet ID: {SelectedPet.Id}\n" +
+                                          $"Name: {SelectedPet.PetName}\n" +
+                                          $"Breed: {SelectedPet.Breed}\n" +
+                                          $"DOB: {SelectedPet.Dob}\n" +
+                                          $"Weight: {SelectedPet.Weight}\n" +
+                                          $"Owner ID: {SelectedPet.UserId}", "Pet Details");
+        }
         public bool AddNewPet(string petName, DateTime dob, string breed, string weightStr)
         {
             try

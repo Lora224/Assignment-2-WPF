@@ -8,8 +8,11 @@
             <Grid.Background>
                 <ImageBrush ImageSource="/Views/7411726.jpg"/>
             </Grid.Background>
-            <Button x:Name="Details" Content="Details" HorizontalAlignment="Left" Margin="85,113,0,0" VerticalAlignment="Top" Background="#FFF6911F" Foreground="White" Height="44" Width="47" Click="Button_Click" BorderBrush="#FFF6911F"/>
         </Grid>
+        <Button x:Name="Details" Content="Details" HorizontalAlignment="Left" Margin="85,113,0,0" VerticalAlignment="Top" Background="#FFF6911F" Foreground="White" Height="44" Width="47" Click="DetailsButton_Click" BorderBrush="#FFF6911F"/>
+        <Button x:Name="AddNewPet" Content="Add New Pet" Click="AddNewPetButton_Click" Margin="265,260,245,95" Background="#FF066DB1" Foreground="White" Height="30" Width="90" BorderBrush="#FF323332"/>
+        <Button x:Name="RemovePet" Content="Remove Pet..." Click="RemovePetButton_Click" Margin="260,182,240,167" Background="#FF323332" Height="30" Width="90" Foreground="White" BorderBrush="#FF323332"/>
+      
         <TextBlock TextWrapping="Wrap" Text="ChaCha" Margin="10,10,487,345" FontFamily="Ink Free" FontSize="14" Foreground="#FF066DB1"/>
         <TextBlock Text="Your Pets" FontSize="24" HorizontalAlignment="Left" Margin="244,25,0,308" Width="336" FontFamily="Segoe UI Variable Display" FontWeight="Bold" Foreground="#FF323332"/>
         <ListBox x:Name="PetsList" ItemsSource="{Binding Pets}" SelectedItem="{Binding SelectedPet}" SelectionChanged="PetsList_SelectionChanged" Height="100" Margin="140,76,120,208" Background="#FFC6EBFB" BorderBrush="White">
@@ -22,16 +25,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
-
-        <Button Content="Add New Pet" Click="AddNewPetButton_Click" Margin="265,263,245,92" Background="#FF066DB1" Foreground="White" BorderBrush="#FF323332"/>
-        <Button Content="Remove Pet..." Click="RemovePetButton_Click" Margin="260,182,240,167" Background="#FF323332" Foreground="White" BorderBrush="#FF323332"/>
-
-
-
-
-
-
         <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="0,20,0,5"/>
 
     </Grid>
