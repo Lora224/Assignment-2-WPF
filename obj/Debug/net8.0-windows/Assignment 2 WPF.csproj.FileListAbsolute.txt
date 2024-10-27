@@ -129,7 +129,6 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.cache
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.lref
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ActivityView.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivityView.baml
