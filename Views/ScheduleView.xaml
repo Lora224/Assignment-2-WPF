@@ -11,6 +11,7 @@
         <ImageBrush ImageSource="/Views/cat-dog.png" Stretch="Fill"/>
     </Window.Background>
 
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

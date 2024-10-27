@@ -26,7 +26,7 @@ using System.Xml.Linq;
     Models/: Contains data models for each class (Pet, User, Reminder, Activity).
     Data /: Contains the DbContext for Entity Framework and repositories for data access, adhering to the repository pattern for better separation of concerns.
     Utilities/: Contains helper classes for shared functionality (e.g., notifications).
-    Tests/: Contains unit tests for your models and any other relevant logic.
+    Tests/: Contains unit tests for models and any other relevant logic.
 */
 
 

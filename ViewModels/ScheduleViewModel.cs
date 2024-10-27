@@ -33,7 +33,7 @@ namespace Assignment_2_WPF.ViewModels
         private string _description;
         private DateTime _scheduleDate;
         private ScheduleType _selectedScheduleType;
-
+        private ObservableCollection<Schedule> _allSchedule;
         public Array ScheduleTypes => Enum.GetValues(typeof(ScheduleType));
 
         public ScheduleViewModel(int UserId)
@@ -119,6 +119,15 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
+        public ObservableCollection<Schedule> AllSchedule
+        {
+            get => _allSchedule;
+            set
+            {
+                _allSchedule = value;
+                OnPropertyChanged(nameof(AllSchedule));
+            }
+        }
         public string Name
         {
             get => _name;
@@ -215,7 +224,7 @@ namespace Assignment_2_WPF.ViewModels
                 MessageBox.Show("Error loading pets. Please try again.");
             }
         }
-        public void LoadSchedules()  //overload
+        public void LoadSchedules()  
         {
 
             using (var context = new AppDbContext())
@@ -230,14 +239,31 @@ namespace Assignment_2_WPF.ViewModels
                     //if no schedule"
                     MessageBox.Show("No Schedule, please add one.");
                     Schedules = new ObservableCollection<Schedule>();
+                    AllSchedule = new ObservableCollection<Schedule>();
 
                 }
                 else
                 {
-                    var _schedules1 = context.Schedules
-                         .Where(a => a.Date == SelectedDate.Date && a.UserId == _currentUserId)
-                         .ToList();
-                    Schedules = new ObservableCollection<Schedule>(_schedules1);
+                    if (SelectedDate == null)
+                    {
+                        var _schedules2 = context.Schedules //all schedules
+                              .Where(a => a.UserId == _currentUserId)
+                              .ToList();
+                        AllSchedule = new ObservableCollection<Schedule>(_schedules2);
+                        Schedules = new ObservableCollection<Schedule>(_schedules2);
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Selected Date: {SelectedDate.Date}");
+                        var _schedules1 = context.Schedules
+                             .Where(a => a.Date == SelectedDate.Date && a.UserId == _currentUserId)
+                             .ToList();
+
+
+                        Schedules = new ObservableCollection<Schedule>(_schedules1);
+                        AllSchedule = new ObservableCollection<Schedule>(_schedules1);
+                    }
+
                 }
             }
 

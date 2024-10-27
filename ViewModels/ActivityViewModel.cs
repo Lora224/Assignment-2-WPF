@@ -527,6 +527,7 @@ namespace Assignment_2_WPF.ViewModels
                          }
                     else
                     {
+                   
 
                     var activities = context.Activities
                         .Where(a => a.UserId == _currentUserId)
