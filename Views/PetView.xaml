@@ -1,10 +1,10 @@
-﻿<Window x:Class="Assignment_2_WPF.Views.PetView"
+<Window x:Class="Assignment_2_WPF.Views.PetView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         mc:Ignorable="av"
-        Title="Pet Panel" Height="500" Width="800">
+        Title="Pet Panel" Height="600" Width="800">
 
     <Window.Resources>
         <!-- Button Style -->
@@ -72,7 +72,7 @@
 
         <!-- Main Content -->
         <Border Background="#CCFFFFFF" 
-                Margin="43,20,34,166" 
+                Margin="43,20,34,35" 
                 CornerRadius="20">
             <Grid Margin="20">
                 <Grid.RowDefinitions>
@@ -156,6 +156,10 @@
                             Content="Add New Pet" 
                             Background="#066DB1"
                             Click="AddNewPetButton_Click"/>
+            <Button x:Name="Return" 
+                Content="Return" 
+                Background="#FFB5BABE"
+                Click="ReturnButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>
