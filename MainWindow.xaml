@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_WPF"
         mc:Ignorable="d"
-        Title="Pet Care Menu" Height="450" Width="800"
+        Title="Pet Care Menu" Height="600" Width="800"
         Background="#FFF5E6">
 
     <Window.Resources>
@@ -79,8 +79,12 @@
                 <Button x:Name="DatabaseManagement" 
                         Content="Database Management" 
                         Click="Button_Click_1"/>
+
+                <Button x:Name="SignOut" 
+                        Content="Sign Out" 
+                        Click="SignOutButton"/>
             </StackPanel>
         </Border>
-        <Border BorderThickness="1" HorizontalAlignment="Center" Height="394" VerticalAlignment="Center" Width="760"/>
+        <Border BorderThickness="1" HorizontalAlignment="Center" Height="544" VerticalAlignment="Center" Width="760"/>
     </Grid>
 </Window>

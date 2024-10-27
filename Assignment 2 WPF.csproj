@@ -14,9 +14,11 @@
     <None Remove="Views\7411726.jpg" />
     <None Remove="Views\7411734.ai" />
     <None Remove="Views\9f5cbb1e3887898b6e89c2f37177042c.jpg" />
+    <None Remove="Views\background-2.jpg" />
     <None Remove="Views\background-cat-2.jpg" />
     <None Remove="Views\background-cat.jpg" />
     <None Remove="Views\background.jpg" />
+    <None Remove="Views\cat-dog.png" />
     <None Remove="Views\cute-corgi-tricolor-puppy-cartoon_42750-630.jpg" />
   </ItemGroup>
 
@@ -40,9 +42,11 @@
     <Resource Include="Views\7411726.jpg" />
     <Resource Include="Views\7411734.ai" />
     <Resource Include="Views\9f5cbb1e3887898b6e89c2f37177042c.jpg" />
+    <Resource Include="Views\background-2.jpg" />
     <Resource Include="Views\background-cat-2.jpg" />
     <Resource Include="Views\background-cat.jpg" />
     <Resource Include="Views\background.jpg" />
+    <Resource Include="Views\cat-dog.png" />
     <Resource Include="Views\cute-corgi-tricolor-puppy-cartoon_42750-630.jpg" />
   </ItemGroup>
 

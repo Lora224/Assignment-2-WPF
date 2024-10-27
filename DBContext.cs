@@ -64,6 +64,21 @@ namespace Assignment_2_WPF
                 entity.Property(e => e.Distance).IsRequired(false);
                 entity.Property(e => e.Duration).IsRequired(false);
             });
+
+            modelBuilder.Entity<Schedule>(entity =>
+            {
+                entity.ToTable("Schedules");
+                entity.HasKey(e => e.ScheduleId);
+
+                // Configure required properties
+                entity.Property(e => e.PetId).IsRequired();
+                entity.Property(e => e.UserId).IsRequired();
+                entity.Property(e => e.ScheduleId).IsRequired();
+                entity.Property(e => e.PetName).IsRequired();
+                entity.Property(e => e.Type).IsRequired();
+                entity.Property(e => e.Date).IsRequired();
+                entity.Property(e => e.Description).IsRequired();
+            });
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
