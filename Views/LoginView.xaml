@@ -6,6 +6,76 @@
         xmlns:local="clr-namespace:Assignment_2_WPF.Views"
         mc:Ignorable="d"
         Title="Login" Height="600" Width="800">
+
+    <Window.Resources>
+        <!-- Style for TextBoxes -->
+        <Style x:Key="RoundedTextBox" TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="White" 
+                                CornerRadius="20"
+                                BorderThickness="1"
+                                BorderBrush="#A0C4FF">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="35"/>
+        </Style>
+
+        <!-- Style for PasswordBox -->
+        <Style x:Key="RoundedPasswordBox" TargetType="PasswordBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="White" 
+                                CornerRadius="20"
+                                BorderThickness="1"
+                                BorderBrush="#A0C4FF">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="10,5"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="35"/>
+        </Style>
+
+        <!-- Style for Buttons -->
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="Background" Value="#4A90E2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="20"
+                                BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" 
+                                                Opacity="0.3" 
+                                                BlurRadius="5"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#357ABD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid RenderTransformOrigin="0.5,0.5">
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="/Views/background.jpg">
@@ -20,16 +90,60 @@
             </ImageBrush>
         </Grid.Background>
 
-        <TextBlock HorizontalAlignment="Center" Margin="0,169,0,0" TextWrapping="Wrap" 
-                   Text="Welcome to ChaChaApp" VerticalAlignment="Top" Height="30" Width="153" FontWeight="Bold"/>
-        <TextBlock x:Name="Email" HorizontalAlignment="Left" Margin="281,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="13" Width="65" Text="Email:" FontWeight="Bold"/>
-        <TextBox x:Name="EmailInput" HorizontalAlignment="Left" Margin="348,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
-        <TextBlock  HorizontalAlignment="Left" Margin="281,255,0,0" TextWrapping="Wrap" 
-                   Text="Password: " VerticalAlignment="Top" FontWeight="Bold"/>
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="348,256,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button x:Name="Login1" Content="Log In" HorizontalAlignment="Left" Margin="382,312,0,0" VerticalAlignment="Top" Click="Login1_Click" Background="#FFFAB768" FontWeight="Bold" Width="47"/>
-        <Button x:Name="register" Content="Register" HorizontalAlignment="Left" Margin="382,356,0,0" VerticalAlignment="Top" Click="register_Click" Background="#FFF6F1F1"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" FontSize="24" FontWeight="Bold" Background="White"><Run Language="en-au" Text=" "/><Run Text="CHA CHA PET APPLICATION"/></TextBlock>
+        <Border Background="#80FFFFFF" 
+                CornerRadius="30" 
+                Width="400" 
+                Height="400" 
+                VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" 
+                       HorizontalAlignment="Center">
 
+                <TextBlock Text="CHA CHA PET APPLICATION" 
+                         FontSize="24" 
+                         FontWeight="Bold" 
+                         Margin="0,0,0,30" 
+                         Foreground="#2C3E50"/>
+
+                <TextBlock Text="Welcome to ChaChaApp" 
+                         FontSize="18" 
+                         FontWeight="SemiBold" 
+                         Margin="0,0,0,30" 
+                         Foreground="#2C3E50" HorizontalAlignment="Center"/>
+
+                <StackPanel Orientation="Horizontal" 
+                          Margin="0,0,0,15">
+                    <TextBlock Text="Email:" 
+                             FontWeight="SemiBold" 
+                             VerticalAlignment="Center" 
+                             Margin="0,0,10,0" 
+                             Foreground="#2C3E50" Width="58"/>
+                    <TextBox x:Name="EmailInput" 
+                            Style="{StaticResource RoundedTextBox}" Width="196"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" 
+                          Margin="0,0,0,30">
+                    <TextBlock Text="Password:" 
+                             FontWeight="SemiBold" 
+                             VerticalAlignment="Center" 
+                             Margin="0,0,10,0" 
+                             Foreground="#2C3E50"/>
+                    <PasswordBox x:Name="PasswordBox" 
+                               Style="{StaticResource RoundedPasswordBox}"/>
+                </StackPanel>
+
+                <Button x:Name="Login1" 
+                        Content="Log In" 
+                        Style="{StaticResource RoundedButton}"
+                        Click="Login1_Click" 
+                        Margin="0,0,0,15"/>
+
+                <Button x:Name="register" 
+                        Content="Register" 
+                        Style="{StaticResource RoundedButton}"
+                        Click="register_Click" 
+                        Background="#7FB3D5"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

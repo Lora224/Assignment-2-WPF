@@ -5,13 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Pet Care Menu" Height="450" Width="800"
+        Background="#FFF5E6">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FFB6A6"/>
+            <Setter Property="Foreground" Value="#4A4A4A"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" 
+                                                Opacity="0.3" 
+                                                BlurRadius="5"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFD6CC"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF9980"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <Button Name="PetButton" Content="Go to Pet Screen" Click="PetButton_Click" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="289,71,0,0"/>
-        <ContentControl Name="MainContent" Margin="10,10,-10,-10" />
-        <Button x:Name="ActivityButton" Content="Go to Activity Screen" HorizontalAlignment="Left" Margin="178,150,0,0" VerticalAlignment="Top" Height="50" Width="147" Click="Button_Click"/>
-        <Button x:Name="GoToLogin" Content="Go to Login Screen" HorizontalAlignment="Left" Margin="292,232,0,0" VerticalAlignment="Top" Height="51" Width="147" Click="GoToLogin_Click"/>
-        <Button x:Name="DatabaseManagement" Content="DatabaseManagement" HorizontalAlignment="Left" Margin="292,319,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.177,-0.816" Height="43" Width="147" Click="Button_Click_1"/>
-        <Button x:Name="ScheduleButton" Content="Go to Schedule Screen" HorizontalAlignment="Left" Margin="400,150,0,0" VerticalAlignment="Top" Height="50" Width="166" Click="ScheduleButton_Click"/>
+        <Border Background="#FFFAF5" 
+                Margin="20" 
+                CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="3" 
+                                Opacity="0.2" 
+                                BlurRadius="10"/>
+            </Border.Effect>
+
+            <StackPanel VerticalAlignment="Center" 
+                       HorizontalAlignment="Center">
+                <TextBlock Text="Pet Care Menu" 
+                         FontSize="32" 
+                         FontWeight="Light" 
+                         Foreground="#4A4A4A" 
+                         HorizontalAlignment="Center" 
+                         Margin="0,0,0,30"/>
+
+                <Button x:Name="PetButton" 
+                        Content="Pet Management" 
+                        Click="PetButton_Click"/>
+
+                <Button x:Name="ScheduleButton" 
+                        Content="Schedule" 
+                        Click="ScheduleButton_Click"/>
+
+                <Button x:Name="ActivityButton" 
+                        Content="Activities" 
+                        Click="Button_Click"/>
+
+                <Button x:Name="DatabaseManagement" 
+                        Content="Database Management" 
+                        Click="Button_Click_1"/>
+            </StackPanel>
+        </Border>
+        <Border BorderThickness="1" HorizontalAlignment="Center" Height="394" VerticalAlignment="Center" Width="760"/>
     </Grid>
 </Window>
