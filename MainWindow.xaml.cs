@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 
 
+
 /*
     Views /: Contains XAML files for each class's UI representation.
     ViewModels /: Contains ViewModel classes that handle the logic for the corresponding views, implementing the MVVM pattern.
@@ -39,12 +40,14 @@ namespace Assignment_2_WPF
     public partial class MainWindow : Window
     {
         private readonly string _dbPath;
+        private int UserId;
 
-        public MainWindow()
+        public MainWindow(int UserId)
         {
             InitializeComponent();
             _dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PetApp.db");
             InitializeDatabase();
+            this.UserId = UserId;
 
         }
 
@@ -112,34 +115,29 @@ namespace Assignment_2_WPF
         private void PetButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigate to the Pet view
-            PetView petView = new PetView();
+            PetView petView = new PetView(UserId);
             // Show the PetView window, can do petView.ShowDialog(); also Opens as a modal dialog that will block MainWindow until it's closed
             petView.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ActivityView activityView = new ActivityView(); 
+            ActivityView activityView = new ActivityView(UserId); 
             activityView.ShowDialog();
         }
 
 
 
-        private void GoToLogin_Click(object sender, RoutedEventArgs e)
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
             LoginView loginView = new LoginView();
             loginView.Show();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            DatabaseManagerView databaseManagerView = new DatabaseManagerView();
-            databaseManagerView.Show();
+            this.Close();
         }
 
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            ScheduleView scheduleView = new ScheduleView();
+            ScheduleView scheduleView = new ScheduleView(); //to be done
             scheduleView.Show();
         }
     }

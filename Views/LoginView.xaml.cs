@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Assignment_2_WPF.Models;
+using Assignment_2_WPF.ViewModels;
 
 
 
@@ -21,9 +23,11 @@ namespace Assignment_2_WPF.Views
     /// </summary>
     public partial class LoginView : Window
     {
+        private readonly UserViewModel ViewModel;
         public LoginView()
         {
             InitializeComponent();
+            ViewModel = new UserViewModel();
         }
 
         private void Login1_Click(object sender, RoutedEventArgs e)
@@ -35,7 +39,9 @@ namespace Assignment_2_WPF.Views
             if (Models.User.CheckValidate(email, password))
             {
                 //if valid, go to main window
-                MainWindow mainWindow = new MainWindow();
+                //get the user from database
+                int userId = ViewModel.GetUser(email);
+                MainWindow mainWindow = new MainWindow(userId);
                 mainWindow.Show();
                 this.Close();
             }

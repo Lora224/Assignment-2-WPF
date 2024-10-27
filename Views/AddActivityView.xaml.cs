@@ -18,19 +18,9 @@ namespace Assignment_2_WPF.Views
         public AddActivityView(ActivityViewModel viewModel)
         {
             InitializeComponent();
-            if (viewModel == null)
-            {
-                _viewModel = new ActivityViewModel();
-            }
-            else
-            {
-                _viewModel = viewModel;
-            }
-
-            // Make sure to set the DataContext
+             _viewModel = viewModel;
             DataContext = _viewModel;
 
-            // Debug output to verify pets are loaded
             System.Diagnostics.Debug.WriteLine($"Pets count in constructor: {_viewModel.Pets?.Count ?? 0}");
           
         }
@@ -60,6 +50,19 @@ namespace Assignment_2_WPF.Views
                         return;
                     }
                 }
+                if (_viewModel.SelectedActivityType == ActivityType.Walking)
+                {
+                    if (_viewModel.Duration <= 0 || _viewModel.Distance <= 0)
+                    {
+                        System.Windows.MessageBox.Show("Please enter valid duration and distance");
+                        return;
+                    }
+                }
+                if(DateSelect.SelectedDate == null)
+                {
+                    System.Windows.MessageBox.Show("Please select a date");
+                    return;
+                }
                 else if (_viewModel.SelectedActivityType == ActivityType.Walking)
                 {
                     if (_viewModel.Duration <= 0 || _viewModel.Distance <= 0)
@@ -68,9 +71,9 @@ namespace Assignment_2_WPF.Views
                         return;
                     }
                 }
+                var date = DateSelect.SelectedDate ?? DateTime.Today;
 
-
-                if (_viewModel.AddActivity(Name.Text, Description.Text, _viewModel.ActivityDate))
+                if (_viewModel.AddActivity(Name.Text, Description.Text, date))
                 {
                     this.Close();
                 }

@@ -13,7 +13,7 @@ namespace Assignment_2_WPF.ViewModels
         private string _breed;
         private int _weight;
         private ObservableCollection<Pet> _pets;
-        private readonly int _currentUserId;
+        private int _currentUserId;
         private Pet selectedPet;
 
         public Pet SelectedPet
@@ -78,46 +78,15 @@ namespace Assignment_2_WPF.ViewModels
             }
         }
 
-        public PetViewModel()
+        public PetViewModel(int UserId)
         {
             Pets = new ObservableCollection<Pet>();
             Dob = DateTime.Today;  // Set default date
-            _currentUserId = GetCurrentUserId();
+            _currentUserId = UserId;
+            System.Diagnostics.Debug.WriteLine($"PetViewModel created for user {_currentUserId}");
             LoadPets();
         }
 
-        // Method to get the current user's ID
-        private int GetCurrentUserId()
-        {
-            try
-            {
-                using (var context = new AppDbContext())
-                {
-                    // Get the first user (or you could modify this to get the logged-in user)
-                    var user = context.Users.FirstOrDefault();
-                    if (user != null)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Found user: {user.Name} with ID: {user.Id}");
-                        return user.Id;
-                    }
-                    else
-                    {
-                        // If no user exists, create one
-                        var newUser = new User("Default User", "default@test.com", "password");
-                        context.Users.Add(newUser);
-                        context.SaveChanges();
-                        System.Diagnostics.Debug.WriteLine($"Created new user with ID: {newUser.Id}");
-                        return newUser.Id;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error getting user ID: {ex.Message}");
-                System.Windows.MessageBox.Show("Error getting user information. Please try again.");
-                return -1; // Return invalid ID to indicate error
-            }
-        }
 
         public void LoadPets() 
         {

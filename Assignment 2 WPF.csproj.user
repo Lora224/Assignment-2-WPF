@@ -22,9 +22,6 @@
     <Compile Update="Views\DatabaseManagerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\detailActivityWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\EditActivityView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,9 +61,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DatabaseManagerView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\detailActivityWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\EditActivityView.xaml">

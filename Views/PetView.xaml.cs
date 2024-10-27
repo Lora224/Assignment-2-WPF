@@ -8,10 +8,10 @@ namespace Assignment_2_WPF.Views
     {
         private PetViewModel viewModel;
        // private System.Windows.Controls.ListBox petslist;
-        public PetView()
+        public PetView(int UserId)
         {
             InitializeComponent();
-            viewModel = new PetViewModel();
+            viewModel = new PetViewModel(UserId);
             this.DataContext = viewModel;
             if (viewModel.Pets.Count == 0)
             {

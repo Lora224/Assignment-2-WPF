@@ -43,7 +43,7 @@ namespace Assignment_2_WPF.ViewModels
         private int _distance;
         private ActivityLevel _selectedActivityLevel;
         private int _activityCount;
-        public DateTime ActivityDate;
+        private DateTime _activityDate;
         public Array ActivityTypes => Enum.GetValues(typeof(ActivityType));
         public Array ActivityLevels => Enum.GetValues(typeof(ActivityLevel));
         private string _temperature;
@@ -53,7 +53,7 @@ namespace Assignment_2_WPF.ViewModels
         private Timer _weatherUpdateTimer;
 
 
-        public ActivityViewModel()
+        public ActivityViewModel(int UserId)
         {
             _context = new AppDbContext();
             SelectedDate = null;
@@ -65,7 +65,8 @@ namespace Assignment_2_WPF.ViewModels
             {
                 ActivityDate = SelectedDate.Value;
             }
-            _currentUserId = GetCurrentUserId();
+            _currentUserId = UserId;
+            System.Diagnostics.Debug.WriteLine($"UserId in ActivityViewModel: {_currentUserId}");
             SelectedActivityType = ActivityType.Other;
            ActivityCount = Activities.Count;
 
@@ -244,6 +245,15 @@ namespace Assignment_2_WPF.ViewModels
                 OnPropertyChanged(nameof(IsGoodForWalking));
             }
         }
+        public DateTime ActivityDate
+        {
+            get => _activityDate;
+            set
+            {
+                _activityDate = value;
+                OnPropertyChanged(nameof(ActivityDate));
+            }
+        }
 
 //weather update
         private async Task UpdateWeather()
@@ -338,39 +348,6 @@ namespace Assignment_2_WPF.ViewModels
                 }
             }
         }
-
-        private int GetCurrentUserId()
-        {
-            try
-            {
-                using (var context = new AppDbContext())
-                {
-                    // Get the first user (or you could modify this to get the logged-in user)
-                    var user = context.Users.FirstOrDefault();
-                    if (user != null)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Found user: {user.Name} with ID: {user.Id}");
-                        return user.Id;
-                    }
-                    else
-                    {
-                        // If no user exists, create one
-                        var newUser = new User("Default User", "default@test.com", "password");
-                        context.Users.Add(newUser);
-                        context.SaveChanges();
-                        System.Diagnostics.Debug.WriteLine($"Created new user with ID: {newUser.Id}");
-                        return newUser.Id;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error getting user ID: {ex.Message}");
-                System.Windows.MessageBox.Show("Error getting user information. Please try again.");
-                return -1; // Return invalid ID to indicate error
-            }
-        }
-
         public bool AddActivity(string activityName, string description, DateTime date) //pass user id
         {
 

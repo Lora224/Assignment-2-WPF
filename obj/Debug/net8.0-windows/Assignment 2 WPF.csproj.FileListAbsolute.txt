@@ -117,7 +117,6 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivity
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\addNewSchedule.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.g.cs
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\editSchedule.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.g.cs
@@ -135,7 +134,6 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddActivity
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\AddNewPet.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\addNewSchedule.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\DatabaseManagerView.baml
-C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\detailActivityWindow.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\EditActivityView.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\editSchedule.baml
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\LoginView.baml

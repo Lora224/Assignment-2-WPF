@@ -14,18 +14,13 @@ namespace Assignment_2_WPF.Views
         private Pet selectedPet;
         private DateTime selectedDate;
 
-        public ActivityView()  //User view model? or pass user object to activity view model?
+        public ActivityView(int UserId)  //pass UserId to ActivityViewModel
         {
             InitializeComponent();
-            _viewModel = DataContext as ActivityViewModel;
-           // _viewModel.LoadActivities();
-            
-            // If DataContext isn't set in XAML, set it here
-            if (_viewModel == null)
-            {
-                _viewModel = new ActivityViewModel();
-                DataContext = _viewModel;
-            }
+
+            _viewModel = new ActivityViewModel(UserId);
+            DataContext = _viewModel;
+
 
         }
         protected override void OnClosed(EventArgs e)
@@ -76,11 +71,6 @@ namespace Assignment_2_WPF.Views
             }
         }
 
-        private void EditActivity_Click(object sender, RoutedEventArgs e)
-        {
-            var editActivityWindow = new EditActivityView(this.DataContext as ActivityViewModel);
-            editActivityWindow.ShowDialog();
-        }
 
         private void AddNewActivity_Click(object sender, RoutedEventArgs e)
         {

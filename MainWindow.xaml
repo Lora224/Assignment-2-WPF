@@ -76,9 +76,9 @@
                         Content="Activities" 
                         Click="Button_Click"/>
 
-                <Button x:Name="DatabaseManagement" 
-                        Content="Database Management" 
-                        Click="Button_Click_1"/>
+                <Button x:Name="LogOut" 
+                        Content="Log Out" 
+                        Click="LogOutButton_Click"/>
             </StackPanel>
         </Border>
         <Border BorderThickness="1" HorizontalAlignment="Center" Height="394" VerticalAlignment="Center" Width="760"/>

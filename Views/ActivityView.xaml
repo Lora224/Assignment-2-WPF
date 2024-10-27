@@ -8,9 +8,6 @@
         mc:Ignorable="d"
         Title="Activity Panel" Height="600" Width="900">
 
-    <Window.DataContext>
-        <vm:ActivityViewModel/>
-    </Window.DataContext>
 
     <Window.Resources>
         <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
