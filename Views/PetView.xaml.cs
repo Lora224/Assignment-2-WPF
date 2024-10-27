@@ -13,6 +13,12 @@ namespace Assignment_2_WPF.Views
             InitializeComponent();
             viewModel = new PetViewModel();
             this.DataContext = viewModel;
+            if (viewModel.Pets.Count == 0)
+            {
+                System.Windows.MessageBox.Show("You have no pets. Please add a pet.");
+                var addNewPet = new AddNewPet(this.DataContext as PetViewModel);
+                addNewPet.ShowDialog();
+            }
            
         }
 
@@ -23,24 +29,34 @@ namespace Assignment_2_WPF.Views
             addPetWindow.ShowDialog();
         }
 
-        private void EditPetButton_Click(object sender, RoutedEventArgs e)
-        {
-            //new screen for editing or ?
-        }
+
 
         private void RemovePetButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.RemovePet();  //remove the selected pet
+            //show confirmation
+            var result = System.Windows.MessageBox.Show("Are you sure you want to remove this pet?", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                viewModel.RemovePet();  //remove the selected pet
+            }
+            if (viewModel.Pets.Count == 0)
+            {
+                System.Windows.MessageBox.Show("You have no pets. Please add a pet.");
+                var addNewPet = new AddNewPet(this.DataContext as PetViewModel);
+                addNewPet.ShowDialog();
+            }
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void PetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void DetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            //show the details of the selected pet
+            viewModel.ShowDetails();
         }
     }
 }
