@@ -311,6 +311,14 @@ D:\UTS\2024-sem2- .NET\Assignment-2\WPF\obj\Debug\net8.0-windows\refint\Assignme
 D:\UTS\2024-sem2- .NET\Assignment-2\WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.pdb
 D:\UTS\2024-sem2- .NET\Assignment-2\WPF\obj\Debug\net8.0-windows\Assignment 2 WPF.genruntimeconfig.cache
 D:\UTS\2024-sem2- .NET\Assignment-2\WPF\obj\Debug\net8.0-windows\ref\Assignment 2 WPF.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\testhost.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\testhost.exe
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\NUnit3.TestAdapter.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\NUnit3.TestAdapter.pdb
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\nunit.engine.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\nunit.engine.api.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\nunit.engine.core.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\testcentric.engine.metadata.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Assignment 2 WPF.exe
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Assignment 2 WPF.deps.json
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Assignment 2 WPF.runtimeconfig.json
@@ -322,6 +330,7 @@ C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.CodeAna
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.Data.Sqlite.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -338,8 +347,18 @@ C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.Extensi
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.TestPlatform.CoreUtilities.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.TestPlatform.PlatformAbstractions.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.TestPlatform.CommunicationUtilities.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.TestPlatform.CrossPlatEngine.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.TestPlatform.Utilities.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Microsoft.VisualStudio.TestPlatform.Common.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Mono.TextTemplating.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\MySqlConnector.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\NuGet.Frameworks.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\nunit.framework.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\SQLitePCLRaw.batteries_v2.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\SQLitePCLRaw.core.dll
@@ -402,6 +421,71 @@ C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ru\Microsoft.Code
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\runtimes\browser-wasm\nativeassets\net8.0\e_sqlite3.a
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\runtimes\linux-arm\native\libe_sqlite3.so
 C:\Users\lora\source\repos\WPFAppRepo\bin\Debug\net8.0-windows\runtimes\linux-arm64\native\libe_sqlite3.so
@@ -437,6 +521,7 @@ C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\PetView.g.c
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\RegisterView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Views\ScheduleView.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_Content.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.cache
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\Assignment 2 WPF_MarkupCompile.lref

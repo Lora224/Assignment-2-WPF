@@ -8,6 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>Assignment_2_WPF.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +26,6 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Resources\" />
-    <Folder Include="Tests\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 
@@ -36,7 +36,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+	  <!-- In your .csproj file or through NuGet Package Manager -->
+
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+	  <PackageReference Include="NUnit" Version="3.14.0" />
+	  <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+	  <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
   </ItemGroup>
+
+
 
   <ItemGroup>
     <Resource Include="Views\7411726.jpg" />

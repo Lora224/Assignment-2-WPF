@@ -66,8 +66,24 @@ namespace Assignment_2_WPF.Models
             PetId = -1;
             UserId = -1;
             Description = "null";       
-        }  
-        
+        }
+
+        public bool ValidateActivityData()
+        {
+            if (PetId == -1)
+                return false;
+
+            if (Duration <= 0)
+                return false;
+
+            if (Type == ActivityType.Walking && Distance <= 0)
+                return false;
+
+            return true;
+        }
+
+  
+
     }
 }
 

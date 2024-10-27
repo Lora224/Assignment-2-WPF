@@ -1,7 +1,7 @@
 ﻿Assignment 2 WPF
 
 
-winexe
+exe
 C#
 .cs
 C:\Users\lora\source\repos\WPFAppRepo\obj\Debug\net8.0-windows\
@@ -11,10 +11,10 @@ false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\lora\source\repos\WPFAppRepo\App.xaml
 122013111864
-
-361458299299
-227-911760353
+22142389732
+371759089856
+2391707174034
 MainWindow.xaml;Views\ActivityView.xaml;Views\AddActivityView.xaml;Views\AddNewPet.xaml;Views\AddNewSchedule.xaml;Views\DatabaseManagerView.xaml;Views\EditActivityView.xaml;Views\editSchedule.xaml;Views\LoginView.xaml;Views\PetView.xaml;Views\RegisterView.xaml;Views\ScheduleView.xaml;
 
-True
+False
 
