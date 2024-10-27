@@ -12,8 +12,9 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\hoaia\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\hoaia\\.nuget\\packages"
+      "C:\\Users\\lora\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\lora\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
       "System.Reflection.NullabilityInfoContext.IsSupported": true,

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UTS\\2024-sem2- .NET\\Assignment-2\\WPF-2710\\Assignment 2 WPF.csproj": {}
+    "C:\\Users\\lora\\source\\repos\\WPFAppRepo\\Assignment 2 WPF.csproj": {}
   },
   "projects": {
-    "D:\\UTS\\2024-sem2- .NET\\Assignment-2\\WPF-2710\\Assignment 2 WPF.csproj": {
+    "C:\\Users\\lora\\source\\repos\\WPFAppRepo\\Assignment 2 WPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UTS\\2024-sem2- .NET\\Assignment-2\\WPF-2710\\Assignment 2 WPF.csproj",
+        "projectUniqueName": "C:\\Users\\lora\\source\\repos\\WPFAppRepo\\Assignment 2 WPF.csproj",
         "projectName": "Assignment 2 WPF",
-        "projectPath": "D:\\UTS\\2024-sem2- .NET\\Assignment-2\\WPF-2710\\Assignment 2 WPF.csproj",
-        "packagesPath": "C:\\Users\\hoaia\\.nuget\\packages\\",
-        "outputPath": "D:\\UTS\\2024-sem2- .NET\\Assignment-2\\WPF-2710\\obj\\",
+        "projectPath": "C:\\Users\\lora\\source\\repos\\WPFAppRepo\\Assignment 2 WPF.csproj",
+        "packagesPath": "C:\\Users\\lora\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lora\\source\\repos\\WPFAppRepo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\hoaia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -79,7 +84,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
