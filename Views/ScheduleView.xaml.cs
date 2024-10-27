@@ -95,7 +95,7 @@ namespace Assignment_2_WPF.Views
         // link to AddNewSchedule.xaml
         private void AddNewSchedule_Click(object sender, RoutedEventArgs e)
         {
-            var addNewScheduleWindow = new AddNewSchedule();
+            var addNewScheduleWindow = new AddNewSchedule(this.DataContext as ScheduleViewModel);
             addNewScheduleWindow.ShowDialog();
         }
 
@@ -103,14 +103,22 @@ namespace Assignment_2_WPF.Views
         {
             _viewModel.RemoveSchedule();
         }
-               
+
 
         //private void ScheduleDetails(object sender, RoutedEventArgs e)
-        
+
 
         private void ScheduleDetails_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.ShowParticularSchedudle();
+        }
+
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        {
+            // return to MainWindow.xaml
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 

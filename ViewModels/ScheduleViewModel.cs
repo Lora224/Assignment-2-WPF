@@ -15,6 +15,7 @@ using static Assignment_2_WPF.Models.Schedule;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Windows;
 using MessageBox = System.Windows.Forms.MessageBox;
+using static Assignment_2_WPF.Models.Activity;
 
 
 namespace Assignment_2_WPF.ViewModels
@@ -40,6 +41,7 @@ namespace Assignment_2_WPF.ViewModels
             _context = new AppDbContext();
             Schedules = new ObservableCollection<Schedule>(_context.Schedules.ToList());
             _currentUserId = GetCurrentUserId();
+            SelectedScheduleType = ScheduleType.Other;
             if (SelectedDate == null)
             {
                 ScheduleDate = DateTime.Today;
@@ -300,9 +302,21 @@ namespace Assignment_2_WPF.ViewModels
                 context.Schedules.Add(newSchedule);
                 context.SaveChanges();
                 LoadSchedules();
-            }
+                // verify after saving
+                var newSchedules = context.Schedules
+                    .Where(a => a.PetId == SelectedPet.Id)
+                    .ToList();
+                System.Diagnostics.Debug.WriteLine($"Added new schedule for pet {SelectedPet.PetName} (ID: {SelectedPet.Id})");
+                foreach (var schedule in newSchedules) { System.Diagnostics.Debug.WriteLine(schedule); }
 
-        }              
+                // add to the list of schedules
+                Schedules.Add(newSchedule);
+                // Create new ObservableCollection
+                Schedules = new ObservableCollection<Schedule>(Schedules);
+                // notify user
+                MessageBox.Show("New schedule added successfully.");
+            }
+        }
 
 
         public void RemoveSchedule()
@@ -328,7 +342,7 @@ namespace Assignment_2_WPF.ViewModels
             }
             else
             {
-                System.Windows.MessageBox.Show($"Schedule: {_selectedSchedule.Type}\nDate: {_selectedSchedule.Date}\nPet: {_selectedSchedule.PetName}\nDescription: {_selectedSchedule.Description}","Schedule Details");
+                System.Windows.MessageBox.Show($"Schedule: {_selectedSchedule.Type}\nDate: {_selectedSchedule.Date}\nPet: {_selectedSchedule.PetName}\nDescription: {_selectedSchedule.Description}", "Schedule Details");
             }
 
         }

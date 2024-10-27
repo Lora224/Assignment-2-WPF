@@ -8,7 +8,7 @@
         Title="AddNewSchedule" Height="600" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Views/background.jpg"/>
+            <ImageBrush ImageSource="/Views/background-2.jpg"/>
         </Grid.Background>
         <!-- Add new schedule textbox -->
         <TextBlock Text="Add New Schedule" 

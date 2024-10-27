@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using Assignment_2_WPF.ViewModels;
 
@@ -57,6 +57,14 @@ namespace Assignment_2_WPF.Views
         {
             //show the details of the selected pet
             viewModel.ShowDetails();
+        }
+
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        {
+            //return to the mainwindow
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }
